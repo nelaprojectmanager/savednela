@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B242C">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Libreta">
 <title>Libreta financiera — Nela</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B242C'/%3E%3Cg fill='%23C9A227'%3E%3Cpath d='M40 15 L54 12 L51 27 Z'/%3E%3Cellipse cx='30' cy='36' rx='21' ry='15'/%3E%3Crect x='44' y='32' width='11' height='9' rx='4.5'/%3E%3Crect x='17' y='46' width='7' height='9' rx='2.5'/%3E%3Crect x='36' y='46' width='7' height='9' rx='2.5'/%3E%3C/g%3E%3Crect x='22' y='23' width='15' height='3.5' rx='1.75' fill='%230B242C'/%3E%3Ccircle cx='41' cy='31' r='2.2' fill='%230B242C'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B242C'/%3E%3Cg fill='%23C9A227'%3E%3Cpath d='M40 15 L54 12 L51 27 Z'/%3E%3Cellipse cx='30' cy='36' rx='21' ry='15'/%3E%3Crect x='44' y='32' width='11' height='9' rx='4.5'/%3E%3Crect x='17' y='46' width='7' height='9' rx='2.5'/%3E%3Crect x='36' y='46' width='7' height='9' rx='2.5'/%3E%3C/g%3E%3Crect x='22' y='23' width='15' height='3.5' rx='1.75' fill='%230B242C'/%3E%3Ccircle cx='41' cy='31' r='2.2' fill='%230B242C'/%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Libreta">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B242C'/%3E%3Cg fill='%23C9A227'%3E%3Cpath d='M40 15 L54 12 L51 27 Z'/%3E%3Cellipse cx='30' cy='36' rx='21' ry='15'/%3E%3Crect x='44' y='32' width='11' height='9' rx='4.5'/%3E%3Crect x='17' y='46' width='7' height='9' rx='2.5'/%3E%3Crect x='36' y='46' width='7' height='9' rx='2.5'/%3E%3C/g%3E%3Crect x='22' y='23' width='15' height='3.5' rx='1.75' fill='%230B242C'/%3E%3Ccircle cx='41' cy='31' r='2.2' fill='%230B242C'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B242C'/%3E%3Cg fill='%23C9A227'%3E%3Cpath d='M40 15 L54 12 L51 27 Z'/%3E%3Cellipse cx='30' cy='36' rx='21' ry='15'/%3E%3Crect x='44' y='32' width='11' height='9' rx='4.5'/%3E%3Crect x='17' y='46' width='7' height='9' rx='2.5'/%3E%3Crect x='36' y='46' width='7' height='9' rx='2.5'/%3E%3C/g%3E%3Crect x='22' y='23' width='15' height='3.5' rx='1.75' fill='%230B242C'/%3E%3Ccircle cx='41' cy='31' r='2.2' fill='%230B242C'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,9 +33,8 @@
   .owner{font-family:'Fraunces',serif;font-size:19px;font-weight:600;margin-top:1px}
   .nivel{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;color:rgba(246,242,232,.8);background:rgba(246,242,232,.09);padding:5px 10px;border-radius:20px}
 
-  nav{display:flex;background:var(--ink-2);position:sticky;top:0;z-index:5;border:1px solid rgba(246,242,232,.14);border-top:0;border-bottom:0;padding:0 4px;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  nav::-webkit-scrollbar{display:none}
-  nav button{flex:1 0 auto;background:none;border:0;color:rgba(246,242,232,.5);font:inherit;font-size:10.5px;font-weight:500;padding:11px 8px 12px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+  nav{display:flex;background:var(--ink-2);position:sticky;top:0;z-index:5;border:1px solid rgba(246,242,232,.14);border-top:0;border-bottom:0;padding:0 4px}
+  nav button{flex:1;background:none;border:0;color:rgba(246,242,232,.5);font:inherit;font-size:9.5px;font-weight:500;padding:11px 0 12px;cursor:pointer;border-bottom:2px solid transparent;-webkit-tap-highlight-color:transparent}
   nav button[aria-selected="true"]{color:var(--paper);border-bottom-color:var(--brass)}
 
   .page{background:var(--paper);padding:20px 18px 26px;border-radius:0 0 14px 14px;display:none}
@@ -61,8 +61,8 @@
   .niv.done .n{font-weight:600}
   .niv .v{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
 
-  input[type=number],input[type=text],input[type=search]{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:15px;padding:7px 9px;border:1.5px solid var(--rule);border-radius:5px;background:#FFFDF8;color:var(--ink);-moz-appearance:textfield}
-  input[type=text],input[type=search]{font-family:'Inter',sans-serif;font-size:13.5px}
+  input[type=number],input[type=text]{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;font-size:15px;padding:7px 9px;border:1.5px solid var(--rule);border-radius:5px;background:#FFFDF8;color:var(--ink);-moz-appearance:textfield}
+  input[type=text]{font-family:'Inter',sans-serif;font-size:13.5px}
   input[type=number]{width:92px;text-align:right;font-weight:600}
   input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
   input:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:transparent}
@@ -141,14 +141,28 @@
   .actions{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px}
   .status{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted)}
 
+  .g h3{font-family:'Fraunces',serif;font-size:15px;font-weight:600;margin:22px 0 7px}
+  .g h3:first-child{margin-top:14px}
+  .g p{font-size:13px;line-height:1.6;color:#33454C;margin-bottom:9px}
+  .g p b{color:var(--ink)}
+  .g ol,.g ul.gl{margin:0 0 10px 17px;font-size:13px;line-height:1.6;color:#33454C}
+  .g ul.gl{list-style:disc}
+  .g li{border:0;margin-bottom:5px}
+  .g .box2{background:var(--paper-2);padding:13px 14px;border-radius:6px;margin:12px 0;font-size:12.5px;line-height:1.55}
+  .g .box2 b{display:block;margin-bottom:5px;font-family:'Fraunces',serif;font-size:13.5px}
+  .g .box2.win{background:rgba(47,107,79,.09)}
+  .g table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
+  .g td{padding:6px 0;border-bottom:1px dotted var(--rule)}
+  .g td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600}
+
   /* diccionario */
-  .dtools{margin-bottom:4px}
-  #q{width:100%;font-size:14px;padding:10px 12px}
-  .chips{display:flex;gap:6px;overflow-x:auto;margin-top:10px;padding-bottom:2px}
+  #q{width:100%;margin-bottom:9px;font-family:'Inter',sans-serif;font-size:13.5px;padding:9px 11px;border:1.5px solid var(--rule);border-radius:5px;background:#FFFDF8;color:var(--ink)}
+  #q:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:transparent}
+  .chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
   .chips::-webkit-scrollbar{display:none}
   .chip{white-space:nowrap;background:none;border:1px solid var(--rule);color:var(--muted);font:inherit;font-size:11px;padding:5px 11px;border-radius:20px;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600}
-  .cat{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:22px 0 4px;padding-bottom:6px;border-bottom:1.5px solid var(--ink)}
+  .cat{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:20px 0 4px;padding-bottom:6px;border-bottom:1.5px solid var(--ink)}
   .term{border-bottom:1px solid var(--rule)}
   .thead{width:100%;background:none;border:0;display:flex;align-items:center;gap:10px;padding:13px 2px;text-align:left;font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .tn{flex:1;min-width:0}
@@ -166,24 +180,8 @@
   .tbody p b{color:var(--ink)}
   .ex{background:var(--paper-2);border-left:2.5px solid var(--brass);padding:11px 13px;border-radius:0 5px 5px 0;font-size:12.5px;line-height:1.55;margin-bottom:10px}
   .ex b{display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .warn{background:rgba(142,47,74,.07);border-left:2.5px solid var(--stamp);padding:11px 13px;border-radius:0 5px 5px 0;font-size:12.5px;line-height:1.55;color:#3C4A50;margin-bottom:10px}
+  .warn{background:rgba(142,47,74,.07);border-left:2.5px solid var(--stamp);padding:11px 13px;border-radius:0 5px 5px 0;font-size:12.5px;line-height:1.55;color:#3C4A50}
   .warn b{color:var(--stamp)}
-  .pbar{height:3px;background:var(--paper-2);border-radius:2px;margin-top:8px;overflow:hidden}
-  .pbar i{display:block;height:100%;width:0;background:var(--brass);transition:width .4s}
-
-  .g h3{font-family:'Fraunces',serif;font-size:15px;font-weight:600;margin:22px 0 7px}
-  .g h3:first-child{margin-top:14px}
-  .g p{font-size:13px;line-height:1.6;color:#33454C;margin-bottom:9px}
-  .g p b{color:var(--ink)}
-  .g ol,.g ul.gl{margin:0 0 10px 17px;font-size:13px;line-height:1.6;color:#33454C}
-  .g ul.gl{list-style:disc}
-  .g li{border:0;margin-bottom:5px}
-  .g .box2{background:var(--paper-2);padding:13px 14px;border-radius:6px;margin:12px 0;font-size:12.5px;line-height:1.55}
-  .g .box2 b{display:block;margin-bottom:5px;font-family:'Fraunces',serif;font-size:13.5px}
-  .g .box2.win{background:rgba(47,107,79,.09)}
-  .g table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
-  .g td{padding:6px 0;border-bottom:1px dotted var(--rule)}
-  .g td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -201,8 +199,8 @@
     <button role="tab" data-t="reparto" aria-selected="false">Reparto</button>
     <button role="tab" data-t="metas" aria-selected="false">Metas</button>
     <button role="tab" data-t="balance" aria-selected="false">Balance</button>
-    <button role="tab" data-t="palabras" aria-selected="false">Palabras</button>
     <button role="tab" data-t="guia" aria-selected="false">Guía</button>
+    <button role="tab" data-t="dicc" aria-selected="false">Términos</button>
   </nav>
 
   <!-- PANEL -->
@@ -218,7 +216,7 @@
       <div class="card"><span>Patrimonio neto</span><b id="kPat">$0</b><i>Tengo − debo</i></div>
       <div class="card"><span>Deudas</span><b id="kDeuda">$0</b><i>Carro + tarjeta</i></div>
       <div class="card"><span>Tasa de ahorro</span><b id="kTasa">0%</b><i>De cada $100 que ganas</i></div>
-      <div class="card"><span>FICO</span><b>725</b><i>Bankcard · jun 2026</i></div>
+      <div class="card"><span>FICO</span><b id="kFico">725</b><i>Bankcard · jun 2026</i></div>
     </div>
     <div class="head" style="margin-top:26px"><h2>Niveles de libertad</h2><span>Fondo</span></div>
     <div id="niveles"></div>
@@ -288,7 +286,7 @@
     </div>
     <div class="tot"><span>Extra acumulado</span><b id="exTot">$0</b></div>
     <div class="note">
-      <b>Cuatro veces al año caen cinco viernes en un mes.</b> Ese quinto pago no está en el presupuesto de nadie — es el más fácil de guardar completo.
+      <b>Cuatro veces al año caen cinco viernes en un mes.</b> Ese quinto pago no está en el presupuesto de nadie — es el más fácil de guardar completo. Regístralo aquí cuando pase.
     </div>
   </section>
 
@@ -306,7 +304,7 @@
       <input type="number" id="acMon" placeholder="500" min="0" step="10" inputmode="numeric">
       <button class="btn" id="acAdd">+</button>
     </div>
-    <div class="foot">💵 = líquido. 📄 = bienes. Toca el ícono para cambiarlo.</div>
+    <div class="foot">💵 = líquido (banco o efectivo). 📄 = bienes. Toca el ícono para cambiarlo.</div>
 
     <div class="head"><h2>Debo</h2><span>Pasivos</span></div>
     <div id="deudas"></div>
@@ -331,34 +329,23 @@
     </div>
   </section>
 
-  <!-- PALABRAS -->
-  <section class="page" id="p-palabras">
-    <div class="head"><h2>Diccionario</h2><span id="dProg">0 de 0</span></div>
-    <div class="pbar" style="margin-bottom:14px"><i id="dFill"></i></div>
-    <div class="dtools">
-      <input type="search" id="q" placeholder="Buscar: APY, Roth, refinanciar…" autocomplete="off">
-      <div class="chips" id="chips"></div>
-    </div>
-    <div id="dlista"></div>
-  </section>
-
   <!-- GUÍA -->
   <section class="page g" id="p-guia">
     <div class="head"><h2>Dónde estás hoy</h2><span>27 jul 2026</span></div>
 
     <div class="box2 win"><b>Lo que hiciste este lunes</b>
       Abriste una HYSA en Marcus al 3.40% con tu ITIN · Depositaste $1,500 · Programaste $50 automáticos cada viernes · Pagaste $1,000 a la tarjeta Citi · Saldaste tu deuda con Alberto.<br><br>
-      Tu fondo pasó de <b>$0 a $1,500 en un día</b>, y ya superaste la primera meta de $1,000.</div>
+      Tu fondo de emergencia pasó de <b>$0 a $1,500 en un día</b>, y ya superaste la primera meta de $1,000.</div>
 
     <table>
       <tr><td>Ingreso neto mensual</td><td>$1,700*</td></tr>
-      <tr><td>Fijos</td><td>$1,158</td></tr>
+      <tr><td>Fijos (carro, gasolina, renta, subs, gym)</td><td>$1,158</td></tr>
       <tr><td>Comida</td><td>$250</td></tr>
       <tr><td>Ahorro ($50 × 52 ÷ 12)</td><td>$217</td></tr>
       <tr><td>FICO</td><td>725</td></tr>
       <tr><td>Tasa del carro</td><td>20.56%</td></tr>
     </table>
-    <p style="font-size:11.5px;color:var(--muted)">*Pendiente de confirmar. Si tus $500 semanales son netos, tu ingreso real sería ~$2,167 y el reparto cambia a tu favor.</p>
+    <p style="font-size:11.5px;color:var(--muted)">*Pendiente de confirmar. Si tus $500 semanales son netos, tu ingreso real sería ~$2,167 y todo el reparto cambia a tu favor.</p>
 
     <h3>Tu jugada más grande: refinanciar</h3>
     <div class="box2"><b>Con FICO 725 esto cambió</b>
@@ -366,63 +353,73 @@
       Pago actual: $701.59 → a ~8%: <b>~$529</b><br>
       Ahorro mensual: <b>~$172</b><br>
       Interés que te ahorras: <b>~$10,500</b><br><br>
-      Tu crédito ya no es el obstáculo. El único problema es el LTV de 139%.</div>
+      Tu crédito ya no es el obstáculo. El único problema es el LTV de 139% — debes ~$26,450 por un carro que vale ~$19,000.</div>
 
     <p><b>A quién llamar:</b> St. Louis Community CU (314-534-7610), Alltru, Vantage, Gateway Metro.</p>
     <p><b>La pregunta exacta:</b> "Tengo un préstamo al 20.56% con saldo de ~$26,450 en un Mazda CX-30 2022, y FICO de 725. Sé que estoy al revés en el préstamo. ¿Cuál es su LTV máximo, aceptan co-solicitante, y cuánto efectivo necesitarían?"</p>
-    <p><b>Todas las solicitudes dentro de 14 días</b> — así cuentan como una sola consulta.</p>
+    <p><b>Tus cartas:</b> FICO 725 · 12 pagos puntuales · efectivo disponible para aportar · Alberto como posible co-solicitante.</p>
+    <p><b>Todas las solicitudes dentro de 14 días</b> — así cuentan como una sola consulta a tu crédito.</p>
 
     <h3>Tu rutina</h3>
-    <p><b>Cada viernes:</b> los $50 salen solos. Marca la semana en Metas.</p>
-    <p><b>Dinero extra:</b> regístralo el mismo día y mándalo a Marcus.</p>
-    <p><b>Cada mes:</b> actualiza el saldo del carro en Balance y mira subir tu patrimonio.</p>
+    <p><b>Cada viernes:</b> los $50 salen solos. Marca la semana en Metas → Depósitos.</p>
+    <p><b>Cuando entre dinero extra:</b> regístralo el mismo día y mándalo a Marcus.</p>
+    <p><b>Cada mes:</b> actualiza el saldo del carro en Balance → Debo y mira subir tu patrimonio neto.</p>
+    <p><b>Cuando te aguantes una compra:</b> toca ✋ en la lista de no gastar.</p>
 
     <h3>Pendientes</h3>
     <ul class="gl">
       <li>Cancelar Uber One ($9.99/mes)</li>
-      <li>Cancelar el almacenamiento duplicado ($9.99)</li>
+      <li>Cancelar el almacenamiento duplicado — Google Photos o iCloud+ ($9.99)</li>
       <li>Decidir Crunchyroll ($13.99)</li>
-      <li>Pagar la tarjeta Citi completa al corte (~$406)</li>
+      <li>Pagar la tarjeta Citi completa al corte (~$406 con pendientes)</li>
       <li>Llamar a las cooperativas</li>
       <li>Confirmar si tus $500 semanales son brutos o netos</li>
     </ul>
 
     <h3>Dos reglas de la tarjeta Citi</h3>
-    <p><b>No la cierres.</b> Abierta y pagada te construye historial — justo lo que necesitas para el refinanciamiento.</p>
-    <p><b>Úsala poquito.</b> Una compra chica al mes, pagada completa. Utilización abajo del 10%.</p>
+    <p><b>No la cierres.</b> Abierta y pagada te construye historial — y ese historial es justo lo que necesitas para el refinanciamiento.</p>
+    <p><b>Úsala poquito.</b> Una compra chica al mes, pagada completa. Mantén la utilización abajo del 10%.</p>
 
     <h3>Cosas que van a pasar</h3>
-    <p><b>Tu patrimonio neto está en negativo.</b> Normal con un carro financiado. Lo que importa es que suba cada mes.</p>
-    <p><b>Vas a fallar una semana.</b> No borres nada, solo no marques esa y sigue.</p>
+    <p><b>Tu patrimonio neto está en negativo.</b> Normal con un carro financiado. Lo que importa es que suba cada mes — y hoy subió mucho.</p>
+    <p><b>Vas a fallar una semana.</b> No borres nada, solo no marques esa y sigue. Un plan al que vuelves le gana a uno perfecto que abandonas.</p>
 
     <div class="box2"><b>Un recordatorio</b>
       Esto es una herramienta para ordenar y aprender, no asesoría financiera. Para el refinanciamiento compara ofertas reales y lee los términos completos.</div>
   </section>
+
+  <!-- DICCIONARIO -->
+  <section class="page" id="p-dicc">
+    <div class="head"><h2>Términos</h2><span id="progT">0 / 0</span></div>
+    <div style="margin-top:14px">
+      <input type="search" id="q" placeholder="Buscar: APY, Roth, refinanciar…" autocomplete="off">
+      <div class="chips" id="chips"></div>
+    </div>
+    <div id="listaT"></div>
+    <div class="note"><b>Toca el círculo</b> cuando entiendas un término. El contador de arriba lleva la cuenta y se guarda.</div>
+  </section>
 </div>
 
 <script>
-/* ---------- almacenamiento: funciona en Claude Y en GitHub Pages ---------- */
+/* ---------- guardado: funciona en Claude Y en GitHub Pages ---------- */
 const store={
   async get(k){
-    if(window.storage&&window.storage.get){
-      try{ const r=await window.storage.get(k); if(r&&r.value) return r.value; }catch(e){}
-    }
-    try{ return localStorage.getItem(k); }catch(e){ return null; }
+    if(window.storage&&window.storage.get) return await window.storage.get(k);
+    const v=localStorage.getItem(k);
+    if(v===null) throw new Error('no existe');
+    return {key:k,value:v};
   },
   async set(k,v){
-    if(window.storage&&window.storage.set){
-      try{ await window.storage.set(k,v); return true; }catch(e){}
-    }
-    try{ localStorage.setItem(k,v); return true; }catch(e){ return false; }
+    if(window.storage&&window.storage.set) return await window.storage.set(k,v);
+    localStorage.setItem(k,v); return {key:k,value:v};
   }
 };
 
-const KEY='libreta:v6', DKEY='diccionario:v6';
+const KEY='libreta:v6', KEYT='libreta:v6:terminos';
 const MES_N=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const $=id=>document.getElementById(id);
 const money=n=>(n<0?'−$':'$')+Math.abs(Math.round(n)).toLocaleString('en-US');
 const uid=()=>Math.random().toString(36).slice(2,9);
-const esc=s=>String(s).replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
 
 const DEF={
   ingreso:1700, fijos:1158, comida:250, ahorro:217, gustos:50, colchon:25,
@@ -448,159 +445,21 @@ const DEF={
   ],
   tentaciones:[]
 };
-let S=structuredClone(DEF), hechos=new Set(), tSave;
+let S=structuredClone(DEF), hechos=new Set(), puedeGuardar=true, tSave;
 
 const BUCKETS=[
   {k:'fijos',n:'Gastos fijos',c:'var(--c-fijos)',meta:[50,55],
    why:'Carro $701.59, gasolina $200, renta $150, suscripciones, gym. <b>El carro y su gasolina son el 53% de tu ingreso</b> — la referencia es 15–20%. Refinanciar es la única palanca que baja este número sin cambiar nada de tu vida.'},
   {k:'comida',n:'Comida',c:'var(--c-comida)',meta:[12,15],
-   why:'Despensa y el café de Everyday Dose ($12/mes), que el banco clasificó como "Groceries". <b>Es un gasto fijo disfrazado de variable.</b>'},
+   why:'Despensa y el café de Everyday Dose ($12/mes), que el banco clasificó como "Groceries" y por eso no lo veías. <b>Es un gasto fijo disfrazado de variable.</b>'},
   {k:'ahorro',n:'Ahorro',c:'var(--c-ahorro)',meta:[15,20],
-   why:'<b>$50 cada viernes, automáticos.</b> Salen antes de que veas el dinero. Truco: súbelo $5 cada tres meses. No lo vas a sentir.'},
+   why:'<b>$50 cada viernes, automáticos.</b> Salen antes de que veas el dinero. Truco: súbelo $5 cada tres meses. No lo vas a sentir, y en dos años estás en $110 semanales.'},
   {k:'gustos',n:'Gustos',c:'var(--c-gustos)',meta:[8,10],
-   why:'Tuyo, sin justificar nada. <b>Gastarlo completo es el plan funcionando.</b> Se ve chico porque el carro se come todo — cuando refinancies, esta bolsa es la primera que debe crecer.'},
+   why:'Tuyo, sin justificar nada. <b>Gastarlo completo es el plan funcionando.</b> Este número se ve chico porque el carro se come todo — cuando refinancies, esta bolsa es la primera que debe crecer.'},
   {k:'colchon',n:'Colchón',c:'var(--c-colchon)',meta:[5,8],
-   why:'Para lo chico e imprevisto del mes. <b>Sin esta bolsa cada sorpresa se come el ahorro.</b>'}
+   why:'Para lo chico e imprevisto del mes. <b>Sin esta bolsa cada sorpresa se come el ahorro.</b> Lo que no uses, mándalo al fondo.'}
 ];
 
-/* ================= DICCIONARIO ================= */
-const T=[
-{c:'Guardar dinero',t:'HYSA',s:'Cuenta de ahorro de alto rendimiento',
- d:`<p>Una cuenta de ahorro normal. La única diferencia: <b>paga mucho más interés.</b></p><p>No es inversión, no puedes perder dinero, sacas cuando quieras.</p><div class="ex"><b>Tu caso</b>Tu Marcus paga 3.40%. Bank of America paga 0.01%. En $1,500 son $51 al año contra 15 centavos.</div>`},
-{c:'Guardar dinero',t:'APY',s:'Rendimiento anual',
- d:`<p>Cuánto <b>ganas</b> en un año, ya contando el interés compuesto. Es el número para comparar cuentas de ahorro.</p>`},
-{c:'Guardar dinero',t:'APR',s:'Tasa anual de un préstamo',
- d:`<p>Cuánto <b>pagas</b> en un año por un préstamo, incluyendo comisiones.</p><p>Regla: <b>APY = lo que te dan. APR = lo que te cobran.</b></p><div class="ex"><b>Tu caso</b>Carro: APR 20.56%. Marcus: APY 3.40%. Esa diferencia de 17 puntos es por qué pagar el carro le gana a invertir.</div>`},
-{c:'Guardar dinero',t:'FDIC / NCUA',s:'El seguro de tu dinero',
- d:`<p>Seguro del gobierno. Si el banco quiebra, <b>te reponen hasta $250,000.</b> FDIC para bancos, NCUA para cooperativas.</p><p>Aplica sin importar si usas ITIN.</p>`},
-{c:'Guardar dinero',t:'CD',s:'Certificado de depósito',
- d:`<p>Le prestas tu dinero al banco por un plazo fijo y te paga un poco más. Si lo sacas antes, hay penalización.</p><p><b>No sirve para el fondo de emergencia</b>, que debe estar disponible ya.</p>`},
-{c:'Guardar dinero',t:'Liquidez',s:'Qué tan rápido se vuelve efectivo',
- d:`<p>Tu cuenta de cheques es líquida. Tu carro no. <b>El fondo de emergencia tiene que ser líquido.</b></p>`},
-{c:'Guardar dinero',t:'Cooperativa de crédito',s:'Credit union',
- d:`<p>Como un banco, pero los dueños son los miembros. Suelen dar <b>mejores tasas de préstamo</b> y son más flexibles con historial corto e ITIN.</p><p>Para pedirles préstamo hay que ser miembro — normalmente abrir una cuenta con $5 a $25.</p>`},
-{c:'Deuda y crédito',t:'Principal',s:'La deuda de verdad',
- d:`<p>El dinero que realmente debes, sin intereses. Cada pago se parte entre interés y principal.</p><p><b>Solo lo que baja el principal te acerca a terminar.</b> En pagos extra, pídelo por escrito.</p><div class="ex"><b>Tu caso</b>De $701.59, ~$445 son interés y solo ~$256 bajan el principal.</div>`},
-{c:'Deuda y crédito',t:'Amortización',s:'Cómo se reparte cada pago',
- d:`<p>Al principio casi todo va a intereses; con los años se voltea. Por eso <b>un pago extra al principio vale mucho más.</b></p>`},
-{c:'Deuda y crédito',t:'LTV',s:'Préstamo sobre valor',
- d:`<p>Cuánto debes comparado con lo que vale la garantía. Arriba de 100% significa que debes más de lo que vale.</p><div class="ex"><b>Tu caso</b>$26,450 sobre un carro de ~$19,000 = LTV 139%. Es el obstáculo del refinanciamiento — no tu crédito.</div>`},
-{c:'Deuda y crédito',t:'Negative equity',s:'Estar al revés / underwater',
- d:`<p>Deber más de lo que vale tu carro. Pasa con plazos largos y tasas altas. Se corrige con el tiempo o con pagos extra al principal.</p>`},
-{c:'Deuda y crédito',t:'Refinanciar',s:'Cambiar tu préstamo por uno mejor',
- d:`<p>Un prestamista nuevo paga tu deuda vieja y le quedas debiendo a él, con <b>mejor tasa</b>.</p><div class="ex"><b>Tu caso</b>De 20.56% a ~8%: pago de $701 a ~$529 y ~$10,500 menos en intereses.</div>`},
-{c:'Deuda y crédito',t:'Co-solicitante',s:'Co-borrower',
- d:`<p>Alguien que firma contigo. Su ingreso e historial se suman, lo que sube tus probabilidades y baja la tasa.</p><div class="warn"><b>Cuidado:</b> también asume la deuda. Si tú no pagas, le cobran y le afecta el crédito.</div>`},
-{c:'Deuda y crédito',t:'Payoff',s:'Saldo de liquidación',
- d:`<p>El monto exacto para liquidar hoy, con intereses acumulados. No es igual al saldo que ves en la app. Es lo que pide el prestamista nuevo.</p>`},
-{c:'Deuda y crédito',t:'Hard pull / Soft pull',s:'Consultas a tu crédito',
- d:`<p><b>Soft:</b> no afecta tu puntaje. <b>Hard:</b> baja unos puntos al aplicar.</p><p><b>Truco:</b> varias consultas de auto dentro de <b>14 días</b> cuentan como una sola.</p>`},
-{c:'Deuda y crédito',t:'DTI',s:'Deuda sobre ingreso',
- d:`<p>Qué porcentaje de tu ingreso se va en pagos de deuda. Quieren verlo abajo de ~40%.</p><div class="ex"><b>Tu caso</b>$701.59 sobre $1,700 = 41% solo del carro. Con Alberto de co-solicitante, este número se desploma.</div>`},
-{c:'Deuda y crédito',t:'FICO',s:'Puntaje de crédito',
- d:`<p>Un número que resume qué tan confiable eres pagando. Lo construyes pagando a tiempo durante años.</p><div class="ex"><b>Tu caso</b>725, "Good". Mucho mejor de lo que asumíamos — no eres una solicitante de alto riesgo.</div>`},
-{c:'Deuda y crédito',t:'Utilización',s:'Cuánto usas de tu límite',
- d:`<p>Saldo dividido entre límite. El rango ideal es <b>1% a 9%</b>. Es uno de los factores más pesados de tu puntaje.</p><div class="ex"><b>Tu caso</b>$105 sobre $2,000 = 5%. Casi perfecto.</div>`},
-{c:'Invertir',t:'Acción',s:'Stock',
- d:`<p>Un pedacito de una empresa. Si gana más, tu pedacito vale más.</p><div class="warn"><b>Para principiantes:</b> no compres acciones individuales. Hasta los profesionales fallan escogiendo.</div>`},
-{c:'Invertir',t:'Fondo indexado',s:'Index fund',
- d:`<p>Compras un pedacito de <b>las 500 empresas más grandes de EE.UU. al mismo tiempo.</b> Si a una le va mal, las otras 499 siguen ahí.</p><p>No hay que escoger ni saber de bolsa. En Fidelity se llama <b>FXAIX</b>.</p>`},
-{c:'Invertir',t:'S&P 500',s:'El índice de las 500 grandes',
- d:`<p>La lista de las 500 empresas más grandes que cotizan en EE.UU. Cuando dicen "el mercado subió", hablan de esto.</p>`},
-{c:'Invertir',t:'Diversificación',s:'No poner todo en un lugar',
- d:`<p>Repartir para que ninguna cosa te hunda. Un fondo indexado ya te diversifica solo.</p>`},
-{c:'Invertir',t:'Expense ratio',s:'La comisión anual del fondo',
- d:`<p>Lo que el fondo cobra cada año, en porcentaje. Se descuenta solo. <b>Busca abajo de 0.10%.</b></p><div class="warn"><b>Por qué importa:</b> 1% en vez de 0.02% puede costarte más de $100,000 en 30 años.</div>`},
-{c:'Invertir',t:'Interés compuesto',s:'El motor de todo',
- d:`<p>Ganar intereses sobre tus intereses. Al principio parece que no pasa nada; después de 15 años es una bola de nieve.</p><div class="ex"><b>El ejemplo que lo explica todo</b>$100 al mes al 8% durante 30 años: pusiste $36,000 y tienes ~$149,000.</div>`},
-{c:'Invertir',t:'Regla del 72',s:'Cuándo se duplica tu dinero',
- d:`<p>Divide 72 entre la tasa. Al 3.4% → 21 años. Al 8% → 9 años. Al 20.56% → 3.5 años.</p><div class="ex"><b>Tu caso</b>Ese último es tu carro, pero al revés: la velocidad a la que el interés se multiplica en tu contra.</div>`},
-{c:'Invertir',t:'Volatilidad',s:'Que suba y baje',
- d:`<p>La bolsa puede caer 30% en un año malo. <b>Volatilidad no es pérdida</b> — solo pierdes si vendes abajo. Por eso no se invierte dinero que necesitas en menos de 5 años.</p>`},
-{c:'Invertir',t:'Corretaje',s:'Brokerage',
- d:`<p>Donde abres la cuenta para invertir. Fidelity, Charles Schwab y Vanguard son las tres grandes, y las tres aceptan ITIN.</p>`},
-{c:'Invertir',t:'SIPC',s:'Seguro de cuenta de inversión',
- d:`<p>Protege hasta $500,000 si la casa de bolsa quiebra. <b>No</b> te protege de que el mercado baje. Tus inversiones están a tu nombre.</p>`},
-{c:'Invertir',t:'Bonos y Tesoro',s:'T-Bill, I Bond, Treasury',
- d:`<p>Le prestas dinero a alguien y te paga interés. Los del Tesoro de EE.UU. son la inversión más segura del mundo, pero andan alrededor del 4%.</p>`},
-{c:'Retiro',t:'Roth IRA',s:'La cuenta de retiro que más te conviene',
- d:`<p>Metes dinero que ya pagó impuestos y <b>todo lo que crezca sale libre de impuestos</b> al retirarte. Límite anual ~$7,000. Se abre con ITIN.</p><p><b>Es el envase, no la inversión.</b> Adentro pones un fondo indexado. Mucha gente deposita y olvida comprar el fondo — el dinero se queda parado.</p>`},
-{c:'Retiro',t:'IRA tradicional',s:'La otra opción',
- d:`<p>Descuentas el depósito de tus impuestos hoy, pero pagas al retirar. Si ganas poco ahora y esperas ganar más después, la Roth te conviene más.</p>`},
-{c:'Retiro',t:'401(k) y match',s:'La cuenta del trabajo',
- d:`<p>El "match" es cuando la empresa pone dinero por cada dólar tuyo. Es <b>dinero gratis</b> — un retorno de 100% instantáneo.</p><div class="ex"><b>Qué hacer</b>Si tu trabajo lo ofrece, aporta lo suficiente para recibirlo completo. Va antes que cualquier otra inversión.</div>`},
-{c:'Retiro',t:'Penalización 59½',s:'Por qué no se toca',
- d:`<p>Sacar antes de los 59 años y medio cuesta impuestos más 10% de multa.</p><p>Mucha gente cree que "el gobierno se queda con su dinero". No es eso: es el precio de romper un trato que te dio ventajas fiscales.</p>`},
-{c:'Presupuesto',t:'Fondo de emergencia',s:'Tu colchón real',
- d:`<p>Dinero líquido solo para emergencias. Primera meta: <b>$1,000</b>. Meta completa: <b>3 a 6 meses de gastos</b>.</p><div class="ex"><b>Tu caso</b>Gasto real $1,408/mes. Tres meses = ~$4,224. Ya vas en $1,500.</div>`},
-{c:'Presupuesto',t:'Págate a ti primero',s:'La regla que sostiene todo',
- d:`<p>El ahorro sale <b>el día que te pagan</b>, no de lo que sobra. Funciona porque quita la fuerza de voluntad de la ecuación.</p>`},
-{c:'Presupuesto',t:'Fondo para gastos anuales',s:'Sinking fund',
- d:`<p>Guardar poquito cada mes para cosas que sabes que vienen: navidad, placas, dentista. Toma el costo del año y divídelo entre 12.</p>`},
-{c:'Presupuesto',t:'Patrimonio neto',s:'Net worth',
- d:`<p>Todo lo que tienes menos todo lo que debes. Es <b>la</b> medida real de tu avance.</p><div class="ex"><b>Tu caso</b>Empieza en negativo por el carro financiado. Es normal. Lo que importa es que suba cada mes.</div>`},
-{c:'Presupuesto',t:'Tasa de ahorro',s:'Savings rate',
- d:`<p>Qué porcentaje de tu ingreso guardas. Truco: <b>súbela poquito cada tres meses.</b> No lo vas a sentir.</p>`},
-{c:'Impuestos',t:'ITIN',s:'Número de identificación fiscal',
- d:`<p>Lo emite el IRS para quienes no tienen Seguro Social. Sirve para abrir cuentas de banco, de inversión y de retiro.</p><div class="warn"><b>Ojo:</b> expira si no se usa en una declaración federal durante tres años seguidos. Se renueva con el Formulario W-7.</div>`},
-{c:'Impuestos',t:'W-9',s:'El formulario que firmas al abrir cuenta',
- d:`<p>Solo declaras que ese número fiscal es tuyo y autorizas al banco a reportar los intereses al IRS. Todos lo firman.</p>`},
-{c:'Impuestos',t:'1099-INT',s:'El papelito de enero',
- d:`<p>El banco te lo manda si ganaste $10 o más de intereses. Lo usas al declarar.</p><div class="ex"><b>Tu caso</b>$1,500 al 3.40% generan ~$51. Pagarás ~$6 de impuesto.</div>`},
-{c:'Peligros',t:'Inflación',s:'El ladrón silencioso',
- d:`<p>Si la inflación es 3% y tu dinero no gana nada, cada año compras 3% menos. <b>Por eso guardar en efectivo sí es perder dinero</b>, aunque el número no baje.</p>`},
-{c:'Peligros',t:'"Garantizado"',s:'La palabra de las estafas',
- d:`<div class="warn"><b>Sin excepciones:</b> si alguien ofrece 15%, 20% o 30% "garantizado" y "sin riesgo", es fraude. Las inversiones reales nunca prometen.</div><p>Otras señales: presión para decidir hoy, te piden reclutar gente, no te dejan sacar tu dinero, todo pasa por WhatsApp.</p>`},
-{c:'Peligros',t:'Préstamo de día de pago',s:'Payday loan',
- d:`<div class="warn">Tasas que en términos anuales llegan al 300% o 400%. La trampa más cara que existe.</div><p>El fondo de emergencia existe justo para que nunca tengas que pisar uno.</p>`},
-{c:'Peligros',t:'Compra ahora, paga después',s:'Klarna, Afterpay, Affirm',
- d:`<p>Dividir una compra en pagos hace que gastes más de lo que gastarías, y los recargos por atraso son altos.</p><p>Si necesitas partir un gasto en cuatro, la señal real es que ese gasto no cabe todavía.</p>`}
-];
-let know=new Set(), filtro='Todos', busca='';
-const CATS=['Todos',...new Set(T.map(x=>x.c))];
-
-function chips(){
-  $('chips').innerHTML=CATS.map(c=>`<button class="chip" data-c="${c}" aria-pressed="${c===filtro}">${c}</button>`).join('');
-}
-function pintaDic(){
-  const q=busca.toLowerCase().trim();
-  const vis=T.filter(x=>(filtro==='Todos'||x.c===filtro)&&(!q||(x.t+' '+x.s+' '+x.d).toLowerCase().includes(q)));
-  if(!vis.length){ $('dlista').innerHTML=`<div class="empty">No encontré ese término. Prueba otra palabra.</div>`; }
-  else{
-    let html='',cur='';
-    vis.forEach(x=>{
-      if(x.c!==cur){ cur=x.c; html+=`<div class="cat">${cur}</div>`; }
-      const id='t'+T.indexOf(x);
-      html+=`<div class="term ${know.has(id)?'know':''}" data-id="${id}">
-        <button class="thead" aria-expanded="false">
-          <span class="tick" data-act="know"></span>
-          <span class="tn"><b>${x.t}</b><span>${x.s}</span></span>
-          <span class="arw">▶</span></button>
-        <div class="tbody">${x.d}</div></div>`;
-    });
-    $('dlista').innerHTML=html;
-  }
-  $('dProg').textContent=`${know.size} de ${T.length}`;
-  $('dFill').style.width=(know.size/T.length*100)+'%';
-}
-$('dlista').addEventListener('click',e=>{
-  const term=e.target.closest('.term'); if(!term) return;
-  if(e.target.closest('[data-act="know"]')){
-    const id=term.dataset.id;
-    know.has(id)?know.delete(id):know.add(id);
-    store.set(DKEY,JSON.stringify([...know])); pintaDic(); return;
-  }
-  const h=e.target.closest('.thead'); if(!h) return;
-  const ab=term.classList.toggle('open');
-  h.setAttribute('aria-expanded',ab);
-});
-$('chips').addEventListener('click',e=>{
-  const c=e.target.closest('.chip'); if(!c) return;
-  filtro=c.dataset.c; chips(); pintaDic();
-});
-$('q').addEventListener('input',e=>{ busca=e.target.value; pintaDic(); });
-
-/* ================= LIBRETA ================= */
 function buildBuckets(){
   $('buckets').innerHTML=BUCKETS.map(b=>`
     <div class="bucket"><div class="brow">
@@ -622,6 +481,8 @@ function buildBuckets(){
     $('exp-'+b.dataset.k).classList.toggle('open',!o);
   });
 }
+
+const esc=s=>String(s).replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
 function listaSimple(cont,arr,extra){
   $(cont).innerHTML=arr.length?arr.map(it=>`
     <div class="item" data-id="${it.id}">
@@ -652,38 +513,24 @@ function adder(nomId,monId,btnId,key,base){
     $(nomId).value=''; $(monId).value=''; render(); save();
   });
 }
+
 const fondoTotal=()=>S.inicial+hechos.size*S.semanal+S.extras.reduce((s,x)=>s+x.m,0);
 const gastoReal=()=>S.fijos+S.comida;
 const niveles=()=>{
   const gR=gastoReal();
-  return [{e:'🔴',n:'Primer respiro',v:1000},{e:'🟠',n:'Ya no improvisas',v:3000},
-    {e:'🟡',n:'Tranquilidad real',v:5000},{e:'🟢',n:'3 meses de gastos',v:gR*3},
-    {e:'⭐',n:'6 meses de gastos',v:gR*6}].sort((a,b)=>a.v-b.v);
+  return [
+    {e:'🔴',n:'Primer respiro',v:1000},
+    {e:'🟠',n:'Ya no improvisas',v:3000},
+    {e:'🟡',n:'Tranquilidad real',v:5000},
+    {e:'🟢',n:'3 meses de gastos',v:gR*3},
+    {e:'⭐',n:'6 meses de gastos',v:gR*6}
+  ].sort((a,b)=>a.v-b.v);
 };
-function viernes(i){ const d=new Date(2026,6,31); d.setDate(d.getDate()+7*i); return d; }
-function fechaSem(n){ const d=viernes(Math.max(n-1,0)); return `${d.getDate()} ${MES_N[d.getMonth()]} ${d.getFullYear()}`; }
-
-function buildLista(sig){
-  const a=S.semanal;
-  if(a<=0){ $('lista').innerHTML='<li style="border:0"><div class="empty">Define un ahorro semanal.</div></li>'; return; }
-  const faltan=Math.max(sig.v-S.inicial-S.extras.reduce((s,x)=>s+x.m,0),0);
-  const n=Math.min(Math.max(Math.ceil(faltan/a),1),60);
-  let h='';
-  for(let i=0;i<n;i++){
-    const d=viernes(i);
-    const id='w'+d.toISOString().slice(0,10);
-    const nom=`Viernes ${d.getDate()} ${MES_N[d.getMonth()].slice(0,3)}`;
-    h+=`<li class="${i===n-1?'meta':''}"><button class="row" data-id="${id}" aria-pressed="${hechos.has(id)}">
-      <span class="mes">${nom}<em>+${money(a)}</em></span>
-      <span class="sal">${money(S.inicial+a*(i+1))}</span><span class="box"></span>
-      <span class="stamp">${i===n-1?sig.e+' META':'OK'}</span></button></li>`;
-  }
-  $('lista').innerHTML=h;
-}
 
 function render(){
   if($('ingreso').value!=S.ingreso) $('ingreso').value=S.ingreso;
   BUCKETS.forEach(b=>{ if($('in-'+b.k).value!=S[b.k]) $('in-'+b.k).value=S[b.k]; });
+
   const rep=BUCKETS.reduce((s,b)=>s+S[b.k],0), diff=S.ingreso-rep;
   $('split').innerHTML=BUCKETS.map(b=>{
     const base=Math.max(rep,S.ingreso)||1;
@@ -704,16 +551,19 @@ function render(){
   const anMes=S.anuales.reduce((s,x)=>s+x.m,0)/12;
   $('anTot').textContent=money(anMes);
   $('anAviso').textContent=S.anuales.length===0?'Escribe el costo ANUAL. Yo lo divido entre 12.'
-    :anMes>S.colchon?`Tu colchón es ${money(S.colchon)} y necesitas ${money(anMes)}.`
+    :anMes>S.colchon?`Tu colchón es ${money(S.colchon)} y necesitas ${money(anMes)}. Faltan ${money(anMes-S.colchon)} al mes.`
     :`Tu colchón de ${money(S.colchon)} alcanza.`;
 
   listaSimple('subs',S.subs,{btn:it=>`<button class="use" data-act="use" data-on="${it.usa!==false}">${it.usa!==false?'✅':'❌'}</button>`});
-  $('sbTot').textContent=money(S.subs.reduce((s,x)=>s+x.m,0));
+  const sbT=S.subs.reduce((s,x)=>s+x.m,0);
   const fuga=S.subs.filter(x=>x.usa===false).reduce((s,x)=>s+x.m,0);
-  $('sbFuga').textContent=fuga>0?`${money(fuga)} al mes marcados sin usar — ${money(fuga*12)} al año.`:'Todas en uso.';
+  $('sbTot').textContent=money(sbT);
+  $('sbFuga').textContent=fuga>0?`${money(fuga)} al mes marcados sin usar — ${money(fuga*12)} al año. Cancélalos y bórralos de aquí.`
+    :'Todas en uso. Vuelve a revisar en 6 meses.';
 
   const fT=fondoTotal(), gR=gastoReal(), NIV=niveles();
-  const sig=NIV.find(x=>fT<x.v)||NIV[NIV.length-1];
+  const sig=NIV.find(x=>fT<x.v) || NIV[NIV.length-1];
+
   $('goals').innerHTML=[{id:'_f',n:'Fondo — siguiente nivel',m:sig.v,ah:Math.min(fT,sig.v),fondo:true}]
     .concat(S.goals.map(g=>({...g,ah:0}))).map(g=>{
       const pc=g.m?Math.min(g.ah/g.m*100,100):0;
@@ -726,13 +576,15 @@ function render(){
 
   $('seedNum').textContent=money(S.inicial);
   buildLista(sig);
-  const faltan=Math.max(sig.v-fT,0), semanas=S.semanal>0?Math.ceil(faltan/S.semanal):0;
+  const faltan=Math.max(sig.v-fT,0);
+  const semanas=S.semanal>0?Math.ceil(faltan/S.semanal):0;
   $('metasTxt').innerHTML=faltan>0
     ?`Siguiente nivel: ${sig.e} ${sig.n} · ${money(sig.v)}<br>Faltan ${money(faltan)} = ${semanas} viernes → ${fechaSem(semanas)}<br>Fondo completo (3 meses): ${money(gR*3)}`
-    :`Nivel alcanzado. Siguiente meta: ${money(gR*3)}.`;
+    :`Nivel alcanzado. Siguiente meta: ${money(gR*3)} (3 meses de gastos).`;
 
   listaSimple('extras',S.extras);
   $('exTot').textContent=money(S.extras.reduce((s,x)=>s+x.m,0));
+
   listaSimple('activos',S.activos,{btn:it=>`<button class="use" data-act="liq" data-on="${!!it.liq}">${it.liq?'💵':'📄'}</button>`});
   listaSimple('deudas',S.deudas);
   listaSimple('tentaciones',S.tentaciones,{
@@ -745,8 +597,8 @@ function render(){
   $('teTot').textContent=money(S.tentaciones.reduce((s,x)=>s+(x.c||0)*x.m,0));
 
   const liquido=S.activos.filter(x=>x.liq).reduce((s,x)=>s+x.m,0)+fT;
-  const dia=gR/30;
-  $('dias').textContent=dia>0?Math.floor(fT/dia):0;
+  const dia=gR/30, dias=dia>0?Math.floor(fT/dia):0;
+  $('dias').textContent=dias;
   $('diasNota').textContent=`Gastas ${money(dia)} al día. Tu fondo es ${money(fT)}.`;
   $('kDisp').textContent=money(liquido);
   $('kFondo').textContent=money(fT);
@@ -762,22 +614,43 @@ function render(){
     :`${al[al.length-1].e} ${al[al.length-1].n} · siguen ${money(Math.max(sig.v-fT,0))}`;
 }
 
+/* viernes a partir del 31 jul 2026 */
+function viernes(i){ const d=new Date(2026,6,31); d.setDate(d.getDate()+7*i); return d; }
+function fechaSem(n){ const d=viernes(Math.max(n-1,0)); return `${d.getDate()} ${MES_N[d.getMonth()]} ${d.getFullYear()}`; }
+
+function buildLista(sig){
+  const a=S.semanal;
+  if(a<=0){ $('lista').innerHTML='<li style="border:0"><div class="empty">Define un ahorro semanal.</div></li>'; return; }
+  const faltan=Math.max(sig.v-S.inicial-S.extras.reduce((s,x)=>s+x.m,0),0);
+  const n=Math.min(Math.max(Math.ceil(faltan/a),1),60);
+  let h='';
+  for(let i=0;i<n;i++){
+    const d=viernes(i);
+    const id='w'+d.toISOString().slice(0,10);
+    const nom=`Viernes ${d.getDate()} ${MES_N[d.getMonth()].slice(0,3)}`;
+    const saldo=S.inicial+a*(i+1);
+    const meta=i===n-1;
+    h+=`<li class="${meta?'meta':''}"><button class="row" data-id="${id}" aria-pressed="${hechos.has(id)}">
+      <span class="mes">${nom}<em>+${money(a)}</em></span>
+      <span class="sal">${money(saldo)}</span><span class="box"></span>
+      <span class="stamp">${meta?sig.e+' META':'OK'}</span></button></li>`;
+  }
+  $('lista').innerHTML=h;
+}
+
 function save(){ clearTimeout(tSave); tSave=setTimeout(doSave,500); }
 async function doSave(){
-  const ok=await store.set(KEY,JSON.stringify({...S,hechos:[...hechos]}));
-  $('status').textContent=ok?'Guardado ✓':'No se pudo guardar';
+  if(!puedeGuardar) return;
+  try{ await store.set(KEY,JSON.stringify({...S,hechos:[...hechos]})); $('status').textContent='Guardado ✓'; }
+  catch(e){ puedeGuardar=false; $('status').textContent='No se pudo guardar'; }
 }
 async function load(){
   try{
-    const v=await store.get(KEY);
-    if(v){ const d=JSON.parse(v); S={...structuredClone(DEF),...d}; hechos=new Set(d.hechos||[]); }
-  }catch(e){}
-  try{
-    const dv=await store.get(DKEY);
-    if(dv) know=new Set(JSON.parse(dv));
-  }catch(e){}
-  $('status').textContent='Guardado ✓';
-  render(); chips(); pintaDic();
+    const r=await store.get(KEY);
+    if(r&&r.value){ const d=JSON.parse(r.value); S={...structuredClone(DEF),...d}; hechos=new Set(d.hechos||[]); }
+    $('status').textContent='Guardado ✓';
+  }catch(e){ $('status').textContent='Todo listo.'; }
+  render();
 }
 
 document.querySelector('nav').addEventListener('click',e=>{
@@ -802,6 +675,150 @@ $('reset').addEventListener('click',()=>{
   S=structuredClone(DEF); hechos.clear(); render(); doSave();
 });
 
+/* ================= DICCIONARIO ================= */
+const T=[
+{c:'Guardar dinero',t:'HYSA',s:'Cuenta de ahorro de alto rendimiento',
+ d:`<p>Una cuenta de ahorro normal. La única diferencia: <b>paga mucho más interés.</b></p><p>No es inversión, no puedes perder dinero, sacas cuando quieras. La ofrecen bancos en línea porque no pagan sucursales.</p><div class="ex"><b>Tu caso</b>Tus $1,500 en Marcus al 3.40% generan ~$51 al año. En Bank of America habrían generado 15 centavos.</div>`},
+{c:'Guardar dinero',t:'APY',s:'Annual Percentage Yield · lo que ganas',
+ d:`<p>Cuánto <b>ganas</b> en un año, ya con interés compuesto. Es el número para comparar cuentas de ahorro.</p>`},
+{c:'Guardar dinero',t:'APR',s:'Annual Percentage Rate · lo que pagas',
+ d:`<p>Cuánto <b>pagas</b> al año por un préstamo, incluyendo comisiones.</p><p>Regla: <b>APY = lo que te dan. APR = lo que te cobran.</b></p><div class="ex"><b>Tu caso</b>Tu carro: APR 20.56%. Tu HYSA: APY 3.40%. Esos 17 puntos son por qué pagar el carro le gana a invertir.</div>`},
+{c:'Guardar dinero',t:'FDIC / NCUA',s:'El seguro de tu dinero',
+ d:`<p>Seguro del gobierno de EE.UU. Si el banco quiebra, <b>te reponen hasta $250,000.</b> FDIC para bancos, NCUA para cooperativas.</p><p>Aplica sin importar tu situación migratoria o si usas ITIN.</p>`},
+{c:'Guardar dinero',t:'CD',s:'Certificado de depósito',
+ d:`<p>Le prestas al banco por un plazo fijo y te paga un poco más. Si lo sacas antes, hay penalización.</p><p><b>No sirve para el fondo de emergencia</b>, que tiene que estar disponible ya.</p>`},
+{c:'Guardar dinero',t:'Liquidez',s:'Qué tan rápido lo vuelves efectivo',
+ d:`<p>Tu cuenta de cheques es líquida. Tu carro no. <b>El fondo de emergencia tiene que ser líquido</b> — de nada sirve tener riqueza en cosas si no puedes pagar una llanta el martes.</p>`},
+{c:'Guardar dinero',t:'Cooperativa de crédito',s:'Credit union',
+ d:`<p>Como un banco, pero los dueños son los miembros. Como no reparten ganancias, dan <b>mejores tasas de préstamo.</b></p><p>Para pedir un préstamo hay que ser miembro — normalmente abrir una cuenta con $5 a $25. Son las más flexibles con ITIN e historial corto.</p>`},
+{c:'Deuda y crédito',t:'Principal',s:'La deuda de verdad',
+ d:`<p>El dinero que realmente debes, sin intereses. <b>Solo lo que baja el principal te acerca a terminar.</b></p><div class="ex"><b>Tu caso</b>De tus $701.59, ~$445 son interés y solo ~$256 bajan el principal. Por eso sientes que pagas y el saldo no se mueve.</div>`},
+{c:'Deuda y crédito',t:'Amortización',s:'Cómo se reparte cada pago',
+ d:`<p>Al principio del préstamo casi todo va a intereses; con los años se voltea. Por eso <b>un pago extra al principio vale mucho más</b> que el mismo pago al final.</p>`},
+{c:'Deuda y crédito',t:'LTV',s:'Préstamo sobre valor',
+ d:`<p>Lo que debes dividido entre lo que vale el bien. Arriba de 100% significa que debes más de lo que vale.</p><div class="ex"><b>Tu caso</b>~$26,450 sobre un carro de ~$19,000 = LTV 139%. Es el número que más miran al refinanciar, y por eso un aporte en efectivo cambia la respuesta.</div>`},
+{c:'Deuda y crédito',t:'Negative equity',s:'Estar "al revés"',
+ d:`<p>Deber más de lo que vale tu carro. Pasa con plazos largos y tasas altas. Se corrige con el tiempo, o más rápido con pagos extra al principal.</p>`},
+{c:'Deuda y crédito',t:'Refinanciar',s:'Cambiar tu préstamo por uno mejor',
+ d:`<p>Un prestamista nuevo paga tu deuda vieja y le quedas debiendo a él con <b>mejor tasa</b>. El carro es el mismo; cambia cuánto interés pagas.</p><div class="ex"><b>Tu caso</b>De 20.56% a ~8%: pago de $701 a ~$529 y ~$10,500 menos en intereses.</div>`},
+{c:'Deuda y crédito',t:'Co-solicitante',s:'Co-borrower',
+ d:`<p>Alguien que firma contigo. Su ingreso e historial se suman a los tuyos: suben tus probabilidades y bajan la tasa.</p><div class="warn"><b>Cuidado:</b> también asume la deuda. Si no pagas, le cobran a esa persona y le afecta el crédito.</div>`},
+{c:'Deuda y crédito',t:'Payoff',s:'Saldo de liquidación',
+ d:`<p>El monto exacto para liquidar hoy, con intereses acumulados. No es el mismo saldo que ves en la app. Es lo que pide el prestamista nuevo al refinanciar.</p>`},
+{c:'Deuda y crédito',t:'Hard pull / Soft pull',s:'Consultas a tu crédito',
+ d:`<p><b>Soft pull:</b> no afecta tu puntaje. <b>Hard pull:</b> baja unos puntos.</p><p><b>Importante:</b> varias consultas de préstamo de auto dentro de <b>14 días</b> cuentan como una sola. Por eso hay que aplicar a todas las cooperativas la misma semana.</p>`},
+{c:'Deuda y crédito',t:'DTI',s:'Deuda sobre ingreso',
+ d:`<p>Qué porcentaje de tu ingreso se va en pagos de deuda. Quieren verlo abajo de ~40%.</p><div class="ex"><b>Tu caso</b>$701.59 sobre $1,700 = 41% solo del carro. Con Alberto como co-solicitante, este número se desploma.</div>`},
+{c:'Deuda y crédito',t:'FICO',s:'Puntaje de crédito',
+ d:`<p>Un número que resume qué tan confiable eres pagando. Se construye pagando a tiempo, cada mes, durante años.</p><div class="ex"><b>Tu caso</b>725, "Good". Mucho mejor de lo que creíamos — tu crédito no es el obstáculo para refinanciar.</div>`},
+{c:'Deuda y crédito',t:'Utilización',s:'Cuánto usas de tu tarjeta',
+ d:`<p>Tu saldo dividido entre tu límite. <b>Lo ideal es entre 1% y 9%.</b> Es uno de los factores más pesados de tu puntaje.</p><div class="ex"><b>Tu caso</b>$104.85 sobre $2,000 = 5%. Exactamente en el rango bueno.</div>`},
+{c:'Invertir',t:'Acción',s:'Stock',
+ d:`<p>Un pedacito de una empresa. Si gana más, tu pedacito vale más.</p><div class="warn"><b>Para principiantes:</b> no compres acciones individuales. Escoger la ganadora es dificilísimo — hasta los profesionales fallan.</div>`},
+{c:'Invertir',t:'Fondo indexado',s:'Index fund',
+ d:`<p>En vez de escoger una empresa, compras un pedacito de <b>las 500 más grandes de EE.UU. al mismo tiempo</b>. Si a una le va mal, las otras 499 siguen ahí.</p><p>No hay que escoger ni saber de bolsa. En Fidelity se llama <b>FXAIX</b>.</p>`},
+{c:'Invertir',t:'S&P 500',s:'El índice de las 500 grandes',
+ d:`<p>La lista de las 500 empresas más grandes de EE.UU. Cuando dicen "el mercado subió hoy", casi siempre hablan de esto.</p>`},
+{c:'Invertir',t:'Diversificación',s:'No poner todo en un lugar',
+ d:`<p>Repartir para que ninguna cosa te hunda. Un fondo indexado ya te diversifica solo.</p>`},
+{c:'Invertir',t:'Expense ratio',s:'La comisión anual del fondo',
+ d:`<p>Lo que el fondo cobra al año, en porcentaje. Se descuenta solo. <b>Busca abajo de 0.10%</b> — los indexados grandes cobran ~0.02%.</p><div class="warn"><b>Por qué importa:</b> un fondo al 1% en vez de 0.02% puede costarte más de $100,000 en 30 años.</div>`},
+{c:'Invertir',t:'Interés compuesto',s:'El motor de todo',
+ d:`<p>Ganar intereses sobre tus intereses. Al principio no pasa nada; después de 15 años se vuelve bola de nieve.</p><div class="ex"><b>El ejemplo que lo explica todo</b>$100 al mes al 8% por 30 años: pusiste $36,000 y tienes ~$149,000. Los otros $113,000 los generó el tiempo.</div>`},
+{c:'Invertir',t:'Regla del 72',s:'Cuándo se duplica tu dinero',
+ d:`<p>Divide 72 entre la tasa. Al 4% → 18 años. Al 8% → 9 años. Al 20.56% → 3.5 años.</p><div class="ex"><b>Tu caso</b>Ese último es tu carro, pero al revés: la velocidad a la que el interés se multiplica en tu contra.</div>`},
+{c:'Invertir',t:'Volatilidad',s:'Que suba y baje',
+ d:`<p>La bolsa puede caer 30% en un año malo y subir 25% al siguiente. <b>Volatilidad no es pérdida</b> — solo pierdes si vendes cuando está abajo. Por eso no se invierte dinero que necesitas en menos de 5 años.</p>`},
+{c:'Invertir',t:'Corretaje',s:'Brokerage',
+ d:`<p>Donde abres la cuenta para invertir. Fidelity, Schwab y Vanguard son las tres grandes, y las tres aceptan ITIN.</p>`},
+{c:'Invertir',t:'SIPC',s:'Seguro de cuenta de inversión',
+ d:`<p>Protege hasta $500,000 si la casa de bolsa quiebra. <b>No</b> te protege de que el mercado baje. Tus inversiones están a tu nombre, no del corretaje.</p>`},
+{c:'Invertir',t:'Bonos y Tesoro',s:'T-Bill, I Bond, Treasury',
+ d:`<p>Le prestas dinero a alguien y te paga interés. Los del Tesoro de EE.UU. son la inversión más segura del mundo — pero andan alrededor del 4%. Ese es el precio de la seguridad total.</p>`},
+{c:'Retiro',t:'Roth IRA',s:'La cuenta de retiro que más te conviene',
+ d:`<p>Metes dinero <b>que ya pagó impuestos</b>, y <b>todo lo que crezca sale libre de impuestos</b> al retirarte. Necesitas ingreso laboral en EE.UU. Se puede abrir con ITIN. Límite anual ~$7,000.</p><p>No es una inversión — es <b>el envase</b>. Adentro pones un fondo indexado. Mucha gente deposita y olvida comprar el fondo; el dinero se queda parado.</p>`},
+{c:'Retiro',t:'IRA tradicional',s:'La otra opción',
+ d:`<p>Al revés que la Roth: descuentas hoy, pagas impuestos al retirar. <b>Si ganas poco ahora y esperas ganar más, la Roth te conviene más.</b></p>`},
+{c:'Retiro',t:'401(k) y match',s:'La cuenta del trabajo',
+ d:`<p>El "match" es lo importante: algunas empresas ponen dinero por cada dólar que tú pones. Eso es <b>dinero gratis</b>, retorno de 100% instantáneo. Va antes que cualquier otra inversión, incluso antes de pagar deuda.</p>`},
+{c:'Retiro',t:'Penalización 59½',s:'Por qué no se toca',
+ d:`<p>Sacar antes de los 59 años y medio cuesta impuestos <b>más</b> 10% de multa.</p><p>De aquí nace la idea de que "el gobierno se queda con tu dinero". No es eso: es el precio de romper un trato que te dio ventajas fiscales. Por eso el fondo de emergencia va aparte y en efectivo.</p>`},
+{c:'Presupuesto',t:'Fondo de emergencia',s:'Tu colchón real',
+ d:`<p>Dinero líquido solo para emergencias de verdad. Primera meta: <b>$1,000</b>. Meta completa: <b>3 a 6 meses de gastos</b>.</p><div class="ex"><b>Tu caso</b>Tu gasto real es $1,408 al mes. Tres meses = ~$4,224. Ya llevas $1,500.</div>`},
+{c:'Presupuesto',t:'Págate a ti primero',s:'La regla que sostiene todo',
+ d:`<p>El ahorro sale <b>el día que te pagan</b>, antes de todo lo demás. Funciona porque quita la fuerza de voluntad de la ecuación: la disciplina falla, las transferencias automáticas no.</p>`},
+{c:'Presupuesto',t:'Fondo para gastos anuales',s:'Sinking fund',
+ d:`<p>Guardar poquito cada mes para lo que sabes que viene: navidad, placas, dentista. Toma el costo del año y divídelo entre 12.</p>`},
+{c:'Presupuesto',t:'Patrimonio neto',s:'Net worth',
+ d:`<p>Todo lo que tienes menos todo lo que debes. Es <b>la</b> medida real de tu avance — mucho mejor que mirar el saldo del banco.</p><div class="ex"><b>Tu caso</b>Empieza en negativo por el carro financiado. Eso es normal. Lo que importa es que suba cada mes.</div>`},
+{c:'Presupuesto',t:'Tasa de ahorro',s:'Savings rate',
+ d:`<p>Qué porcentaje de tu ingreso guardas. Te compara contigo misma en el tiempo, sin importar cuánto ganes. Truco: <b>súbela 1% cada tres meses.</b></p>`},
+{c:'Impuestos',t:'ITIN',s:'Número de identificación fiscal',
+ d:`<p>Lo emite el IRS para quienes no tienen Seguro Social. Sirve para abrir cuentas de banco, de inversión y de retiro.</p><div class="warn"><b>Ojo:</b> los ITIN expiran si no se usan en una declaración federal durante tres años seguidos. Se renuevan con el Formulario W-7. Uno vencido te frena cualquier trámite bancario.</div>`},
+{c:'Impuestos',t:'W-9',s:'El formulario al abrir cuenta',
+ d:`<p>Solo declaras que ese número fiscal es tuyo y autorizas al banco a reportar al IRS los intereses. Todos lo firman.</p>`},
+{c:'Impuestos',t:'1099-INT',s:'El papelito de enero',
+ d:`<p>Te lo mandan si ganaste $10 o más de intereses en el año.</p><div class="ex"><b>Tu caso</b>$1,500 al 3.40% generan ~$51. Pagarás ~$6 de impuesto. No cambia nada, pero que no te sorprenda.</div>`},
+{c:'Peligros',t:'Inflación',s:'El ladrón silencioso',
+ d:`<p>Si la inflación es 3% y tu dinero no gana nada, cada año compras 3% menos con lo mismo. <b>Guardar en efectivo sí es perder dinero</b>, aunque el número no baje.</p>`},
+{c:'Peligros',t:'"Garantizado"',s:'La palabra de las estafas',
+ d:`<div class="warn"><b>Regla sin excepciones:</b> si alguien ofrece 15%, 20% o 30% "garantizado" y "sin riesgo", es fraude. Las inversiones reales nunca prometen — solo estiman.</div><p>Otras señales: presión para decidir hoy, te piden reclutar gente, no te dejan sacar tu dinero, o todo pasa por WhatsApp.</p>`},
+{c:'Peligros',t:'Préstamo de día de pago',s:'Payday loan',
+ d:`<div class="warn">Tasas que en términos anuales llegan al 300% o 400%. La trampa más cara que existe.</div><p>El fondo de $1,000 existe justo para que nunca tengas que pisar uno.</p>`},
+{c:'Peligros',t:'Compra ahora, paga después',s:'Klarna, Afterpay, Affirm',
+ d:`<p>Dividir una compra en pagos suena inofensivo, pero hace que gastes más de lo que gastarías, y los recargos por atraso son altos.</p><p>Si necesitas partir un gasto en cuatro, la señal real es que ese gasto no cabe todavía.</p>`}
+];
+let know=new Set(), filtro='Todos', busca='';
+const CATS=['Todos',...new Set(T.map(x=>x.c))];
+function chips(){
+  $('chips').innerHTML=CATS.map(c=>`<button class="chip" data-c="${c}" aria-pressed="${c===filtro}">${c}</button>`).join('');
+}
+function pintaT(){
+  const q=busca.toLowerCase().trim();
+  const vis=T.filter(x=>{
+    const okc=filtro==='Todos'||x.c===filtro;
+    const okq=!q||(x.t+' '+x.s+' '+x.d).toLowerCase().includes(q);
+    return okc&&okq;
+  });
+  if(!vis.length){ $('listaT').innerHTML=`<div class="empty">No encontré ese término. Prueba con otra palabra.</div>`; }
+  else{
+    let html='',cur='';
+    vis.forEach(x=>{
+      if(x.c!==cur){ cur=x.c; html+=`<div class="cat">${cur}</div>`; }
+      const id='t'+T.indexOf(x);
+      html+=`<div class="term ${know.has(id)?'know':''}" data-id="${id}">
+        <button class="thead" aria-expanded="false">
+          <span class="tick" data-act="know"></span>
+          <span class="tn"><b>${x.t}</b><span>${x.s}</span></span>
+          <span class="arw">&#9654;</span></button>
+        <div class="tbody">${x.d}</div></div>`;
+    });
+    $('listaT').innerHTML=html;
+  }
+  $('progT').textContent=`${know.size} / ${T.length}`;
+}
+$('listaT').addEventListener('click',e=>{
+  const term=e.target.closest('.term'); if(!term) return;
+  if(e.target.closest('[data-act="know"]')){
+    const id=term.dataset.id;
+    know.has(id)?know.delete(id):know.add(id);
+    guardarT(); pintaT(); return;
+  }
+  const h=e.target.closest('.thead'); if(!h) return;
+  const ab=term.classList.toggle('open');
+  h.setAttribute('aria-expanded',ab);
+});
+$('chips').addEventListener('click',e=>{
+  const c=e.target.closest('.chip'); if(!c) return;
+  filtro=c.dataset.c; chips(); pintaT();
+});
+$('q').addEventListener('input',e=>{ busca=e.target.value; pintaT(); });
+async function guardarT(){ try{ await store.set(KEYT,JSON.stringify([...know])); }catch(e){} }
+async function cargarT(){
+  try{ const r=await store.get(KEYT); if(r&&r.value) know=new Set(JSON.parse(r.value)); }catch(e){}
+  chips(); pintaT();
+}
+
 buildBuckets();
 adder('anNom','anMon','anAdd','anuales');
 adder('sbNom','sbMon','sbAdd','subs',{usa:true});
@@ -817,6 +834,7 @@ wireLista('activos','activos',id=>{const it=S.activos.find(x=>x.id===id); if(it)
 wireLista('deudas','deudas');
 wireLista('tentaciones','tentaciones',id=>{const it=S.tentaciones.find(x=>x.id===id); if(it) it.c=(it.c||0)+1;});
 load();
+cargarT();
 </script>
 </body>
 </html>
