@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B242C">
+<title>Diccionario financiero — Nela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B242C; --ink-2:#10333F;
+    --paper:#F6F2E8; --paper-2:#EDE7D9;
+    --rule:#C8BFA8; --brass:#C9A227;
+    --stamp:#8E2F4A; --muted:#6E7F86; --ok:#2F6B4F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--ink);font-family:'Inter',system-ui,sans-serif;color:var(--ink);padding:14px 12px 44px;display:flex;justify-content:center;min-height:100vh}
+  .book{width:100%;max-width:440px}
+
+  .cover{background:var(--ink-2);border-radius:14px 14px 0 0;padding:18px 20px 16px;color:var(--paper);border:1px solid rgba(246,242,232,.14);border-bottom:0}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+  .owner{font-family:'Fraunces',serif;font-size:20px;font-weight:600;margin-top:1px}
+  .prog{margin-top:11px;font-size:11.5px;color:rgba(246,242,232,.7)}
+  .pbar{height:3px;background:rgba(246,242,232,.16);border-radius:2px;margin-top:7px;overflow:hidden}
+  .pbar i{display:block;height:100%;width:0;background:var(--brass);transition:width .4s ease}
+
+  .tools{background:var(--ink-2);position:sticky;top:0;z-index:5;border:1px solid rgba(246,242,232,.14);border-top:0;border-bottom:0;padding:10px 14px 12px}
+  #q{width:100%;font-family:'Inter',sans-serif;font-size:14px;padding:10px 12px;border-radius:6px;border:1px solid rgba(246,242,232,.2);background:rgba(246,242,232,.07);color:var(--paper)}
+  #q::placeholder{color:rgba(246,242,232,.42)}
+  #q:focus{outline:2px solid var(--brass);outline-offset:0;border-color:transparent}
+  .chips{display:flex;gap:6px;overflow-x:auto;margin-top:9px;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{white-space:nowrap;background:none;border:1px solid rgba(246,242,232,.22);color:rgba(246,242,232,.62);font:inherit;font-size:11px;padding:5px 11px;border-radius:20px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#2B2205;font-weight:600}
+
+  .page{background:var(--paper);padding:16px 16px 26px;border-radius:0 0 14px 14px}
+  .cat{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px;padding-bottom:6px;border-bottom:1.5px solid var(--ink)}
+  .cat:first-child{margin-top:6px}
+
+  .term{border-bottom:1px solid var(--rule)}
+  .thead{width:100%;background:none;border:0;display:flex;align-items:center;gap:10px;padding:13px 2px;text-align:left;font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .thead:focus-visible{outline:2px solid var(--brass);outline-offset:2px;border-radius:4px}
+  .tn{flex:1;min-width:0}
+  .tn b{display:block;font-size:14.5px;font-weight:600}
+  .tn span{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+  .tick{width:22px;height:22px;border:1.5px solid var(--rule);border-radius:50%;flex-shrink:0;position:relative}
+  .term.know .tick{background:var(--ok);border-color:var(--ok)}
+  .term.know .tick::after{content:"";position:absolute;left:7.5px;top:4px;width:5px;height:10px;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(42deg)}
+  .term.know .tn b{color:var(--muted)}
+  .arw{color:var(--rule);font-size:12px;transition:transform .2s}
+  .term.open .arw{transform:rotate(90deg)}
+
+  .body{display:none;padding:0 2px 16px}
+  .term.open .body{display:block}
+  .body p{font-size:13.5px;line-height:1.6;color:#33454C;margin-bottom:10px}
+  .body p b{color:var(--ink)}
+  .ex{background:var(--paper-2);border-left:2.5px solid var(--brass);padding:11px 13px;border-radius:0 5px 5px 0;font-size:12.5px;line-height:1.55;margin-bottom:10px}
+  .ex b{display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .warn{background:rgba(142,47,74,.07);border-left:2.5px solid var(--stamp);padding:11px 13px;border-radius:0 5px 5px 0;font-size:12.5px;line-height:1.55;color:#3C4A50}
+  .warn b{color:var(--stamp)}
+  .none{padding:26px 4px;font-size:13px;color:var(--muted);line-height:1.6}
+  .foot{margin-top:20px;font-size:11px;color:var(--muted);line-height:1.6}
+  .rst{background:none;border:1px solid var(--rule);color:var(--muted);font:inherit;font-size:11px;padding:7px 12px;border-radius:5px;cursor:pointer;margin-top:14px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="book">
+
+  <header class="cover">
+    <div class="eyebrow">Diccionario financiero</div>
+    <div class="owner">Nela</div>
+    <div class="prog"><span id="pt">0 de 0 términos entendidos</span>
+      <div class="pbar"><i id="pf"></i></div>
+    </div>
+  </header>
+
+  <div class="tools">
+    <input type="search" id="q" placeholder="Buscar: APY, Roth, refinanciar…" autocomplete="off">
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <main class="page" id="lista"></main>
+</div>
+
+<script>
+const KEY='diccionario:v1';
+const T=[
+{c:'Guardar dinero',t:'HYSA',s:'High-Yield Savings Account · Cuenta de ahorro de alto rendimiento',
+ d:`<p>Una cuenta de ahorro normal, igual a la que ya conoces. La única diferencia: <b>paga mucho más interés.</b></p>
+ <p>No es inversión. No puedes perder dinero. Sacas cuando quieras. La ofrecen sobre todo bancos en línea, porque no pagan sucursales.</p>
+ <div class="ex"><b>Tu caso</b>$1,500 en una cuenta normal ganan ~$6 al año. En una HYSA al 4%, ganan ~$60. Mismo dinero, misma seguridad.</div>`},
+
+{c:'Guardar dinero',t:'APY',s:'Annual Percentage Yield · Rendimiento anual',
+ d:`<p>Cuánto <b>ganas</b> en un año, ya contando el interés compuesto. Es el número que usas para comparar cuentas de ahorro.</p>
+ <p>Cuando veas dos cuentas, compara APY con APY. Es la medida justa.</p>`},
+
+{c:'Guardar dinero',t:'APR',s:'Annual Percentage Rate · Tasa anual',
+ d:`<p>Cuánto <b>pagas</b> en un año por un préstamo, incluyendo comisiones. Es el primo malo del APY.</p>
+ <p>Regla para no confundirte: <b>APY = lo que te dan. APR = lo que te cobran.</b></p>
+ <div class="ex"><b>Tu caso</b>Tu préstamo del carro tiene APR de 20.56%. Tu HYSA tiene APY de ~4%. Esa diferencia de 16 puntos es por qué conviene pagar el carro antes que invertir.</div>`},
+
+{c:'Guardar dinero',t:'FDIC / NCUA',s:'El seguro de tu dinero',
+ d:`<p>Es un seguro del gobierno de EE.UU. Si el banco quiebra, <b>te reponen tu dinero hasta $250,000.</b></p>
+ <p>FDIC es para bancos. NCUA es lo mismo para cooperativas de crédito. Antes de abrir cualquier cuenta, confirma que tenga una de las dos.</p>
+ <p>Aplica sin importar tu situación migratoria o si usas ITIN.</p>`},
+
+{c:'Guardar dinero',t:'CD',s:'Certificate of Deposit · Certificado de depósito',
+ d:`<p>Le prestas tu dinero al banco por un plazo fijo (6 meses, 1 año, 5 años) y te paga un poco más que una cuenta normal. Si lo sacas antes, te cobran penalización.</p>
+ <p><b>No sirve para el fondo de emergencia</b>, porque el fondo tiene que estar disponible ya. Sirve para dinero que sabes que no vas a tocar.</p>`},
+
+{c:'Guardar dinero',t:'Liquidez',s:'Qué tan rápido conviertes algo en efectivo',
+ d:`<p>Tu cuenta de cheques es muy líquida: el dinero está ahí ahorita. Tu carro no lo es: venderlo toma semanas.</p>
+ <p><b>El fondo de emergencia tiene que ser líquido.</b> De nada sirve tener riqueza en cosas si no puedes pagar una llanta el martes.</p>`},
+
+{c:'Guardar dinero',t:'Cooperativa de crédito',s:'Credit union',
+ d:`<p>Es como un banco, pero sin dueños ni accionistas: los dueños son los miembros. Como no reparten ganancias, suelen dar <b>mejores tasas de préstamo y menos comisiones.</b></p>
+ <p>Para pedirles un préstamo tienes que ser miembro, y hacerse miembro normalmente es abrir una cuenta de ahorro con $5 a $25.</p>
+ <p>Son también las más flexibles con historial crediticio corto y con ITIN.</p>`},
+
+{c:'Deuda y crédito',t:'Principal',s:'La deuda de verdad',
+ d:`<p>El dinero que realmente debes, sin contar intereses. Cuando pagas, una parte va a intereses y otra baja el principal.</p>
+ <p><b>Solo lo que baja el principal te acerca a terminar.</b> Por eso, cuando hagas un pago extra, tienes que pedir por escrito que se aplique a principal.</p>
+ <div class="ex"><b>Tu caso</b>De tus $701.59 mensuales, ~$445 son interés y solo ~$256 bajan el principal. Por eso sientes que pagas y el saldo no se mueve.</div>`},
+
+{c:'Deuda y crédito',t:'Amortización',s:'Cómo se reparte cada pago',
+ d:`<p>La tabla que dice cuánto de cada pago va a intereses y cuánto a principal.</p>
+ <p>Al principio del préstamo casi todo va a intereses. Con los años se voltea. Por eso <b>un pago extra al principio vale mucho más</b> que el mismo pago al final.</p>`},
+
+{c:'Deuda y crédito',t:'LTV',s:'Loan-to-Value · Préstamo sobre valor',
+ d:`<p>Cuánto debes comparado con lo que vale la garantía. Se saca dividiendo lo que debes entre lo que vale el bien.</p>
+ <p>Si es mayor a 100%, debes más de lo que vale. Es el número que más miran los prestamistas al refinanciar.</p>
+ <div class="ex"><b>Tu caso</b>Debes ~$26,450 por un carro que vale ~$19,000. LTV = 139%. Por eso algunas cooperativas dirán que no, y por eso un aporte en efectivo cambia la respuesta.</div>`},
+
+{c:'Deuda y crédito',t:'Negative equity',s:'Estar "al revés" o "underwater"',
+ d:`<p>Deber más de lo que vale tu carro. Pasa cuando el carro se deprecia más rápido de lo que baja tu deuda — típico con plazos largos y tasas altas.</p>
+ <p>No es una catástrofe. Se corrige solo con el tiempo, o más rápido con pagos extra al principal.</p>`},
+
+{c:'Deuda y crédito',t:'Refinanciar',s:'Cambiar tu préstamo por uno mejor',
+ d:`<p>Un prestamista nuevo paga tu deuda vieja y tú le quedas debiendo a él, con <b>mejor tasa</b>. El carro es el mismo, la deuda es la misma; lo que cambia es cuánto interés pagas.</p>
+ <div class="ex"><b>Tu caso</b>Pasar de 20.56% a ~11% bajaría tu pago de $701 a ~$568 y te ahorraría unos $8,000 en intereses.</div>`},
+
+{c:'Deuda y crédito',t:'Co-solicitante',s:'Co-borrower / co-signer',
+ d:`<p>Alguien que firma el préstamo contigo. Su ingreso y su historial se suman al tuyo, lo que sube mucho tus probabilidades de aprobación y baja la tasa.</p>
+ <div class="warn"><b>Cuidado:</b> también asume la deuda. Si tú no pagas, le cobran a esa persona y le afecta el crédito. Es un favor grande — trátalo como tal.</div>`},
+
+{c:'Deuda y crédito',t:'Payoff',s:'Saldo de liquidación',
+ d:`<p>El monto exacto para liquidar tu préstamo hoy, incluyendo intereses acumulados hasta esa fecha. No es lo mismo que el saldo que ves en la app.</p>
+ <p>Cuando refinancias, este es el número que pide el prestamista nuevo. Lo pides directo a tu prestamista actual.</p>`},
+
+{c:'Deuda y crédito',t:'Hard pull / Soft pull',s:'Consultas a tu crédito',
+ d:`<p><b>Soft pull:</b> una revisión ligera. No afecta tu puntaje. Es lo que hacen cuando te preapruebas.</p>
+ <p><b>Hard pull:</b> revisión formal al aplicar. Baja tu puntaje unos puntos.</p>
+ <p><b>Truco importante:</b> varias consultas de préstamo de auto dentro de <b>14 días</b> cuentan como una sola. Por eso hay que aplicar a todas las cooperativas la misma semana.</p>`},
+
+{c:'Deuda y crédito',t:'DTI',s:'Debt-to-Income · Deuda sobre ingreso',
+ d:`<p>Qué porcentaje de tu ingreso se va en pagos de deuda. Los prestamistas quieren verlo abajo de ~40%.</p>
+ <div class="ex"><b>Tu caso</b>$701.59 sobre $1,700 = 41% solo del carro. Con Alberto como co-solicitante, el ingreso que evalúan sube y este número se desploma.</div>`},
+
+{c:'Deuda y crédito',t:'Historial de crédito',s:'Credit score',
+ d:`<p>Un número (300–850) que resume qué tan confiable eres pagando. Lo construyes pagando a tiempo, cada mes, durante años.</p>
+ <p>No tener historial no es lo mismo que tener mal historial — pero a los prestamistas les cuesta igual evaluarte.</p>
+ <div class="ex"><b>Tu caso</b>Llevas ~12 pagos puntuales de $701. Eso ya es historial real y documentado. No eres la misma solicitante de hace un año.</div>`},
+
+{c:'Invertir',t:'Acción',s:'Stock',
+ d:`<p>Un pedacito de una empresa. Si compras una acción de Coca-Cola, eres dueña de una parte de Coca-Cola. Si la empresa gana más, tu pedacito vale más.</p>
+ <div class="warn"><b>Para principiantes:</b> no compres acciones individuales. Escoger la empresa ganadora es dificilísimo, y hasta los profesionales fallan.</div>`},
+
+{c:'Invertir',t:'Fondo indexado',s:'Index fund',
+ d:`<p>En vez de escoger una empresa, compras un pedacito de <b>las 500 más grandes de EE.UU. al mismo tiempo</b>: Apple, Microsoft, Coca-Cola, Walmart, todas.</p>
+ <p>Si a una le va mal, las otras 499 siguen ahí. No hay que escoger, no hay que saber de bolsa, no hay que ver el celular.</p>
+ <p>Es lo que la mayoría de la gente sensata usa para invertir a largo plazo. En Fidelity se llama <b>FXAIX</b>.</p>`},
+
+{c:'Invertir',t:'S&P 500',s:'El índice de las 500 grandes',
+ d:`<p>Una lista de las 500 empresas más grandes que cotizan en EE.UU. Cuando escuchas "el mercado subió hoy", casi siempre hablan de esto.</p>
+ <p>Un fondo indexado del S&P 500 simplemente compra esas 500 en la proporción correcta.</p>`},
+
+{c:'Invertir',t:'Diversificación',s:'No poner todo en un lugar',
+ d:`<p>Repartir el dinero entre muchas cosas para que ninguna te hunda. Un fondo indexado ya te diversifica solo — por eso es tan buena opción para empezar.</p>`},
+
+{c:'Invertir',t:'Expense ratio',s:'La comisión anual del fondo',
+ d:`<p>Lo que el fondo te cobra cada año por administrarlo, en porcentaje. Se descuenta solo, no lo ves salir.</p>
+ <p><b>Busca abajo de 0.10%.</b> Los indexados grandes cobran ~0.02%.</p>
+ <div class="warn"><b>Por qué importa tanto:</b> un fondo que cobra 1% en vez de 0.02% puede costarte más de $100,000 en 30 años. Es la diferencia más grande que hay entre dos fondos casi idénticos.</div>`},
+
+{c:'Invertir',t:'Interés compuesto',s:'El motor de todo',
+ d:`<p>Ganar intereses sobre tus intereses. El año 1 ganas sobre lo que pusiste. El año 2 ganas sobre lo que pusiste <b>más</b> lo que ganaste. Y así.</p>
+ <p>Al principio parece que no pasa nada. Después de 15 años se vuelve una bola de nieve.</p>
+ <div class="ex"><b>El ejemplo que lo explica todo</b>$100 al mes al 8% durante 30 años: pusiste $36,000 y tienes ~$149,000. Los otros $113,000 los generó el tiempo.</div>`},
+
+{c:'Invertir',t:'Regla del 72',s:'Cuándo se duplica tu dinero',
+ d:`<p>Divide 72 entre la tasa y te dice en cuántos años se duplica.</p>
+ <p>Al 4% → 18 años. Al 8% → 9 años. Al 20.56% → 3.5 años.</p>
+ <div class="ex"><b>Tu caso</b>Ese último es tu préstamo del carro, pero al revés: es la velocidad a la que <b>el interés se multiplica en tu contra</b>.</div>`},
+
+{c:'Invertir',t:'Volatilidad',s:'Que suba y baje',
+ d:`<p>Cuánto se mueve el precio de algo. La bolsa es volátil: puede caer 30% en un año malo y subir 25% al siguiente.</p>
+ <p><b>Volatilidad no es pérdida.</b> Solo pierdes de verdad si vendes cuando está abajo. Por eso no se invierte dinero que vas a necesitar en menos de 5 años.</p>`},
+
+{c:'Invertir',t:'Corretaje',s:'Brokerage',
+ d:`<p>La empresa donde abres la cuenta para comprar inversiones. Fidelity, Charles Schwab y Vanguard son las tres grandes, y las tres aceptan ITIN.</p>`},
+
+{c:'Invertir',t:'SIPC',s:'El seguro de tu cuenta de inversión',
+ d:`<p>Protege hasta $500,000 si la casa de bolsa quiebra. <b>No</b> te protege de que el mercado baje — eso es riesgo normal, no fraude.</p>
+ <p>Tus inversiones están registradas a tu nombre, no a nombre del corretaje. Son tuyas.</p>`},
+
+{c:'Invertir',t:'Bonos y Tesoro',s:'T-Bill, I Bond, Treasury',
+ d:`<p>Cuando compras un bono, le prestas dinero a alguien y te paga interés. Los del <b>Tesoro de EE.UU.</b> son considerados la inversión más segura del mundo.</p>
+ <p><b>T-Bill:</b> plazo corto, de 4 a 52 semanas. <b>I Bond:</b> ajustado a la inflación, hay que dejarlo mínimo 1 año.</p>
+ <p>Seguros, sí. Pero andan alrededor del 4% — ese es el precio de la seguridad total.</p>`},
+
+{c:'Retiro',t:'Roth IRA',s:'La cuenta de retiro que más te conviene',
+ d:`<p>Una cuenta de inversión con ventaja fiscal. Metes dinero <b>que ya pagó impuestos</b>, y a cambio <b>todo lo que crezca sale libre de impuestos</b> al retirarte.</p>
+ <p>Necesitas ingreso laboral en EE.UU. Se puede abrir con ITIN. El límite anual anda en $7,000.</p>
+ <p>No es una inversión en sí — es <b>el envase</b>. Adentro pones un fondo indexado. Mucha gente abre la cuenta, deposita, y olvida comprar el fondo. El dinero se queda parado.</p>
+ <div class="ex"><b>Por qué te conviene</b>Con 30 años por delante, no pagar impuestos sobre décadas de crecimiento vale decenas de miles de dólares.</div>`},
+
+{c:'Retiro',t:'IRA tradicional',s:'La otra opción',
+ d:`<p>Al revés que la Roth: descuentas el depósito de tus impuestos hoy, pero pagas impuestos cuando retiras.</p>
+ <p><b>Regla simple:</b> si ganas poco ahora y esperas ganar más después, la Roth te conviene más. Si ganas mucho ahora, la tradicional.</p>`},
+
+{c:'Retiro',t:'401(k) y match',s:'La cuenta del trabajo',
+ d:`<p>Cuenta de retiro que ofrece tu empleador; el dinero se descuenta de tu cheque antes de que lo veas.</p>
+ <p><b>El "match" es lo importante:</b> algunas empresas ponen dinero por cada dólar que tú pones. Eso es <b>dinero gratis</b> — un retorno de 100% instantáneo.</p>
+ <div class="ex"><b>Qué hacer</b>Si tu trabajo ofrece match, aporta al menos lo suficiente para recibirlo completo. Va antes que cualquier otra inversión, incluso antes de pagar deuda.</div>`},
+
+{c:'Retiro',t:'Penalización 59½',s:'Por qué no se toca',
+ d:`<p>Si sacas dinero de una cuenta de retiro antes de los 59 años y medio, pagas impuestos <b>más</b> una multa del 10%.</p>
+ <p>Mucha gente escucha esto y cree que "el gobierno se queda con su dinero". No es eso: es el precio de romper un trato que te dio ventajas fiscales. Por eso el fondo de emergencia va aparte y en efectivo.</p>`},
+
+{c:'Presupuesto',t:'Fondo de emergencia',s:'Tu colchón real',
+ d:`<p>Dinero líquido guardado solo para emergencias de verdad: perder el trabajo, una reparación grande, una urgencia médica.</p>
+ <p>Primera meta: <b>$1,000</b> — con eso rompes el ciclo de vivir al día. Meta completa: <b>3 a 6 meses de tus gastos</b>.</p>
+ <div class="ex"><b>Tu caso</b>Tu gasto real es $1,408 al mes. Tres meses = ~$4,200. Ahí ya no eres frágil.</div>`},
+
+{c:'Presupuesto',t:'Págate a ti primero',s:'La regla que sostiene todo',
+ d:`<p>El ahorro sale <b>el día que te pagan</b>, antes de todos los demás gastos. No es lo que sobra a fin de mes.</p>
+ <p>Funciona porque quita la fuerza de voluntad de la ecuación. La disciplina falla; las transferencias automáticas no.</p>`},
+
+{c:'Presupuesto',t:'Fondo para gastos anuales',s:'Sinking fund',
+ d:`<p>Guardar poquito cada mes para cosas que sabes que vienen: navidad, placas, dentista, cumpleaños, vacaciones.</p>
+ <p>Toma el costo del año y divídelo entre 12. Cuando llega el gasto, ya está pagado y no descarrila nada.</p>`},
+
+{c:'Presupuesto',t:'Patrimonio neto',s:'Net worth',
+ d:`<p>Todo lo que tienes menos todo lo que debes. Es <b>la</b> medida real de tu avance financiero.</p>
+ <p>Mucho mejor que mirar el saldo del banco, porque incluye tus deudas.</p>
+ <div class="ex"><b>Tu caso</b>Carro (~$19,000) + ahorros − deuda ($26,450). Empieza en negativo, y eso es normal con un carro financiado. Lo que importa es que suba cada mes.</div>`},
+
+{c:'Presupuesto',t:'Tasa de ahorro',s:'Savings rate',
+ d:`<p>Qué porcentaje de tu ingreso guardas. Es el número que te compara contigo misma en el tiempo, sin importar cuánto ganes.</p>
+ <p>Truco: <b>súbela 1% cada tres meses.</b> No lo vas a sentir, y en dos años pasas de 9% a 17%.</p>`},
+
+{c:'Impuestos',t:'ITIN',s:'Individual Taxpayer Identification Number',
+ d:`<p>Un número que emite el IRS para que personas sin Seguro Social puedan declarar impuestos. Sirve para abrir cuentas de banco, de inversión y de retiro.</p>
+ <div class="warn"><b>Ojo:</b> los ITIN expiran si no se usan en una declaración federal durante tres años seguidos. Se renuevan con el Formulario W-7. Un ITIN vencido te frena cualquier trámite bancario.</div>`},
+
+{c:'Impuestos',t:'W-9',s:'El formulario que firmas al abrir cuenta',
+ d:`<p>Suena serio, pero es rutina: solo declaras que ese número fiscal es tuyo y autorizas al banco a reportar al IRS los intereses que te pague. Todos lo firman.</p>`},
+
+{c:'Impuestos',t:'1099-INT',s:'El papelito de enero',
+ d:`<p>El banco te lo manda si ganaste $10 o más de intereses en el año. Lo usas al declarar impuestos.</p>
+ <div class="ex"><b>Tu caso</b>$1,500 al 4% generan ~$60. Te llegará un 1099-INT y pagarás ~$7 de impuesto. No cambia nada, pero que no te sorprenda.</div>`},
+
+{c:'Peligros',t:'Inflación',s:'El ladrón silencioso',
+ d:`<p>Que las cosas suban de precio. Si la inflación es 3% y tu dinero no gana nada, cada año puedes comprar 3% menos con lo mismo.</p>
+ <p><b>Por eso guardar en efectivo o en una cuenta al 0.01% sí es perder dinero</b>, aunque el número no baje.</p>`},
+
+{c:'Peligros',t:'"Garantizado"',s:'La palabra de las estafas',
+ d:`<div class="warn"><b>Regla sin excepciones:</b> si alguien te ofrece 15%, 20% o 30% "garantizado" y "sin riesgo", es fraude. Las inversiones reales nunca prometen — solo estiman.</div>
+ <p>Otras señales: presión para decidir hoy, te piden reclutar a otros, no te dejan sacar tu dinero cuando quieres, o todo pasa por WhatsApp.</p>`},
+
+{c:'Peligros',t:'Préstamo de día de pago',s:'Payday loan',
+ d:`<div class="warn">Cobran tasas que en términos anuales llegan al 300% o 400%. Es la trampa más cara que existe.</div>
+ <p>El fondo de emergencia de $1,000 existe justo para que nunca tengas que pisar uno.</p>`},
+
+{c:'Peligros',t:'Compra ahora, paga después',s:'Klarna, Afterpay, Affirm',
+ d:`<p>Dividir una compra en pagos suena inofensivo, pero hace que gastes más de lo que gastarías, y los recargos por atraso son altos.</p>
+ <p>Si necesitas partir un gasto en cuatro, la señal real es que ese gasto no cabe todavía.</p>`}
+];
+
+const $=id=>document.getElementById(id);
+let know=new Set(), filtro='Todos', busca='';
+
+const CATS=['Todos',...new Set(T.map(x=>x.c))];
+
+function chips(){
+  $('chips').innerHTML=CATS.map(c=>
+    `<button class="chip" data-c="${c}" aria-pressed="${c===filtro}">${c}</button>`).join('');
+}
+
+function pinta(){
+  const q=busca.toLowerCase().trim();
+  const vis=T.filter(x=>{
+    const okc = filtro==='Todos'||x.c===filtro;
+    const okq = !q || (x.t+' '+x.s+' '+x.d).toLowerCase().includes(q);
+    return okc&&okq;
+  });
+  if(!vis.length){
+    $('lista').innerHTML=`<div class="none">No encontré ese término. Prueba con otra palabra — o pregúntame directamente en el chat y lo agregamos.</div>`;
+  } else {
+    let html='', cur='';
+    vis.forEach((x,i)=>{
+      if(x.c!==cur){ cur=x.c; html+=`<div class="cat">${cur}</div>`; }
+      const id='t'+T.indexOf(x);
+      html+=`<div class="term ${know.has(id)?'know':''}" data-id="${id}">
+        <button class="thead" aria-expanded="false">
+          <span class="tick" data-act="know"></span>
+          <span class="tn"><b>${x.t}</b><span>${x.s}</span></span>
+          <span class="arw">▶</span>
+        </button>
+        <div class="body">${x.d}</div></div>`;
+    });
+    $('lista').innerHTML=html;
+  }
+  const n=know.size;
+  $('pt').textContent=`${n} de ${T.length} términos entendidos`;
+  $('pf').style.width=(n/T.length*100)+'%';
+}
+
+$('lista').addEventListener('click',e=>{
+  const term=e.target.closest('.term'); if(!term) return;
+  if(e.target.closest('[data-act="know"]')){
+    const id=term.dataset.id;
+    know.has(id)?know.delete(id):know.add(id);
+    guardar(); pinta(); return;
+  }
+  const h=e.target.closest('.thead'); if(!h) return;
+  const abierto=term.classList.toggle('open');
+  h.setAttribute('aria-expanded',abierto);
+});
+$('chips').addEventListener('click',e=>{
+  const c=e.target.closest('.chip'); if(!c) return;
+  filtro=c.dataset.c; chips(); pinta();
+});
+$('q').addEventListener('input',e=>{ busca=e.target.value; pinta(); });
+
+async function guardar(){
+  try{ await window.storage.set(KEY,JSON.stringify([...know])); }catch(e){}
+}
+async function cargar(){
+  try{
+    const r=await window.storage.get(KEY);
+    if(r&&r.value) know=new Set(JSON.parse(r.value));
+  }catch(e){}
+  chips(); pinta();
+}
+cargar();
+</script>
+</body>
+</html>
