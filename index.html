@@ -87,9 +87,6 @@
   .saldo-plan.ok{background:rgba(47,107,79,.1);color:var(--ok)}
   .saldo-plan.warn{background:rgba(142,47,74,.09);color:var(--stamp)}
   .saldo-plan b{font-family:'IBM Plex Mono',monospace;font-size:15px}
-  .toggle{display:flex;margin:14px 0 0;border:1px solid var(--rule);border-radius:5px;overflow:hidden}
-  .toggle button{flex:1;background:none;border:0;font:inherit;font-size:11.5px;padding:8px;color:var(--muted);cursor:pointer}
-  .toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper);font-weight:500}
 
   .item{display:flex;align-items:center;gap:9px;padding:10px 0;border-bottom:1px dotted var(--rule)}
   .item .nm{flex:1;font-size:13.5px;min-width:0}
@@ -113,17 +110,21 @@
   .gbar i{display:block;height:100%;background:var(--brass);border-radius:3px;transition:width .4s cubic-bezier(.2,.8,.2,1)}
   .goal.fondo .gbar i{background:var(--ok)}
 
+  .seed{display:flex;justify-content:space-between;align-items:center;padding:13px 2px;border-bottom:1.5px solid var(--rule);font-size:13.5px}
+  .seed b{font-family:'IBM Plex Mono',monospace;font-weight:600}
+  .seed span small{display:block;font-size:10.5px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:2px}
+
   ul{list-style:none}
   li{border-bottom:1px solid var(--rule)}
-  .row{width:100%;background:none;border:0;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:12px 2px;text-align:left;cursor:pointer;font:inherit;color:inherit;position:relative;-webkit-tap-highlight-color:transparent}
-  .mes{font-size:14px;font-weight:500}
-  .mes em{display:block;font-style:normal;font-size:10.5px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:2px}
-  .sal{font-family:'IBM Plex Mono',monospace;font-size:13.5px;font-variant-numeric:tabular-nums;color:var(--muted)}
-  .box{width:21px;height:21px;border:1.5px solid var(--ink);border-radius:3px;flex-shrink:0;position:relative}
+  .row{width:100%;background:none;border:0;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:11px 2px;text-align:left;cursor:pointer;font:inherit;color:inherit;position:relative;-webkit-tap-highlight-color:transparent}
+  .mes{font-size:13.5px;font-weight:500}
+  .mes em{display:block;font-style:normal;font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:2px}
+  .sal{font-family:'IBM Plex Mono',monospace;font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted)}
+  .box{width:20px;height:20px;border:1.5px solid var(--ink);border-radius:3px;flex-shrink:0;position:relative}
   .row[aria-pressed="true"] .box{background:var(--ink)}
-  .row[aria-pressed="true"] .box::after{content:"";position:absolute;left:6.5px;top:3px;width:5px;height:10px;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(42deg)}
+  .row[aria-pressed="true"] .box::after{content:"";position:absolute;left:6px;top:2.5px;width:5px;height:10px;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(42deg)}
   .row[aria-pressed="true"] .sal{color:var(--ink);font-weight:600}
-  .stamp{position:absolute;right:42px;top:50%;transform:translateY(-50%) rotate(-8deg) scale(1.6);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.13em;color:var(--stamp);border:1.5px solid var(--stamp);border-radius:3px;padding:3px 6px;opacity:0;pointer-events:none;mix-blend-mode:multiply}
+  .stamp{position:absolute;right:40px;top:50%;transform:translateY(-50%) rotate(-8deg) scale(1.6);font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.13em;color:var(--stamp);border:1.5px solid var(--stamp);border-radius:3px;padding:2.5px 5px;opacity:0;pointer-events:none;mix-blend-mode:multiply}
   .row[aria-pressed="true"] .stamp{opacity:.82;transform:translateY(-50%) rotate(-8deg) scale(1);transition:opacity .16s ease-out,transform .16s cubic-bezier(.2,1.4,.4,1)}
   li.meta .mes{font-family:'Fraunces',serif;font-weight:600}
   li.meta .stamp{color:var(--brass);border-color:var(--brass)}
@@ -134,7 +135,6 @@
   .actions{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px}
   .status{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted)}
 
-  /* guía */
   .g h3{font-family:'Fraunces',serif;font-size:15px;font-weight:600;margin:22px 0 7px}
   .g h3:first-child{margin-top:14px}
   .g p{font-size:13px;line-height:1.6;color:#33454C;margin-bottom:9px}
@@ -144,6 +144,7 @@
   .g li{border:0;margin-bottom:5px}
   .g .box2{background:var(--paper-2);padding:13px 14px;border-radius:6px;margin:12px 0;font-size:12.5px;line-height:1.55}
   .g .box2 b{display:block;margin-bottom:5px;font-family:'Fraunces',serif;font-size:13.5px}
+  .g .box2.win{background:rgba(47,107,79,.09)}
   .g table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
   .g td{padding:6px 0;border-bottom:1px dotted var(--rule)}
   .g td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:600}
@@ -156,7 +157,7 @@
   <header class="cover">
     <div class="eyebrow">Libreta financiera</div>
     <div class="owner">Nela</div>
-    <div class="nivel" id="nivelChip">🔴 Nivel 1</div>
+    <div class="nivel" id="nivelChip">🔴</div>
   </header>
 
   <nav role="tablist">
@@ -175,30 +176,26 @@
       <i id="diasNota"></i>
     </div>
     <div class="grid6">
-      <div class="card"><span>Disponible hoy</span><b id="kDisp">$0</b><i>En banco, líquido</i></div>
-      <div class="card"><span>Fondo emergencia</span><b id="kFondo">$0</b><i id="kFondoSub">de $1,000</i></div>
+      <div class="card"><span>Disponible hoy</span><b id="kDisp">$0</b><i>Banco + fondo</i></div>
+      <div class="card"><span>Fondo emergencia</span><b id="kFondo">$0</b><i id="kFondoSub"></i></div>
       <div class="card"><span>Patrimonio neto</span><b id="kPat">$0</b><i>Tengo − debo</i></div>
+      <div class="card"><span>Deudas</span><b id="kDeuda">$0</b><i>Carro + tarjeta</i></div>
       <div class="card"><span>Tasa de ahorro</span><b id="kTasa">0%</b><i>De cada $100 que ganas</i></div>
-      <div class="card"><span>Deudas</span><b id="kDeuda">$0</b><i>Saldo total pendiente</i></div>
-      <div class="card"><span>No gastado</span><b id="kNoGasto">$0</b><i>Compras que te aguantaste</i></div>
+      <div class="card"><span>FICO</span><b id="kFico">725</b><i>Bankcard · jun 2026</i></div>
     </div>
     <div class="head" style="margin-top:26px"><h2>Niveles de libertad</h2><span>Fondo</span></div>
     <div id="niveles"></div>
     <div class="note">
-      <b>El número de arriba es el que importa.</b> No es cuánto ganas ni cuánto tienes — es cuántos días podrías respirar si mañana se cae el ingreso. Cada depósito lo sube; cada gasto fijo nuevo lo baja.
+      <b>El número de arriba es el que importa.</b> No es cuánto ganas ni cuánto tienes — es cuántos días podrías respirar si mañana se cae el ingreso. Hace una semana era 0.
     </div>
   </section>
 
   <!-- REPARTO -->
   <section class="page" id="p-reparto">
-    <div class="head"><h2>Reparto del día de pago</h2><span>Editable</span></div>
+    <div class="head"><h2>Reparto mensual</h2><span>Editable</span></div>
     <div class="ingreso">
-      <label for="ingreso">Ingreso neto<em>lo que te llega a la cuenta</em></label>
+      <label for="ingreso">Ingreso neto<em>al mes, lo que te llega</em></label>
       <input type="number" id="ingreso" min="0" step="10" inputmode="numeric">
-    </div>
-    <div class="toggle">
-      <button id="tMonto" aria-pressed="true">Ahorro por monto fijo</button>
-      <button id="tPct" aria-pressed="false">Por porcentaje</button>
     </div>
     <div class="split" id="split" aria-hidden="true"></div>
     <div class="legend" id="legend"></div>
@@ -206,7 +203,7 @@
     <div class="saldo-plan ok" id="saldoPlan"><span id="saldoTxt"></span><b id="saldoNum">$0</b></div>
 
     <div class="head"><h2>Gastos anuales</h2><span>Por mes</span></div>
-    <div class="empty" style="padding-top:12px">Cosas que sabes que vienen: navidad, cumpleaños, dentista, placas del carro, vacaciones. Escribe el costo del AÑO — se divide entre 12 solo.</div>
+    <div class="empty" style="padding-top:12px">Cosas que sabes que vienen: navidad, cumpleaños, dentista, placas. Escribe el costo del AÑO — se divide entre 12 solo.</div>
     <div id="anuales"></div>
     <div class="add">
       <input type="text" id="anNom" placeholder="Navidad" maxlength="28">
@@ -237,7 +234,11 @@
       <button class="btn" id="goAdd">+</button>
     </div>
 
-    <div class="head"><h2>Depósitos</h2><span>Saldo</span></div>
+    <div class="head"><h2>Depósitos semanales</h2><span>Viernes</span></div>
+    <div class="seed">
+      <span>Depósito inicial<small>27 jul 2026 · Marcus</small></span>
+      <b id="seedNum">$1,500</b>
+    </div>
     <ul id="lista"></ul>
     <div class="foot" id="metasTxt"></div>
 
@@ -249,7 +250,9 @@
       <button class="btn" id="exAdd">+</button>
     </div>
     <div class="tot"><span>Extra acumulado</span><b id="exTot">$0</b></div>
-    <div class="note"><b>El dinero extra se evapora más rápido que el sueldo</b> porque se siente gratis. Regístralo el mismo día que entra y mándalo a la cuenta de ahorro.</div>
+    <div class="note">
+      <b>Cuatro veces al año caen cinco viernes en un mes.</b> Ese quinto pago no está en el presupuesto de nadie — es el más fácil de guardar completo. Regístralo aquí cuando pase.
+    </div>
   </section>
 
   <!-- BALANCE -->
@@ -259,13 +262,14 @@
       <i>Lo que tienes menos lo que debes</i>
     </div>
     <div class="head" style="margin-top:22px"><h2>Tengo</h2><span>Activos</span></div>
+    <div class="seed"><span>Fondo en Marcus<small>se calcula de tus depósitos</small></span><b id="fondoAct">$0</b></div>
     <div id="activos"></div>
     <div class="add">
-      <input type="text" id="acNom" placeholder="Cuenta bancaria" maxlength="26">
+      <input type="text" id="acNom" placeholder="Cuenta / bien" maxlength="26">
       <input type="number" id="acMon" placeholder="500" min="0" step="10" inputmode="numeric">
       <button class="btn" id="acAdd">+</button>
     </div>
-    <div class="foot">💵 = dinero líquido (banco o efectivo). 📄 = bienes. Toca el ícono para cambiarlo.</div>
+    <div class="foot">💵 = líquido (banco o efectivo). 📄 = bienes. Toca el ícono para cambiarlo.</div>
 
     <div class="head"><h2>Debo</h2><span>Pasivos</span></div>
     <div id="deudas"></div>
@@ -283,7 +287,6 @@
       <button class="btn" id="teAdd">+</button>
     </div>
     <div class="tot"><span>Total que no gastaste</span><b id="teTot">$0</b></div>
-    <div class="note">Este número no está en tu banco, pero es real: es dinero que <b>seguirías debiendo o habrías perdido</b>. Verlo crecer entrena mejor que prohibirte cosas.</div>
 
     <div class="actions">
       <button class="btn ghost" id="reset">Volver a los datos iniciales</button>
@@ -293,81 +296,74 @@
 
   <!-- GUÍA -->
   <section class="page g" id="p-guia">
-    <div class="head"><h2>Cómo usar esta libreta</h2><span>Guía</span></div>
+    <div class="head"><h2>Dónde estás hoy</h2><span>27 jul 2026</span></div>
 
-    <h3>Tu situación hoy</h3>
+    <div class="box2 win"><b>Lo que hiciste este lunes</b>
+      Abriste una HYSA en Marcus al 3.40% con tu ITIN · Depositaste $1,500 · Programaste $50 automáticos cada viernes · Pagaste $1,000 a la tarjeta Citi · Saldaste tu deuda con Alberto.<br><br>
+      Tu fondo de emergencia pasó de <b>$0 a $1,500 en un día</b>, y ya superaste la primera meta de $1,000.</div>
+
     <table>
-      <tr><td>Ingreso neto</td><td>$1,700</td></tr>
+      <tr><td>Ingreso neto mensual</td><td>$1,700*</td></tr>
       <tr><td>Fijos (carro, gasolina, renta, subs, gym)</td><td>$1,158</td></tr>
-      <tr><td>Comida (incluye el café)</td><td>$250</td></tr>
-      <tr><td>Libre para repartir</td><td>$292</td></tr>
-      <tr><td>Pago del carro + gasolina</td><td>53% del ingreso</td></tr>
-      <tr><td>Tasa del préstamo</td><td>20.56%</td></tr>
+      <tr><td>Comida</td><td>$250</td></tr>
+      <tr><td>Ahorro ($50 × 52 ÷ 12)</td><td>$217</td></tr>
+      <tr><td>FICO</td><td>725</td></tr>
+      <tr><td>Tasa del carro</td><td>20.56%</td></tr>
     </table>
-    <p>Ya está todo cargado. Si algo cambia, lo editas y se recalcula solo.</p>
+    <p style="font-size:11.5px;color:var(--muted)">*Pendiente de confirmar. Si tus $500 semanales son netos, tu ingreso real sería ~$2,167 y todo el reparto cambia a tu favor.</p>
 
-    <div class="box2"><b>La única regla que no se rompe</b>
-      El día que te pagan, el ahorro sale primero — antes de la renta, antes de todo. Lo que sobra a fin de mes nunca sobra.</div>
+    <h3>Tu jugada más grande: refinanciar</h3>
+    <div class="box2"><b>Con FICO 725 esto cambió</b>
+      Antes calculábamos 11%. Con tu perfil real, lo alcanzable es <b>7% a 9%</b>.<br><br>
+      Pago actual: $701.59 → a ~8%: <b>~$529</b><br>
+      Ahorro mensual: <b>~$172</b><br>
+      Interés que te ahorras: <b>~$10,500</b><br><br>
+      Tu crédito ya no es el obstáculo. El único problema es el LTV de 139% — debes ~$26,450 por un carro que vale ~$19,000.</div>
 
-    <h3>Qué hace cada pestaña</h3>
-    <ul class="gl">
-      <li><b>Panel</b> — tu radiografía en 10 segundos. No se edita; se alimenta de lo demás.</li>
-      <li><b>Reparto</b> — el presupuesto. Aquí ajustas montos, gastos anuales y suscripciones.</li>
-      <li><b>Metas</b> — objetivos, el calendario de depósitos y el registro de dinero extra.</li>
-      <li><b>Balance</b> — lo que tienes, lo que debes y la lista de "no gastar".</li>
-    </ul>
+    <p><b>A quién llamar:</b> St. Louis Community CU (314-534-7610), Alltru, Vantage, Gateway Metro.</p>
+    <p><b>La pregunta exacta:</b> "Tengo un préstamo al 20.56% con saldo de ~$26,450 en un Mazda CX-30 2022, y FICO de 725. Sé que estoy al revés en el préstamo. ¿Cuál es su LTV máximo, aceptan co-solicitante, y cuánto efectivo necesitarían?"</p>
+    <p><b>Tus cartas:</b> FICO 725 · 12 pagos puntuales · efectivo disponible para aportar · Alberto como posible co-solicitante.</p>
+    <p><b>Todas las solicitudes dentro de 14 días</b> — así cuentan como una sola consulta a tu crédito.</p>
 
     <h3>Tu rutina</h3>
-    <p><b>El día de pago (5 minutos)</b></p>
-    <ol>
-      <li>Transfiere el ahorro a la cuenta de otro banco.</li>
-      <li>Ve a <b>Metas → Depósitos</b> y marca el mes. Aparece el sello.</li>
-      <li>Separa los gustos a otra cuenta o tarjeta.</li>
-    </ol>
-    <p><b>Cuando entre dinero extra (1 minuto)</b><br>
-    Regístralo el mismo día en <b>Metas → Dinero extra</b> y mándalo al ahorro. Ese dinero es el que más rápido desaparece.</p>
-    <p><b>Cada mes (10 minutos)</b><br>
-    Actualiza el saldo del carro en <b>Balance → Debo</b> y mira cómo sube tu patrimonio neto. Es el número que de verdad mide el avance.</p>
-    <p><b>Cada vez que te aguantes una compra</b><br>
-    Toca ✋ en <b>Balance → No gastar</b>. Suma más de lo que crees.</p>
+    <p><b>Cada viernes:</b> los $50 salen solos. Marca la semana en Metas → Depósitos.</p>
+    <p><b>Cuando entre dinero extra:</b> regístralo el mismo día y mándalo a Marcus.</p>
+    <p><b>Cada mes:</b> actualiza el saldo del carro en Balance → Debo y mira subir tu patrimonio neto.</p>
+    <p><b>Cuando te aguantes una compra:</b> toca ✋ en la lista de no gastar.</p>
 
-    <h3>Tus dos palancas reales</h3>
-    <div class="box2"><b>1 · Cancelar lo duplicado — hoy, $24/mes</b>
-      Google Photos y iCloud+ hacen lo mismo: 2 TB cada uno, $9.99 cada uno. Quédate con una. Y Crunchyroll ($13.99) solo si de verdad la ves. Tu ahorro sube de $150 a $174.</div>
-    <div class="box2"><b>2 · Refinanciar el carro — $134/mes</b>
-      Estás en 20.56% con ~$26,450 de saldo y 61 pagos por delante. Bajar a ~11% te ahorra unos $8,000 en intereses y devuelve el plan original.<br><br>
-      Pregunta en dos o tres <b>cooperativas de crédito</b>, todas dentro de 14 días para que cuente como una sola consulta. Y considera que Alberto entre como co-solicitante: con mejor historial, la tasa baja mucho más.</div>
+    <h3>Pendientes</h3>
+    <ul class="gl">
+      <li>Cancelar Uber One ($9.99/mes)</li>
+      <li>Cancelar el almacenamiento duplicado — Google Photos o iCloud+ ($9.99)</li>
+      <li>Decidir Crunchyroll ($13.99)</li>
+      <li>Pagar la tarjeta Citi completa al corte (~$406 con pendientes)</li>
+      <li>Llamar a las cooperativas</li>
+      <li>Confirmar si tus $500 semanales son brutos o netos</li>
+    </ul>
 
-    <h3>El orden correcto</h3>
-    <ol>
-      <li><b>Refinanciar.</b> Es lo único que baja un gasto fijo sin que juntes nada.</li>
-      <li><b>Los $1,000 del mini-fondo.</b> Aunque el carro cobre 20%, sin colchón cualquier imprevisto te manda a la tarjeta — y esa cobra más.</li>
-      <li><b>Con los $1,000 listos:</b> todo lo extra al principal del carro. 20.56% le gana a cualquier cuenta de ahorro.</li>
-    </ol>
+    <h3>Dos reglas de la tarjeta Citi</h3>
+    <p><b>No la cierres.</b> Abierta y pagada te construye historial — y ese historial es justo lo que necesitas para el refinanciamiento.</p>
+    <p><b>Úsala poquito.</b> Una compra chica al mes, pagada completa. Mantén la utilización abajo del 10%.</p>
 
     <h3>Cosas que van a pasar</h3>
-    <p><b>Tu patrimonio neto empieza en negativo.</b> Es normal cuando hay un carro financiado. Lo que importa no es el número, es que suba cada mes.</p>
-    <p><b>El valor del carro es un estimado.</b> Búscalo en KBB o Edmunds con tu millaje y ajústalo en Balance.</p>
-    <p><b>El café ya está contado dentro de "Comida"</b>, así que en el reparto no lo sumes otra vez a fijos. En la lista de suscripciones está solo para que lo tengas a la vista.</p>
-    <p><b>Vas a fallar un mes.</b> No pasa nada — no borres nada, solo no marques ese mes y sigue. Un plan al que vuelves le gana a uno perfecto que abandonas.</p>
+    <p><b>Tu patrimonio neto está en negativo.</b> Normal con un carro financiado. Lo que importa es que suba cada mes — y hoy subió mucho.</p>
+    <p><b>Vas a fallar una semana.</b> No borres nada, solo no marques esa y sigue. Un plan al que vuelves le gana a uno perfecto que abandonas.</p>
 
     <div class="box2"><b>Un recordatorio</b>
-      Esto es una herramienta para ordenar y aprender, no asesoría financiera. Para el refinanciamiento y decisiones grandes, compara ofertas reales y lee los términos completos.</div>
-
-    <p style="margin-top:18px;color:var(--muted);font-size:12px">Para tenerla siempre a la mano: ábrela en el teléfono y agrégala a la pantalla de inicio.</p>
+      Esto es una herramienta para ordenar y aprender, no asesoría financiera. Para el refinanciamiento compara ofertas reales y lee los términos completos.</div>
   </section>
 </div>
 
 <script>
-const KEY='libreta:v4', MINI=1000;
+const KEY='libreta:v5';
 const MES_N=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const $=id=>document.getElementById(id);
 const money=n=>(n<0?'−$':'$')+Math.abs(Math.round(n)).toLocaleString('en-US');
 const uid=()=>Math.random().toString(36).slice(2,9);
 
 const DEF={
-  ingreso:1700, fijos:1158, comida:250, ahorro:150, gustos:100, colchon:42,
-  modoPct:false, pct:9,
+  ingreso:1700, fijos:1158, comida:250, ahorro:217, gustos:50, colchon:25,
+  semanal:50, inicial:1500,
   hechos:[], anuales:[],
   subs:[
     {id:'s1',n:'AppleCare One',m:25.98,usa:true},
@@ -375,40 +371,47 @@ const DEF={
     {id:'s3',n:'Crunchyroll',m:13.99,usa:false},
     {id:'s4',n:'Google Photos 2TB',m:9.99,usa:false},
     {id:'s5',n:'iCloud+ 2TB',m:9.99,usa:true},
-    {id:'s6',n:'Everyday Dose (café)',m:12,usa:true}
+    {id:'s6',n:'Uber One (cancelar)',m:9.99,usa:false},
+    {id:'s7',n:'Everyday Dose (café)',m:12,usa:true}
   ],
   goals:[], extras:[],
-  activos:[{id:'a1',n:'Mazda CX-30 2022 (estimado)',m:19000,liq:false}],
-  deudas:[{id:'d1',n:'Carro — Lendbuzz 20.56%',m:26450}],
+  activos:[
+    {id:'a1',n:'Bank of America (cheques)',m:2806,liq:true},
+    {id:'a2',n:'Mazda CX-30 2022 (estimado)',m:19000,liq:false}
+  ],
+  deudas:[
+    {id:'d1',n:'Carro — Lendbuzz 20.56%',m:26450},
+    {id:'d2',n:'Tarjeta Citi Costco',m:406}
+  ],
   tentaciones:[]
 };
 let S=structuredClone(DEF), hechos=new Set(), puedeGuardar=true, tSave;
 
 const BUCKETS=[
   {k:'fijos',n:'Gastos fijos',c:'var(--c-fijos)',meta:[50,55],
-   why:'Carro $701.59, gasolina $200, renta $150, suscripciones $79.94, gym $26.85. <b>El carro y su gasolina son el 53% de tu ingreso</b> — la referencia general es 15–20%. Esta es la palanca grande: refinanciar baja este número sin que cambies nada de tu vida.'},
+   why:'Carro $701.59, gasolina $200, renta $150, suscripciones, gym. <b>El carro y su gasolina son el 53% de tu ingreso</b> — la referencia es 15–20%. Refinanciar es la única palanca que baja este número sin cambiar nada de tu vida.'},
   {k:'comida',n:'Comida',c:'var(--c-comida)',meta:[12,15],
-   why:'Despensa y el café de Everyday Dose ($12 al mes), que el banco clasificó como "Groceries" y por eso no lo veías. <b>Es un gasto fijo disfrazado de variable.</b>'},
+   why:'Despensa y el café de Everyday Dose ($12/mes), que el banco clasificó como "Groceries" y por eso no lo veías. <b>Es un gasto fijo disfrazado de variable.</b>'},
   {k:'ahorro',n:'Ahorro',c:'var(--c-ahorro)',meta:[15,20],
-   why:'Sale <b>el día de pago</b>, automático, a una cuenta de otro banco y sin tarjeta de débito. Truco: <b>súbelo 1% cada tres meses.</b> No lo vas a sentir, y en dos años estás en 20% sin haber sufrido.'},
+   why:'<b>$50 cada viernes, automáticos.</b> Salen antes de que veas el dinero. Truco: súbelo $5 cada tres meses. No lo vas a sentir, y en dos años estás en $110 semanales.'},
   {k:'gustos',n:'Gustos',c:'var(--c-gustos)',meta:[8,10],
-   why:'Tuyo, sin justificar nada. <b>Gastarlo completo es el plan funcionando</b>, no un fallo. Los planes de $0 en diversión truenan a las 6 semanas. Este número es la razón de que todo lo demás aguante.'},
+   why:'Tuyo, sin justificar nada. <b>Gastarlo completo es el plan funcionando.</b> Este número se ve chico porque el carro se come todo — cuando refinancies, esta bolsa es la primera que debe crecer.'},
   {k:'colchon',n:'Colchón',c:'var(--c-colchon)',meta:[5,8],
-   why:'Para lo chico e imprevisto del mes. <b>Sin esta bolsa cada sorpresa se come el ahorro</b> y se siente como fracaso. Lo que no uses, mándalo al fondo.'}
+   why:'Para lo chico e imprevisto del mes. <b>Sin esta bolsa cada sorpresa se come el ahorro.</b> Lo que no uses, mándalo al fondo.'}
 ];
 
 function buildBuckets(){
   $('buckets').innerHTML=BUCKETS.map(b=>`
     <div class="bucket"><div class="brow">
       <span class="dot" style="background:${b.c}"></span>
-      <span class="bname">${b.n}<em id="meta-${b.k}">meta ${b.meta[0]}–${b.meta[1]}%</em></span>
+      <span class="bname">${b.n}<em>meta ${b.meta[0]}–${b.meta[1]}%</em></span>
       <span class="bpct" id="pct-${b.k}">0%</span>
       <input type="number" id="in-${b.k}" min="0" step="10" inputmode="numeric" aria-label="${b.n}">
       <button class="why" data-k="${b.k}" aria-expanded="false" aria-label="Por qué">?</button>
     </div><div class="exp" id="exp-${b.k}">${b.why}</div></div>`).join('');
   BUCKETS.forEach(b=>$('in-'+b.k).addEventListener('input',e=>{
     S[b.k]=Math.max(0,+e.target.value||0);
-    if(b.k==='ahorro'&&S.ingreso) S.pct=Math.round(S.ahorro/S.ingreso*100);
+    if(b.k==='ahorro') S.semanal=Math.round(S.ahorro*12/52);
     render(); save();
   }));
   $('buckets').addEventListener('click',e=>{
@@ -451,17 +454,22 @@ function adder(nomId,monId,btnId,key,base){
   });
 }
 
-const fondoTotal=()=>hechos.size*S.ahorro+S.extras.reduce((s,x)=>s+x.m,0);
+const fondoTotal=()=>S.inicial+hechos.size*S.semanal+S.extras.reduce((s,x)=>s+x.m,0);
 const gastoReal=()=>S.fijos+S.comida;
+const niveles=()=>{
+  const gR=gastoReal();
+  return [
+    {e:'🔴',n:'Primer respiro',v:1000},
+    {e:'🟠',n:'Ya no improvisas',v:3000},
+    {e:'🟡',n:'Tranquilidad real',v:5000},
+    {e:'🟢',n:'3 meses de gastos',v:gR*3},
+    {e:'⭐',n:'6 meses de gastos',v:gR*6}
+  ].sort((a,b)=>a.v-b.v);
+};
 
 function render(){
   if($('ingreso').value!=S.ingreso) $('ingreso').value=S.ingreso;
-  if(S.modoPct) S.ahorro=Math.round(S.ingreso*S.pct/100);
   BUCKETS.forEach(b=>{ if($('in-'+b.k).value!=S[b.k]) $('in-'+b.k).value=S[b.k]; });
-  $('in-ahorro').disabled=S.modoPct;
-  $('meta-ahorro').textContent=S.modoPct?`${S.pct}% del ingreso`:'meta 15–20%';
-  $('tMonto').setAttribute('aria-pressed',!S.modoPct);
-  $('tPct').setAttribute('aria-pressed',S.modoPct);
 
   const rep=BUCKETS.reduce((s,b)=>s+S[b.k],0), diff=S.ingreso-rep;
   $('split').innerHTML=BUCKETS.map(b=>{
@@ -475,8 +483,8 @@ function render(){
     el.classList.toggle('off',p>b.meta[1]+3||p<b.meta[0]-6);
   });
   const sp=$('saldoPlan');
-  if(Math.abs(diff)<1){ sp.className='saldo-plan ok'; $('saldoTxt').textContent='Cuadrado. Cada dólar tiene destino.'; $('saldoNum').textContent='$0'; }
-  else if(diff>0){ sp.className='saldo-plan warn'; $('saldoTxt').textContent='Sin asignar — mándalo al ahorro'; $('saldoNum').textContent='+'+money(diff); }
+  if(Math.abs(diff)<2){ sp.className='saldo-plan ok'; $('saldoTxt').textContent='Cuadrado. Cada dólar tiene destino.'; $('saldoNum').textContent='$0'; }
+  else if(diff>0){ sp.className='saldo-plan warn'; $('saldoTxt').textContent='Sin asignar — mándalo al fondo'; $('saldoNum').textContent='+'+money(diff); }
   else { sp.className='saldo-plan warn'; $('saldoTxt').textContent='Te pasaste del ingreso'; $('saldoNum').textContent=money(diff); }
 
   listaSimple('anuales',S.anuales,{sub:it=>money(it.m/12)+' al mes'});
@@ -484,17 +492,19 @@ function render(){
   $('anTot').textContent=money(anMes);
   $('anAviso').textContent=S.anuales.length===0?'Escribe el costo ANUAL. Yo lo divido entre 12.'
     :anMes>S.colchon?`Tu colchón es ${money(S.colchon)} y necesitas ${money(anMes)}. Faltan ${money(anMes-S.colchon)} al mes.`
-    :`Tu colchón de ${money(S.colchon)} alcanza. Sobran ${money(S.colchon-anMes)} para imprevistos.`;
+    :`Tu colchón de ${money(S.colchon)} alcanza.`;
 
   listaSimple('subs',S.subs,{btn:it=>`<button class="use" data-act="use" data-on="${it.usa!==false}">${it.usa!==false?'✅':'❌'}</button>`});
   const sbT=S.subs.reduce((s,x)=>s+x.m,0);
   const fuga=S.subs.filter(x=>x.usa===false).reduce((s,x)=>s+x.m,0);
   $('sbTot').textContent=money(sbT);
-  $('sbFuga').textContent=fuga>0?`Pagas ${money(fuga)} al mes por cosas marcadas sin usar — ${money(fuga*12)} al año. Cancélalas.`
+  $('sbFuga').textContent=fuga>0?`${money(fuga)} al mes marcados sin usar — ${money(fuga*12)} al año. Cancélalos y bórralos de aquí.`
     :'Todas en uso. Vuelve a revisar en 6 meses.';
 
-  const fT=fondoTotal(), gR=gastoReal();
-  $('goals').innerHTML=[{id:'_f',n:'Fondo de emergencia',m:MINI,ah:Math.min(fT,MINI),fondo:true}]
+  const fT=fondoTotal(), gR=gastoReal(), NIV=niveles();
+  const sig=NIV.find(x=>fT<x.v) || NIV[NIV.length-1];
+
+  $('goals').innerHTML=[{id:'_f',n:'Fondo — siguiente nivel',m:sig.v,ah:Math.min(fT,sig.v),fondo:true}]
     .concat(S.goals.map(g=>({...g,ah:0}))).map(g=>{
       const pc=g.m?Math.min(g.ah/g.m*100,100):0;
       return `<div class="goal ${g.fondo?'fondo':''}" ${g.fondo?'':`data-id="${g.id}"`}>
@@ -504,12 +514,13 @@ function render(){
         <div class="gbar"><i style="width:${pc}%"></i></div></div>`;
     }).join('');
 
-  buildLista();
-  const mMini=S.ahorro>0?Math.ceil(MINI/S.ahorro):0;
-  const fondoC=gR*3, mF=S.ahorro>0?Math.ceil(fondoC/S.ahorro):0;
-  $('metasTxt').innerHTML=S.ahorro>0
-    ?`Meta 1 · ${money(MINI)} → ${fechaMes(mMini)} (${mMini} meses)<br>Meta 2 · ${money(fondoC)} → ${fechaMes(mF)} (${mF} meses)<br>El fondo completo son 3 meses de tu gasto real.`
-    :'Define un ahorro mensual para ver las fechas.';
+  $('seedNum').textContent=money(S.inicial);
+  buildLista(sig);
+  const faltan=Math.max(sig.v-fT,0);
+  const semanas=S.semanal>0?Math.ceil(faltan/S.semanal):0;
+  $('metasTxt').innerHTML=faltan>0
+    ?`Siguiente nivel: ${sig.e} ${sig.n} · ${money(sig.v)}<br>Faltan ${money(faltan)} = ${semanas} viernes → ${fechaSem(semanas)}<br>Fondo completo (3 meses): ${money(gR*3)}`
+    :`Nivel alcanzado. Siguiente meta: ${money(gR*3)} (3 meses de gastos).`;
 
   listaSimple('extras',S.extras);
   $('exTot').textContent=money(S.extras.reduce((s,x)=>s+x.m,0));
@@ -521,9 +532,9 @@ function render(){
     btn:()=>`<button class="use" data-act="win" data-on="true" aria-label="Me aguanté">✋</button>`});
 
   const act=S.activos.reduce((s,x)=>s+x.m,0)+fT, deu=S.deudas.reduce((s,x)=>s+x.m,0), pat=act-deu;
+  $('fondoAct').textContent=money(fT);
   $('patBig').textContent=money(pat);
-  const noGasto=S.tentaciones.reduce((s,x)=>s+(x.c||0)*x.m,0);
-  $('teTot').textContent=money(noGasto);
+  $('teTot').textContent=money(S.tentaciones.reduce((s,x)=>s+(x.c||0)*x.m,0));
 
   const liquido=S.activos.filter(x=>x.liq).reduce((s,x)=>s+x.m,0)+fT;
   const dia=gR/30, dias=dia>0?Math.floor(fT/dia):0;
@@ -531,42 +542,38 @@ function render(){
   $('diasNota').textContent=`Gastas ${money(dia)} al día. Tu fondo es ${money(fT)}.`;
   $('kDisp').textContent=money(liquido);
   $('kFondo').textContent=money(fT);
-  $('kFondoSub').textContent=fT>=MINI?`de ${money(fondoC)} (meta 2)`:`de ${money(MINI)}`;
+  $('kFondoSub').textContent=`hacia ${money(sig.v)}`;
   $('kPat').textContent=money(pat);
-  $('kTasa').textContent=(S.ingreso?Math.round(S.ahorro/S.ingreso*100):0)+'%';
   $('kDeuda').textContent=money(deu);
-  $('kNoGasto').textContent=money(noGasto);
+  $('kTasa').textContent=(S.ingreso?Math.round(S.ahorro/S.ingreso*100):0)+'%';
 
-  const NIV=[
-    {e:'🔴',n:'Primer respiro',v:1000},
-    {e:'🟠',n:'Ya no improvisas',v:3000},
-    {e:'🟡',n:'Tranquilidad real',v:5000},
-    {e:'🟢',n:'3 meses de gastos',v:gR*3},
-    {e:'⭐',n:'6 meses de gastos',v:gR*6}
-  ];
   $('niveles').innerHTML=NIV.map(x=>`<div class="niv ${fT>=x.v?'done':''}">
     <span class="em">${x.e}</span><span class="n">${x.n}</span><span class="v">${money(x.v)}</span></div>`).join('');
-  const al=NIV.filter(x=>fT>=x.v), sig=NIV.find(x=>fT<x.v);
+  const al=NIV.filter(x=>fT>=x.v);
   $('nivelChip').textContent=al.length===0?`🔴 Faltan ${money(1000-fT)} para el primer respiro`
-    :sig?`${al[al.length-1].e} ${al[al.length-1].n} · siguen ${money(sig.v-fT)}`
-    :'⭐ Seis meses cubiertos. Bien hecho.';
+    :`${al[al.length-1].e} ${al[al.length-1].n} · siguen ${money(Math.max(sig.v-fT,0))}`;
 }
 
-const fechaMes=m=>{const d=new Date(2026,7+m-1,1);return MES_N[d.getMonth()]+' '+d.getFullYear();};
+/* viernes a partir del 31 jul 2026 */
+function viernes(i){ const d=new Date(2026,6,31); d.setDate(d.getDate()+7*i); return d; }
+function fechaSem(n){ const d=viernes(Math.max(n-1,0)); return `${d.getDate()} ${MES_N[d.getMonth()]} ${d.getFullYear()}`; }
 
-function buildLista(){
-  const a=S.ahorro;
-  if(a<=0){ $('lista').innerHTML='<li style="border:0"><div class="empty">Define un ahorro mensual arriba.</div></li>'; return; }
-  const n=Math.ceil(MINI/a); let h='';
+function buildLista(sig){
+  const a=S.semanal;
+  if(a<=0){ $('lista').innerHTML='<li style="border:0"><div class="empty">Define un ahorro semanal.</div></li>'; return; }
+  const faltan=Math.max(sig.v-S.inicial-S.extras.reduce((s,x)=>s+x.m,0),0);
+  const n=Math.min(Math.max(Math.ceil(faltan/a),1),60);
+  let h='';
   for(let i=0;i<n;i++){
-    const d=new Date(2026,7+i,1);
-    const id=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
-    const nom=MES_N[d.getMonth()][0].toUpperCase()+MES_N[d.getMonth()].slice(1)+' '+d.getFullYear();
+    const d=viernes(i);
+    const id='w'+d.toISOString().slice(0,10);
+    const nom=`Viernes ${d.getDate()} ${MES_N[d.getMonth()].slice(0,3)}`;
+    const saldo=S.inicial+a*(i+1);
     const meta=i===n-1;
     h+=`<li class="${meta?'meta':''}"><button class="row" data-id="${id}" aria-pressed="${hechos.has(id)}">
       <span class="mes">${nom}<em>+${money(a)}</em></span>
-      <span class="sal">${money(a*(i+1))}</span><span class="box"></span>
-      <span class="stamp">${meta?'META':'DEPOSITADO'}</span></button></li>`;
+      <span class="sal">${money(saldo)}</span><span class="box"></span>
+      <span class="stamp">${meta?sig.e+' META':'OK'}</span></button></li>`;
   }
   $('lista').innerHTML=h;
 }
@@ -582,7 +589,7 @@ async function load(){
     const r=await window.storage.get(KEY);
     if(r&&r.value){ const d=JSON.parse(r.value); S={...structuredClone(DEF),...d}; hechos=new Set(d.hechos||[]); }
     $('status').textContent='Guardado ✓';
-  }catch(e){ $('status').textContent='Todo listo. Edita lo que cambie.'; }
+  }catch(e){ $('status').textContent='Todo listo.'; }
   render();
 }
 
@@ -593,13 +600,6 @@ document.querySelector('nav').addEventListener('click',e=>{
   window.scrollTo({top:0,behavior:'smooth'});
 });
 $('ingreso').addEventListener('input',e=>{ S.ingreso=Math.max(0,+e.target.value||0); render(); save(); });
-$('tMonto').addEventListener('click',()=>{ S.modoPct=false; render(); save(); });
-$('tPct').addEventListener('click',()=>{
-  S.modoPct=true;
-  const v=prompt('¿Qué porcentaje de tu ingreso quieres ahorrar?',S.pct);
-  if(v!==null) S.pct=Math.min(90,Math.max(0,+v||0));
-  render(); save();
-});
 $('lista').addEventListener('click',e=>{
   const b=e.target.closest('.row'); if(!b) return;
   const id=b.dataset.id; hechos.has(id)?hechos.delete(id):hechos.add(id);
@@ -611,7 +611,7 @@ $('goals').addEventListener('click',e=>{
   S.goals=S.goals.filter(x=>x.id!==g.dataset.id); render(); save();
 });
 $('reset').addEventListener('click',()=>{
-  if(!confirm('¿Volver a los datos iniciales? Se borran tus depósitos marcados.')) return;
+  if(!confirm('¿Volver a los datos iniciales? Se borran tus semanas marcadas.')) return;
   S=structuredClone(DEF); hechos.clear(); render(); doSave();
 });
 
