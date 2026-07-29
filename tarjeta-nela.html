@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E3038">
+<meta name="description" content="Apoyo administrativo bilingüe para negocios pequeños · Bilingual bookkeeping and admin support for small businesses">
+<title>Nela Gonzales · Apoyo administrativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E3038; --ink-2:#144049;
+    --card:#FBF8F1; --card-2:#F1EBDD;
+    --rule:#CFC4AB; --brass:#B8912E; --brass-2:#9A7724;
+    --muted:#6C7F85; --text:#22383E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    background-image:radial-gradient(ellipse at 50% -10%, #1A4E59 0%, #0E3038 60%);
+    font-family:'Inter',system-ui,sans-serif;color:var(--text);
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:22px 14px 40px;
+  }
+  .wrap{width:100%;max-width:400px}
+
+  /* language toggle */
+  .lang{display:flex;justify-content:center;gap:0;margin-bottom:16px}
+  .lang button{
+    background:none;border:1px solid rgba(251,248,241,.28);color:rgba(251,248,241,.62);
+    font:inherit;font-size:11px;font-weight:600;letter-spacing:.1em;
+    padding:7px 16px;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .lang button:first-child{border-radius:20px 0 0 20px;border-right:0}
+  .lang button:last-child{border-radius:0 20px 20px 0}
+  .lang button[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#1F1904}
+
+  /* card */
+  .card{
+    background:var(--card);border-radius:16px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.34), 0 2px 0 rgba(255,255,255,.08) inset;
+  }
+  .top{
+    background:var(--ink-2);padding:30px 26px 26px;text-align:center;color:var(--card);
+    position:relative;
+  }
+  .top::after{
+    content:"";position:absolute;left:26px;right:26px;bottom:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--brass),transparent);
+  }
+  .seal{
+    width:62px;height:62px;border-radius:50%;margin:0 auto 15px;
+    border:1.5px solid var(--brass);display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:23px;font-weight:500;color:var(--brass);
+    letter-spacing:.04em;
+  }
+  .name{font-family:'Fraunces',serif;font-size:27px;font-weight:600;letter-spacing:.005em;line-height:1.15}
+  .role{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--brass);margin-top:9px;line-height:1.6;
+  }
+  .body{padding:24px 26px 26px}
+
+  .pitch{
+    font-family:'Fraunces',serif;font-size:16.5px;line-height:1.5;
+    text-align:center;color:var(--ink);margin-bottom:6px;
+  }
+  .sub{
+    font-size:12.5px;line-height:1.55;text-align:center;color:var(--muted);
+    margin-bottom:22px;
+  }
+
+  .lbl{
+    font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);
+    padding-bottom:7px;border-bottom:1px solid var(--rule);margin-bottom:4px;
+  }
+  .svc{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px dotted var(--rule)}
+  .svc .ic{color:var(--brass);font-size:13px;line-height:1.5;flex-shrink:0}
+  .svc div{flex:1;min-width:0}
+  .svc b{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+  .svc span{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.45}
+
+  .terms{
+    background:var(--card-2);border-radius:8px;padding:13px 15px;margin-top:20px;
+    font-size:12.5px;line-height:1.6;color:var(--text);
+  }
+  .terms b{color:var(--ink)}
+
+  .acts{display:grid;gap:8px;margin-top:22px}
+  .a{
+    display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:9px;
+    text-decoration:none;font:inherit;font-size:14px;font-weight:500;
+    border:1.5px solid var(--rule);color:var(--ink);background:#FFFDF7;
+    -webkit-tap-highlight-color:transparent;cursor:pointer;text-align:left;width:100%;
+  }
+  .a:active{transform:translateY(1px)}
+  .a .ic{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+  .a small{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:1px}
+  .a.primary{background:var(--ink);border-color:var(--ink);color:var(--card)}
+  .a.primary small{color:rgba(251,248,241,.6)}
+  .a.brass{background:var(--brass);border-color:var(--brass);color:#1F1904}
+  .a.brass small{color:rgba(31,25,4,.62)}
+
+  .foot{
+    text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);line-height:1.8;
+  }
+  .toast{
+    position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(70px);
+    background:var(--ink);color:var(--card);padding:11px 20px;border-radius:22px;
+    font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.3);opacity:0;
+    transition:transform .28s cubic-bezier(.2,.9,.3,1),opacity .28s;pointer-events:none;z-index:20;
+  }
+  .toast.on{transform:translateX(-50%) translateY(0);opacity:1}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="lang" role="group" aria-label="Idioma / Language">
+    <button id="bEs" aria-pressed="true">ESPAÑOL</button>
+    <button id="bEn" aria-pressed="false">ENGLISH</button>
+  </div>
+
+  <main class="card">
+    <header class="top">
+      <div class="seal" id="seal">NG</div>
+      <h1 class="name" id="name">Nela Gonzales</h1>
+      <div class="role" id="role"></div>
+    </header>
+
+    <div class="body">
+      <p class="pitch" id="pitch"></p>
+      <p class="sub" id="sub"></p>
+
+      <div class="lbl" id="lblSvc"></div>
+      <div id="svcs"></div>
+
+      <div class="terms" id="terms"></div>
+
+      <div class="acts" id="acts"></div>
+
+      <div class="foot" id="foot"></div>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   EDITA SOLO ESTO — nada más abajo hace falta tocar
+   ══════════════════════════════════════════════════════ */
+const CFG = {
+  nombre:   "Nela Gonzales",
+  iniciales:"NG",
+  telefono: "+13145550000",           // ← tu número, formato +1 y 10 dígitos
+  whatsapp: "13145550000",            // ← el mismo, sin el +
+  correo:   "tucorreo@gmail.com",     // ← tu correo
+  ciudad:   "St. Louis, MO",
+  sitio:    ""                        // ← opcional: tu link de redes o página
+};
+/* ══════════════════════════════════════════════════════ */
+
+const TXT = {
+  es:{
+    role:"Apoyo administrativo · Bilingüe",
+    pitch:"Pongo en orden los números de tu negocio.",
+    sub:"Facturación, cobranza y control de gastos para negocios pequeños. A distancia, precio fijo mensual, sin compromiso largo.",
+    lblSvc:"Servicios",
+    svcs:[
+      ["Facturación y cobranza","Facturas al día y seguimiento de lo que te deben."],
+      ["Gastos e ingresos","Todo registrado y clasificado, sin cajas de recibos."],
+      ["Organización y estructura","Orden donde ahorita todo está suelto."],
+      ["Reporte mensual","Un resumen claro para saber cómo va tu negocio."]
+    ],
+    terms:"<b>Cómo trabajo:</b> unas horas al mes, desde mi oficina. Precio fijo mensual, sin contrato largo. La primera plática no tiene costo — revisamos cómo llevas tus cuentas y te digo con honestidad si te conviene.",
+    call:["Llamar","Hablemos unos minutos"],
+    wa:["WhatsApp","La forma más rápida"],
+    mail:["Correo","Escríbeme cuando gustes"],
+    save:["Guardar contacto","Se agrega a tu teléfono"],
+    share:["Compartir tarjeta","Pásasela a quien le sirva"],
+    foot:"Atiendo en español e inglés",
+    copied:"Enlace copiado",
+    saved:"Contacto descargado"
+  },
+  en:{
+    role:"Bookkeeping & Admin · Bilingual",
+    pitch:"I bring order to your business numbers.",
+    sub:"Invoicing, collections and expense tracking for small businesses. Remote, flat monthly rate, no long-term contract.",
+    lblSvc:"Services",
+    svcs:[
+      ["Invoicing & collections","Invoices sent on time and receivables followed up."],
+      ["Income & expenses","Everything recorded and categorized — no shoebox of receipts."],
+      ["Organization & structure","Order where things are scattered today."],
+      ["Monthly report","A clear summary so you know how the business is doing."]
+    ],
+    terms:"<b>How I work:</b> a few hours a month, remotely. Flat monthly rate, no long contract. The first conversation is free — we look at how you're tracking things and I'll tell you honestly whether it's worth it.",
+    call:["Call","Let's talk for a few minutes"],
+    wa:["WhatsApp","Fastest way to reach me"],
+    mail:["Email","Write anytime"],
+    save:["Save contact","Adds me to your phone"],
+    share:["Share card","Pass it to someone who needs it"],
+    foot:"Serving clients in English & Spanish",
+    copied:"Link copied",
+    saved:"Contact downloaded"
+  }
+};
+
+const $=id=>document.getElementById(id);
+let lang='es';
+
+function toast(m){
+  const t=$('toast'); t.textContent=m; t.classList.add('on');
+  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('on'),1900);
+}
+
+function vcard(){
+  const partes=CFG.nombre.trim().split(' ');
+  const apellido=partes.length>1?partes.slice(1).join(' '):'';
+  const nombre=partes[0];
+  const v=[
+    'BEGIN:VCARD','VERSION:3.0',
+    `N:${apellido};${nombre};;;`,
+    `FN:${CFG.nombre}`,
+    `TITLE:${TXT[lang].role}`,
+    `TEL;TYPE=CELL:${CFG.telefono}`,
+    `EMAIL:${CFG.correo}`,
+    `ADR;TYPE=WORK:;;;${CFG.ciudad};;;`,
+    CFG.sitio?`URL:${CFG.sitio}`:'',
+    `NOTE:${TXT[lang].sub}`,
+    'END:VCARD'
+  ].filter(Boolean).join('\n');
+  const blob=new Blob([v],{type:'text/vcard;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=CFG.nombre.replace(/\s+/g,'-')+'.vcf';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+  toast(TXT[lang].saved);
+}
+
+async function compartir(){
+  const datos={title:CFG.nombre, text:TXT[lang].pitch, url:location.href};
+  if(navigator.share){
+    try{ await navigator.share(datos); return; }catch(e){ if(e.name==='AbortError') return; }
+  }
+  try{ await navigator.clipboard.writeText(location.href); toast(TXT[lang].copied); }
+  catch(e){ toast(location.href); }
+}
+
+function pinta(){
+  const t=TXT[lang];
+  document.documentElement.lang=lang;
+  $('seal').textContent=CFG.iniciales;
+  $('name').textContent=CFG.nombre;
+  $('role').textContent=t.role;
+  $('pitch').textContent=t.pitch;
+  $('sub').textContent=t.sub;
+  $('lblSvc').textContent=t.lblSvc;
+  $('svcs').innerHTML=t.svcs.map(([a,b])=>
+    `<div class="svc"><span class="ic">◆</span><div><b>${a}</b><span>${b}</span></div></div>`).join('');
+  $('terms').innerHTML=t.terms;
+  $('foot').innerHTML=`${t.foot}<br>${CFG.ciudad}`;
+
+  $('acts').innerHTML=`
+    <a class="a primary" href="tel:${CFG.telefono}"><span class="ic">📞</span><span>${t.call[0]}<small>${t.call[1]}</small></span></a>
+    <a class="a brass" href="https://wa.me/${CFG.whatsapp}" target="_blank" rel="noopener"><span class="ic">💬</span><span>${t.wa[0]}<small>${t.wa[1]}</small></span></a>
+    <a class="a" href="mailto:${CFG.correo}"><span class="ic">✉️</span><span>${t.mail[0]}<small>${t.mail[1]}</small></span></a>
+    <button class="a" id="bSave"><span class="ic">👤</span><span>${t.save[0]}<small>${t.save[1]}</small></span></button>
+    <button class="a" id="bShare"><span class="ic">↗</span><span>${t.share[0]}<small>${t.share[1]}</small></span></button>`;
+
+  $('bSave').addEventListener('click',vcard);
+  $('bShare').addEventListener('click',compartir);
+  $('bEs').setAttribute('aria-pressed',lang==='es');
+  $('bEn').setAttribute('aria-pressed',lang==='en');
+}
+
+$('bEs').addEventListener('click',()=>{lang='es';pinta();});
+$('bEn').addEventListener('click',()=>{lang='en';pinta();});
+
+/* si el visitante tiene el teléfono en inglés, abre en inglés */
+if((navigator.language||'es').toLowerCase().startsWith('en')) lang='en';
+pinta();
+</script>
+</body>
+</html>
