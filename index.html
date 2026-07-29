@@ -369,6 +369,10 @@
 
     <div class="head"><h2>Depósitos semanales</h2><span>Viernes</span></div>
     <div class="seed">
+      <span>Ahorro por semana<small>lo que sale cada viernes</small></span>
+      <input type="number" id="inSemanal" min="0" step="any" inputmode="decimal" aria-label="Ahorro semanal">
+    </div>
+    <div class="seed">
       <span>Depósito inicial<small>lo que ya tenías guardado</small></span>
       <input type="number" id="inInicial" min="0" step="any" inputmode="decimal" aria-label="Depósito inicial">
     </div>
@@ -585,6 +589,10 @@
 </div>
 
 <script>
+/* ---------- compatibilidad ---------- */
+if(typeof structuredClone!=='function'){
+  window.structuredClone = o => JSON.parse(JSON.stringify(o));
+}
 /* ---------- guardado: funciona en Claude Y en GitHub Pages ---------- */
 const store={
   async get(k){
@@ -697,6 +705,9 @@ const niveles=()=>{
 };
 
 function render(){
+  try{ _render(); }catch(err){ console.error('render:',err); $('status').textContent='Aviso: '+err.message; }
+}
+function _render(){
   if($('ingreso').value!=S.ingreso) $('ingreso').value=S.ingreso;
   BUCKETS.forEach(b=>{ if($('in-'+b.k).value!=S[b.k]) $('in-'+b.k).value=S[b.k]; });
 
@@ -1094,8 +1105,9 @@ function pintaSim(){
   sel.innerHTML = opts || '<option value="">Agrega una deuda arriba</option>';
   if(!S.deudas.length){
     $('simRes').innerHTML='';
-    $('simNota').textContent='Primero agrega una deuda en la sección "Debo".';
-    $('amortWrap').innerHTML=''; $('ltvBox').innerHTML='';
+    $('simNota').textContent='Primero agrega una deuda en la sección "Debo" de arriba.';
+    $('amortWrap').innerHTML='';
+    $('ltvBox').innerHTML='<div class="foot" style="margin-top:12px">Aquí verás qué tan cerca estás de poder refinanciar, en cuanto agregues una deuda.</div>';
     return;
   }
   const deuda = S.deudas.find(d=>d.id===S.sim.id) || S.deudas[0];
