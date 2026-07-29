@@ -191,7 +191,7 @@
 
   <header class="cover">
     <div class="eyebrow">Libreta financiera</div>
-    <div class="owner">Nela</div>
+    <div class="owner">Mi libreta</div>
     <div class="nivel" id="nivelChip">🔴</div>
   </header>
 
@@ -217,7 +217,7 @@
       <div class="card"><span>Patrimonio neto</span><b id="kPat">$0</b><i>Tengo − debo</i></div>
       <div class="card"><span>Deudas</span><b id="kDeuda">$0</b><i>Carro + tarjeta</i></div>
       <div class="card"><span>Tasa de ahorro</span><b id="kTasa">0%</b><i>De cada $100 que ganas</i></div>
-      <div class="card"><span>FICO</span><b id="kFico">725</b><i>Bankcard · jun 2026</i></div>
+      <div class="card"><span>No gastado</span><b id="kNoGasto">$0</b><i>Compras que te aguantaste</i></div>
     </div>
     <div class="head" style="margin-top:26px"><h2>Niveles de libertad</h2><span>Fondo</span></div>
     <div id="niveles"></div>
@@ -272,8 +272,8 @@
 
     <div class="head"><h2>Depósitos semanales</h2><span>Viernes</span></div>
     <div class="seed">
-      <span>Depósito inicial<small>27 jul 2026 · Marcus</small></span>
-      <b id="seedNum">$1,500</b>
+      <span>Depósito inicial<small>lo que ya tenías guardado</small></span>
+      <input type="number" id="inInicial" min="0" step="50" inputmode="numeric" aria-label="Depósito inicial">
     </div>
     <ul id="lista"></ul>
     <div class="foot" id="metasTxt"></div>
@@ -298,7 +298,7 @@
       <i>Lo que tienes menos lo que debes</i>
     </div>
     <div class="head" style="margin-top:22px"><h2>Tengo</h2><span>Activos</span></div>
-    <div class="seed"><span>Fondo en Marcus<small>se calcula de tus depósitos</small></span><b id="fondoAct">$0</b></div>
+    <div class="seed"><span>Fondo de emergencia<small>se calcula de tus depósitos</small></span><b id="fondoAct">$0</b></div>
     <div id="activos"></div>
     <div class="add">
       <input type="text" id="acNom" placeholder="Cuenta / bien" maxlength="26">
@@ -325,76 +325,73 @@
     <div class="tot"><span>Total que no gastaste</span><b id="teTot">$0</b></div>
 
     <div class="actions">
-      <button class="btn ghost" id="reset">Volver a los datos iniciales</button>
+      <button class="btn ghost" id="reset">Borrar todo</button>
       <span class="status" id="status">Cargando…</span>
     </div>
   </section>
 
   <!-- GUÍA -->
   <section class="page g" id="p-guia">
-    <div class="head"><h2>Dónde estás hoy</h2><span>27 jul 2026</span></div>
+    <div class="head"><h2>Cómo usar esta libreta</h2><span>Guía</span></div>
 
-    <div class="box2 win"><b>Lo que hiciste este lunes</b>
-      Abriste una HYSA en Marcus al 3.40% con tu ITIN · Depositaste $1,500 · Programaste $50 automáticos cada viernes · Pagaste $1,000 a la tarjeta Citi · Saldaste tu deuda con Alberto.<br><br>
-      Tu fondo de emergencia pasó de <b>$0 a $1,500 en un día</b>, y ya superaste la primera meta de $1,000.</div>
+    <div class="box2 win"><b>Primero: llénala</b>
+      La libreta empieza vacía a propósito — tus datos se guardan solo en este teléfono, nunca se suben a internet.<br><br>
+      Ve a <b>Reparto</b> y pon tu ingreso y tus bolsas. Luego a <b>Balance</b> y agrega lo que tienes y lo que debes. Con eso el Panel ya te dice la verdad.</div>
 
-    <table>
-      <tr><td>Ingreso neto mensual</td><td>$1,700*</td></tr>
-      <tr><td>Fijos (carro, gasolina, renta, subs, gym)</td><td>$1,158</td></tr>
-      <tr><td>Comida</td><td>$250</td></tr>
-      <tr><td>Ahorro ($50 × 52 ÷ 12)</td><td>$217</td></tr>
-      <tr><td>FICO</td><td>725</td></tr>
-      <tr><td>Tasa del carro</td><td>20.56%</td></tr>
-    </table>
-    <p style="font-size:11.5px;color:var(--muted)">*Pendiente de confirmar. Si tus $500 semanales son netos, tu ingreso real sería ~$2,167 y todo el reparto cambia a tu favor.</p>
+    <div class="box2"><b>La única regla que no se rompe</b>
+      El día que te pagan, el ahorro sale primero — antes de la renta, antes de todo. Lo que sobra a fin de mes nunca sobra.</div>
 
-    <h3>Tu jugada más grande: refinanciar</h3>
-    <div class="box2"><b>Con FICO 725 esto cambió</b>
-      Antes calculábamos 11%. Con tu perfil real, lo alcanzable es <b>7% a 9%</b>.<br><br>
-      Pago actual: $701.59 → a ~8%: <b>~$529</b><br>
-      Ahorro mensual: <b>~$172</b><br>
-      Interés que te ahorras: <b>~$10,500</b><br><br>
-      Tu crédito ya no es el obstáculo. El único problema es el LTV de 139% — debes ~$26,450 por un carro que vale ~$19,000.</div>
-
-    <p><b>A quién llamar:</b> St. Louis Community CU (314-534-7610), Alltru, Vantage, Gateway Metro.</p>
-    <p><b>La pregunta exacta:</b> "Tengo un préstamo al 20.56% con saldo de ~$26,450 en un Mazda CX-30 2022, y FICO de 725. Sé que estoy al revés en el préstamo. ¿Cuál es su LTV máximo, aceptan co-solicitante, y cuánto efectivo necesitarían?"</p>
-    <p><b>Tus cartas:</b> FICO 725 · 12 pagos puntuales · efectivo disponible para aportar · Alberto como posible co-solicitante.</p>
-    <p><b>Todas las solicitudes dentro de 14 días</b> — así cuentan como una sola consulta a tu crédito.</p>
-
-    <h3>Ojo con agosto</h3>
-    <div class="box2" style="background:rgba(142,47,74,.08)"><b>Los lentes caen dos veces este mes</b>
-      LensCrafters: <b>$218.03 el 10 de agosto y otros $218.03 el 24</b> = $436 en agosto, más $218 el 7 de septiembre.<br><br>
-      Tu ingreso de $1,700 menos fijos ($1,158) y comida ($250) deja $292. <b>Te faltan ~$144 en agosto.</b><br><br>
-      Sale del efectivo en BofA, no del fondo de Marcus. Para eso guardaste. Y <b>no toques los $50 semanales</b> — esa es la parte que no se negocia.</div>
-
-    <h3>Tu rutina</h3>
-    <p><b>Cada viernes:</b> los $50 salen solos. Marca la semana en Metas → Depósitos.</p>
-    <p><b>Cuando entre dinero extra:</b> regístralo el mismo día y mándalo a Marcus.</p>
-    <p><b>Cada mes:</b> actualiza el saldo del carro en Balance → Debo y mira subir tu patrimonio neto.</p>
-    <p><b>Cuando te aguantes una compra:</b> toca ✋ en la lista de no gastar.</p>
-
-    <h3>Pendientes</h3>
+    <h3>Qué hace cada pestaña</h3>
     <ul class="gl">
-      <li><b>Pagar LensCrafters: 10 ago · 24 ago · 7 sep</b> ($218.03 c/u)</li>
-      <li>Confirmar que el plan de los lentes sea 0% de interés</li>
-      <li>Cancelar Uber One ($9.99/mes)</li>
-      <li>Cancelar el almacenamiento duplicado — Google Photos o iCloud+ ($9.99)</li>
-      <li>Decidir Crunchyroll ($13.99)</li>
-      <li>Pagar la tarjeta Citi completa al corte (~$406 con pendientes)</li>
-      <li>Llamar a las cooperativas</li>
-      <li>Confirmar si tus $500 semanales son brutos o netos</li>
+      <li><b>Panel</b> — tu radiografía en 10 segundos. No se edita; se alimenta de lo demás.</li>
+      <li><b>Reparto</b> — el presupuesto, los gastos anuales y las suscripciones.</li>
+      <li><b>Metas</b> — objetivos, el calendario de depósitos y el dinero extra.</li>
+      <li><b>Balance</b> — lo que tienes, lo que debes y la lista de "no gastar".</li>
+      <li><b>Términos</b> — el diccionario. Toca el círculo cuando entiendas uno.</li>
     </ul>
 
-    <h3>Dos reglas de la tarjeta Citi</h3>
-    <p><b>No la cierres.</b> Abierta y pagada te construye historial — y ese historial es justo lo que necesitas para el refinanciamiento.</p>
-    <p><b>Úsala poquito.</b> Una compra chica al mes, pagada completa. Mantén la utilización abajo del 10%.</p>
+    <h3>Cómo repartir tu ingreso</h3>
+    <p>Cinco bolsas, y cada dólar tiene destino:</p>
+    <ul class="gl">
+      <li><b>Fijos (50–55%)</b> — renta, servicios, transporte, seguros.</li>
+      <li><b>Comida (12–15%)</b> — despensa y comida diaria.</li>
+      <li><b>Ahorro (15–20%)</b> — automático, el día de pago.</li>
+      <li><b>Gustos (8–10%)</b> — tuyos, sin justificar nada.</li>
+      <li><b>Colchón (5–8%)</b> — imprevistos chicos del mes.</li>
+    </ul>
+    <p>Toca el <b>?</b> de cada bolsa para entender por qué existe. Y si los porcentajes no te cuadran hoy, no pasa nada: son un mapa, no una calificación.</p>
+
+    <h3>Tu rutina</h3>
+    <p><b>El día de pago (5 minutos)</b></p>
+    <ol>
+      <li>Transfiere el ahorro a la cuenta de otro banco.</li>
+      <li>Márcalo en <b>Metas → Depósitos</b>. Aparece el sello.</li>
+      <li>Separa los gustos a otra cuenta o tarjeta.</li>
+    </ol>
+    <p><b>Cuando entre dinero extra:</b> regístralo el mismo día en Metas y mándalo al ahorro. Es el que más rápido se evapora porque se siente gratis.</p>
+    <p><b>Cada mes:</b> actualiza tus saldos en Balance y mira cómo sube tu patrimonio neto. Es el número que de verdad mide el avance.</p>
+    <p><b>Cuando te aguantes una compra:</b> toca ✋ en la lista de no gastar. Suma más de lo que crees.</p>
+
+    <h3>Cómo agregar cosas</h3>
+    <p><b>Una deuda:</b> Balance → Debo. Pon <b>lo que falta pagar en total</b>, no el pago mensual. Conforme pagues, bajas el número.</p>
+    <p><b>Una suscripción:</b> Reparto → Suscripciones. Marca ✅/❌ según si la usas.</p>
+    <p><b>Un gasto anual:</b> Reparto → Gastos anuales. Pon el costo del <b>año completo</b> — se divide entre 12 solo.</p>
+    <p><b>Una meta:</b> Metas → Objetivos.</p>
+
+    <h3>El orden que funciona</h3>
+    <ol>
+      <li><b>$1,000 de mini-fondo.</b> Con eso rompes el ciclo de vivir al día.</li>
+      <li><b>Deudas arriba del 10%</b> — tarjetas y préstamos caros. Cada dólar ahí te "rinde" su tasa, garantizado.</li>
+      <li><b>Fondo completo:</b> 3 a 6 meses de tu gasto real.</li>
+      <li><b>Ahí sí invertir:</b> 401(k) con aportación de la empresa, luego una Roth IRA en fondo indexado.</li>
+    </ol>
 
     <h3>Cosas que van a pasar</h3>
-    <p><b>Tu patrimonio neto está en negativo.</b> Normal con un carro financiado. Lo que importa es que suba cada mes — y hoy subió mucho.</p>
-    <p><b>Vas a fallar una semana.</b> No borres nada, solo no marques esa y sigue. Un plan al que vuelves le gana a uno perfecto que abandonas.</p>
+    <p><b>Tu patrimonio neto puede empezar en negativo.</b> Es normal con un carro o casa financiada. Lo que importa no es el número, es que suba cada mes.</p>
+    <p><b>Vas a fallar un periodo.</b> No borres nada, solo no lo marques y sigue. Un plan al que vuelves le gana a uno perfecto que abandonas.</p>
 
     <div class="box2"><b>Un recordatorio</b>
-      Esto es una herramienta para ordenar y aprender, no asesoría financiera. Para el refinanciamiento compara ofertas reales y lee los términos completos.</div>
+      Esto es una herramienta para ordenar y aprender, no asesoría financiera. Para decisiones grandes compara ofertas reales y lee los términos completos.</div>
   </section>
 
   <!-- DICCIONARIO -->
@@ -424,44 +421,26 @@ const store={
   }
 };
 
-const KEY='libreta:v6', KEYT='libreta:v6:terminos';
+const KEY='libreta:v7', KEYT='libreta:v7:terminos';
 const MES_N=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const $=id=>document.getElementById(id);
 const money=n=>(n<0?'−$':'$')+Math.abs(Math.round(n)).toLocaleString('en-US');
 const uid=()=>Math.random().toString(36).slice(2,9);
 
 const DEF={
-  ingreso:1700, fijos:1158, comida:250, ahorro:217, gustos:50, colchon:25,
-  semanal:50, inicial:1500,
+  ingreso:0, fijos:0, comida:0, ahorro:0, gustos:0, colchon:0,
+  semanal:0, inicial:0,
   hechos:[], anuales:[],
-  subs:[
-    {id:'s1',n:'AppleCare One',m:25.98,usa:true},
-    {id:'s2',n:'ChatGPT Plus',m:19.99,usa:true},
-    {id:'s3',n:'Crunchyroll',m:13.99,usa:false},
-    {id:'s4',n:'Google Photos 2TB',m:9.99,usa:false},
-    {id:'s5',n:'iCloud+ 2TB',m:9.99,usa:true},
-    {id:'s6',n:'Uber One (cancelar)',m:9.99,usa:false},
-    {id:'s7',n:'Everyday Dose (café)',m:12,usa:true}
-  ],
-  goals:[], extras:[],
-  activos:[
-    {id:'a1',n:'Bank of America (cheques)',m:2806,liq:true},
-    {id:'a2',n:'Mazda CX-30 2022 (estimado)',m:19000,liq:false}
-  ],
-  deudas:[
-    {id:'d1',n:'Carro — Lendbuzz 20.56%',m:26450},
-    {id:'d2',n:'Tarjeta Citi Costco',m:406},
-    {id:'d3',n:'LensCrafters — 3 pagos de $218',m:654}
-  ],
-  tentaciones:[]
+  subs:[], goals:[], extras:[],
+  activos:[], deudas:[], tentaciones:[]
 };
 let S=structuredClone(DEF), hechos=new Set(), puedeGuardar=true, tSave;
 
 const BUCKETS=[
   {k:'fijos',n:'Gastos fijos',c:'var(--c-fijos)',meta:[50,55],
-   why:'Carro $701.59, gasolina $200, renta $150, suscripciones, gym. <b>El carro y su gasolina son el 53% de tu ingreso</b> — la referencia es 15–20%. Refinanciar es la única palanca que baja este número sin cambiar nada de tu vida.'},
+   why:'Renta, servicios, transporte, seguros, teléfono, suscripciones. <b>Lo que se paga sí o sí.</b> Si pasa del 55% de tu ingreso, todo lo demás va cuesta arriba. Es la palanca más grande que existe — y la más difícil de mover.'},
   {k:'comida',n:'Comida',c:'var(--c-comida)',meta:[12,15],
-   why:'Despensa y el café de Everyday Dose ($12/mes), que el banco clasificó como "Groceries" y por eso no lo veías. <b>Es un gasto fijo disfrazado de variable.</b>'},
+   why:'Despensa y comida del día a día. <b>Es un gasto fijo disfrazado de variable:</b> siempre está, pero sí se puede ajustar. Ojo con las suscripciones de comida o café — los bancos las clasifican como "Groceries" y se esconden aquí.'},
   {k:'ahorro',n:'Ahorro',c:'var(--c-ahorro)',meta:[15,20],
    why:'<b>$50 cada viernes, automáticos.</b> Salen antes de que veas el dinero. Truco: súbelo $5 cada tres meses. No lo vas a sentir, y en dos años estás en $110 semanales.'},
   {k:'gustos',n:'Gustos',c:'var(--c-gustos)',meta:[8,10],
@@ -584,7 +563,7 @@ function render(){
         <div class="gbar"><i style="width:${pc}%"></i></div></div>`;
     }).join('');
 
-  $('seedNum').textContent=money(S.inicial);
+  if($('inInicial').value!=S.inicial) $('inInicial').value=S.inicial;
   buildLista(sig);
   const faltan=Math.max(sig.v-fT,0);
   const semanas=S.semanal>0?Math.ceil(faltan/S.semanal):0;
@@ -604,7 +583,9 @@ function render(){
   const act=S.activos.reduce((s,x)=>s+x.m,0)+fT, deu=S.deudas.reduce((s,x)=>s+x.m,0), pat=act-deu;
   $('fondoAct').textContent=money(fT);
   $('patBig').textContent=money(pat);
-  $('teTot').textContent=money(S.tentaciones.reduce((s,x)=>s+(x.c||0)*x.m,0));
+  const noGasto=S.tentaciones.reduce((s,x)=>s+(x.c||0)*x.m,0);
+  $('teTot').textContent=money(noGasto);
+  $('kNoGasto').textContent=money(noGasto);
 
   const liquido=S.activos.filter(x=>x.liq).reduce((s,x)=>s+x.m,0)+fT;
   const dia=gR/30, dias=dia>0?Math.floor(fT/dia):0;
@@ -670,6 +651,7 @@ document.querySelector('nav').addEventListener('click',e=>{
   window.scrollTo({top:0,behavior:'smooth'});
 });
 $('ingreso').addEventListener('input',e=>{ S.ingreso=Math.max(0,+e.target.value||0); render(); save(); });
+$('inInicial').addEventListener('input',e=>{ S.inicial=Math.max(0,+e.target.value||0); render(); save(); });
 $('lista').addEventListener('click',e=>{
   const b=e.target.closest('.row'); if(!b) return;
   const id=b.dataset.id; hechos.has(id)?hechos.delete(id):hechos.add(id);
@@ -681,18 +663,18 @@ $('goals').addEventListener('click',e=>{
   S.goals=S.goals.filter(x=>x.id!==g.dataset.id); render(); save();
 });
 $('reset').addEventListener('click',()=>{
-  if(!confirm('¿Volver a los datos iniciales? Se borran tus semanas marcadas.')) return;
+  if(!confirm('¿Borrar todos tus datos de este dispositivo?')) return;
   S=structuredClone(DEF); hechos.clear(); render(); doSave();
 });
 
 /* ================= DICCIONARIO ================= */
 const T=[
 {c:'Guardar dinero',t:'HYSA',s:'Cuenta de ahorro de alto rendimiento',
- d:`<p>Una cuenta de ahorro normal. La única diferencia: <b>paga mucho más interés.</b></p><p>No es inversión, no puedes perder dinero, sacas cuando quieras. La ofrecen bancos en línea porque no pagan sucursales.</p><div class="ex"><b>Tu caso</b>Tus $1,500 en Marcus al 3.40% generan ~$51 al año. En Bank of America habrían generado 15 centavos.</div>`},
+ d:`<p>Una cuenta de ahorro normal. La única diferencia: <b>paga mucho más interés.</b></p><p>No es inversión, no puedes perder dinero, sacas cuando quieras. La ofrecen bancos en línea porque no pagan sucursales.</p><div class="ex"><b>Ejemplo</b>$1,500 en una HYSA al 3.40% generan ~$51 al año. En una cuenta de banco tradicional (0.01%) generarían 15 centavos.</div>`},
 {c:'Guardar dinero',t:'APY',s:'Annual Percentage Yield · lo que ganas',
  d:`<p>Cuánto <b>ganas</b> en un año, ya con interés compuesto. Es el número para comparar cuentas de ahorro.</p>`},
 {c:'Guardar dinero',t:'APR',s:'Annual Percentage Rate · lo que pagas',
- d:`<p>Cuánto <b>pagas</b> al año por un préstamo, incluyendo comisiones.</p><p>Regla: <b>APY = lo que te dan. APR = lo que te cobran.</b></p><div class="ex"><b>Tu caso</b>Tu carro: APR 20.56%. Tu HYSA: APY 3.40%. Esos 17 puntos son por qué pagar el carro le gana a invertir.</div>`},
+ d:`<p>Cuánto <b>pagas</b> al año por un préstamo, incluyendo comisiones.</p><p>Regla: <b>APY = lo que te dan. APR = lo que te cobran.</b></p><div class="ex"><b>Ejemplo</b>Un préstamo de auto al 20% de APR contra una HYSA al 3.5% de APY: esos 16 puntos de diferencia son por qué pagar la deuda le gana a ahorrar.</div>`},
 {c:'Guardar dinero',t:'FDIC / NCUA',s:'El seguro de tu dinero',
  d:`<p>Seguro del gobierno de EE.UU. Si el banco quiebra, <b>te reponen hasta $250,000.</b> FDIC para bancos, NCUA para cooperativas.</p><p>Aplica sin importar tu situación migratoria o si usas ITIN.</p>`},
 {c:'Guardar dinero',t:'CD',s:'Certificado de depósito',
@@ -702,15 +684,15 @@ const T=[
 {c:'Guardar dinero',t:'Cooperativa de crédito',s:'Credit union',
  d:`<p>Como un banco, pero los dueños son los miembros. Como no reparten ganancias, dan <b>mejores tasas de préstamo.</b></p><p>Para pedir un préstamo hay que ser miembro — normalmente abrir una cuenta con $5 a $25. Son las más flexibles con ITIN e historial corto.</p>`},
 {c:'Deuda y crédito',t:'Principal',s:'La deuda de verdad',
- d:`<p>El dinero que realmente debes, sin intereses. <b>Solo lo que baja el principal te acerca a terminar.</b></p><div class="ex"><b>Tu caso</b>De tus $701.59, ~$445 son interés y solo ~$256 bajan el principal. Por eso sientes que pagas y el saldo no se mueve.</div>`},
+ d:`<p>El dinero que realmente debes, sin intereses. <b>Solo lo que baja el principal te acerca a terminar.</b></p><div class="ex"><b>Ejemplo</b>En un préstamo caro y recién empezado, de un pago de $700 pueden ser ~$445 de interés y solo ~$255 de principal. Por eso se siente que pagas y el saldo no se mueve.</div>`},
 {c:'Deuda y crédito',t:'Amortización',s:'Cómo se reparte cada pago',
  d:`<p>Al principio del préstamo casi todo va a intereses; con los años se voltea. Por eso <b>un pago extra al principio vale mucho más</b> que el mismo pago al final.</p>`},
 {c:'Deuda y crédito',t:'LTV',s:'Préstamo sobre valor',
- d:`<p>Lo que debes dividido entre lo que vale el bien. Arriba de 100% significa que debes más de lo que vale.</p><div class="ex"><b>Tu caso</b>~$26,450 sobre un carro de ~$19,000 = LTV 139%. Es el número que más miran al refinanciar, y por eso un aporte en efectivo cambia la respuesta.</div>`},
+ d:`<p>Lo que debes dividido entre lo que vale el bien. Arriba de 100% significa que debes más de lo que vale.</p><div class="ex"><b>Ejemplo</b>Deber $26,000 por un carro que vale $19,000 = LTV 137%. Es el número que más miran al refinanciar, y por eso un aporte en efectivo puede cambiar la respuesta.</div>`},
 {c:'Deuda y crédito',t:'Negative equity',s:'Estar "al revés"',
  d:`<p>Deber más de lo que vale tu carro. Pasa con plazos largos y tasas altas. Se corrige con el tiempo, o más rápido con pagos extra al principal.</p>`},
 {c:'Deuda y crédito',t:'Refinanciar',s:'Cambiar tu préstamo por uno mejor',
- d:`<p>Un prestamista nuevo paga tu deuda vieja y le quedas debiendo a él con <b>mejor tasa</b>. El carro es el mismo; cambia cuánto interés pagas.</p><div class="ex"><b>Tu caso</b>De 20.56% a ~8%: pago de $701 a ~$529 y ~$10,500 menos en intereses.</div>`},
+ d:`<p>Un prestamista nuevo paga tu deuda vieja y le quedas debiendo a él con <b>mejor tasa</b>. El carro es el mismo; cambia cuánto interés pagas.</p><div class="ex"><b>Ejemplo</b>Bajar un préstamo de auto de 20% a 8% puede reducir el pago mensual unos $170 y ahorrar más de $10,000 en intereses.</div>`},
 {c:'Deuda y crédito',t:'Co-solicitante',s:'Co-borrower',
  d:`<p>Alguien que firma contigo. Su ingreso e historial se suman a los tuyos: suben tus probabilidades y bajan la tasa.</p><div class="warn"><b>Cuidado:</b> también asume la deuda. Si no pagas, le cobran a esa persona y le afecta el crédito.</div>`},
 {c:'Deuda y crédito',t:'Payoff',s:'Saldo de liquidación',
@@ -718,11 +700,11 @@ const T=[
 {c:'Deuda y crédito',t:'Hard pull / Soft pull',s:'Consultas a tu crédito',
  d:`<p><b>Soft pull:</b> no afecta tu puntaje. <b>Hard pull:</b> baja unos puntos.</p><p><b>Importante:</b> varias consultas de préstamo de auto dentro de <b>14 días</b> cuentan como una sola. Por eso hay que aplicar a todas las cooperativas la misma semana.</p>`},
 {c:'Deuda y crédito',t:'DTI',s:'Deuda sobre ingreso',
- d:`<p>Qué porcentaje de tu ingreso se va en pagos de deuda. Quieren verlo abajo de ~40%.</p><div class="ex"><b>Tu caso</b>$701.59 sobre $1,700 = 41% solo del carro. Con Alberto como co-solicitante, este número se desploma.</div>`},
+ d:`<p>Qué porcentaje de tu ingreso se va en pagos de deuda. Quieren verlo abajo de ~40%.</p><div class="ex"><b>Ejemplo</b>Un pago de $700 sobre un ingreso de $1,700 es 41% solo del carro — demasiado alto. Con un co-solicitante, el ingreso que evalúan sube y este número baja mucho.</div>`},
 {c:'Deuda y crédito',t:'FICO',s:'Puntaje de crédito',
- d:`<p>Un número que resume qué tan confiable eres pagando. Se construye pagando a tiempo, cada mes, durante años.</p><div class="ex"><b>Tu caso</b>725, "Good". Mucho mejor de lo que creíamos — tu crédito no es el obstáculo para refinanciar.</div>`},
+ d:`<p>Un número que resume qué tan confiable eres pagando. Se construye pagando a tiempo, cada mes, durante años.</p><div class="ex"><b>Rangos</b>Abajo de 580 es pobre · 580–669 regular · 670–739 bueno · 740–799 muy bueno · 800+ excelente. Arriba de 700 ya calificas a buenas tasas.</div>`},
 {c:'Deuda y crédito',t:'Utilización',s:'Cuánto usas de tu tarjeta',
- d:`<p>Tu saldo dividido entre tu límite. <b>Lo ideal es entre 1% y 9%.</b> Es uno de los factores más pesados de tu puntaje.</p><div class="ex"><b>Tu caso</b>$104.85 sobre $2,000 = 5%. Exactamente en el rango bueno.</div>`},
+ d:`<p>Tu saldo dividido entre tu límite. <b>Lo ideal es entre 1% y 9%.</b> Es uno de los factores más pesados de tu puntaje.</p><div class="ex"><b>Ejemplo</b>$100 de saldo sobre un límite de $2,000 = 5%. Justo en el rango bueno.</div>`},
 {c:'Invertir',t:'Acción',s:'Stock',
  d:`<p>Un pedacito de una empresa. Si gana más, tu pedacito vale más.</p><div class="warn"><b>Para principiantes:</b> no compres acciones individuales. Escoger la ganadora es dificilísimo — hasta los profesionales fallan.</div>`},
 {c:'Invertir',t:'Fondo indexado',s:'Index fund',
@@ -736,7 +718,7 @@ const T=[
 {c:'Invertir',t:'Interés compuesto',s:'El motor de todo',
  d:`<p>Ganar intereses sobre tus intereses. Al principio no pasa nada; después de 15 años se vuelve bola de nieve.</p><div class="ex"><b>El ejemplo que lo explica todo</b>$100 al mes al 8% por 30 años: pusiste $36,000 y tienes ~$149,000. Los otros $113,000 los generó el tiempo.</div>`},
 {c:'Invertir',t:'Regla del 72',s:'Cuándo se duplica tu dinero',
- d:`<p>Divide 72 entre la tasa. Al 4% → 18 años. Al 8% → 9 años. Al 20.56% → 3.5 años.</p><div class="ex"><b>Tu caso</b>Ese último es tu carro, pero al revés: la velocidad a la que el interés se multiplica en tu contra.</div>`},
+ d:`<p>Divide 72 entre la tasa. Al 4% → 18 años. Al 8% → 9 años. Al 20% → 3.5 años.</p><div class="ex"><b>Al revés</b>La misma regla aplica a tus deudas: al 20%, lo que debes se duplicaría en 3.5 años si no pagaras nada. El interés compuesto trabaja en las dos direcciones.</div>`},
 {c:'Invertir',t:'Volatilidad',s:'Que suba y baje',
  d:`<p>La bolsa puede caer 30% en un año malo y subir 25% al siguiente. <b>Volatilidad no es pérdida</b> — solo pierdes si vendes cuando está abajo. Por eso no se invierte dinero que necesitas en menos de 5 años.</p>`},
 {c:'Invertir',t:'Corretaje',s:'Brokerage',
@@ -754,13 +736,13 @@ const T=[
 {c:'Retiro',t:'Penalización 59½',s:'Por qué no se toca',
  d:`<p>Sacar antes de los 59 años y medio cuesta impuestos <b>más</b> 10% de multa.</p><p>De aquí nace la idea de que "el gobierno se queda con tu dinero". No es eso: es el precio de romper un trato que te dio ventajas fiscales. Por eso el fondo de emergencia va aparte y en efectivo.</p>`},
 {c:'Presupuesto',t:'Fondo de emergencia',s:'Tu colchón real',
- d:`<p>Dinero líquido solo para emergencias de verdad. Primera meta: <b>$1,000</b>. Meta completa: <b>3 a 6 meses de gastos</b>.</p><div class="ex"><b>Tu caso</b>Tu gasto real es $1,408 al mes. Tres meses = ~$4,224. Ya llevas $1,500.</div>`},
+ d:`<p>Dinero líquido solo para emergencias de verdad. Primera meta: <b>$1,000</b>. Meta completa: <b>3 a 6 meses de gastos</b>.</p><div class="ex"><b>Cómo se calcula</b>Suma tus fijos + comida. Eso es tu gasto real mensual. Multiplícalo por 3 y esa es tu meta completa.</div>`},
 {c:'Presupuesto',t:'Págate a ti primero',s:'La regla que sostiene todo',
  d:`<p>El ahorro sale <b>el día que te pagan</b>, antes de todo lo demás. Funciona porque quita la fuerza de voluntad de la ecuación: la disciplina falla, las transferencias automáticas no.</p>`},
 {c:'Presupuesto',t:'Fondo para gastos anuales',s:'Sinking fund',
  d:`<p>Guardar poquito cada mes para lo que sabes que viene: navidad, placas, dentista. Toma el costo del año y divídelo entre 12.</p>`},
 {c:'Presupuesto',t:'Patrimonio neto',s:'Net worth',
- d:`<p>Todo lo que tienes menos todo lo que debes. Es <b>la</b> medida real de tu avance — mucho mejor que mirar el saldo del banco.</p><div class="ex"><b>Tu caso</b>Empieza en negativo por el carro financiado. Eso es normal. Lo que importa es que suba cada mes.</div>`},
+ d:`<p>Todo lo que tienes menos todo lo que debes. Es <b>la</b> medida real de tu avance — mucho mejor que mirar el saldo del banco.</p><div class="ex"><b>Ojo</b>Puede empezar en negativo si tienes un carro o casa financiada. Eso es normal. Lo que importa no es el número, es que suba cada mes.</div>`},
 {c:'Presupuesto',t:'Tasa de ahorro',s:'Savings rate',
  d:`<p>Qué porcentaje de tu ingreso guardas. Te compara contigo misma en el tiempo, sin importar cuánto ganes. Truco: <b>súbela 1% cada tres meses.</b></p>`},
 {c:'Impuestos',t:'ITIN',s:'Número de identificación fiscal',
@@ -768,7 +750,7 @@ const T=[
 {c:'Impuestos',t:'W-9',s:'El formulario al abrir cuenta',
  d:`<p>Solo declaras que ese número fiscal es tuyo y autorizas al banco a reportar al IRS los intereses. Todos lo firman.</p>`},
 {c:'Impuestos',t:'1099-INT',s:'El papelito de enero',
- d:`<p>Te lo mandan si ganaste $10 o más de intereses en el año.</p><div class="ex"><b>Tu caso</b>$1,500 al 3.40% generan ~$51. Pagarás ~$6 de impuesto. No cambia nada, pero que no te sorprenda.</div>`},
+ d:`<p>Te lo mandan si ganaste $10 o más de intereses en el año.</p><div class="ex"><b>Ejemplo</b>$1,500 al 3.40% generan ~$51 de interés al año. El impuesto sería ~$6. No cambia ninguna decisión, pero que no te sorprenda el papel en enero.</div>`},
 {c:'Peligros',t:'Inflación',s:'El ladrón silencioso',
  d:`<p>Si la inflación es 3% y tu dinero no gana nada, cada año compras 3% menos con lo mismo. <b>Guardar en efectivo sí es perder dinero</b>, aunque el número no baje.</p>`},
 {c:'Peligros',t:'"Garantizado"',s:'La palabra de las estafas',
