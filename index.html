@@ -35,7 +35,7 @@
   .nivel{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;color:rgba(246,242,232,.8);background:rgba(246,242,232,.09);padding:5px 10px;border-radius:20px}
 
   nav{display:flex;background:var(--ink-2);position:sticky;top:0;z-index:5;border:1px solid rgba(246,242,232,.14);border-top:0;border-bottom:0;padding:0 4px}
-  nav button{flex:1;background:none;border:0;color:rgba(246,242,232,.5);font:inherit;font-size:9.5px;font-weight:500;padding:11px 0 12px;cursor:pointer;border-bottom:2px solid transparent;-webkit-tap-highlight-color:transparent}
+  nav button{flex:1;background:none;border:0;color:rgba(246,242,232,.5);font:inherit;font-size:8.5px;font-weight:500;padding:11px 0 12px;letter-spacing:-.01em;cursor:pointer;border-bottom:2px solid transparent;-webkit-tap-highlight-color:transparent}
   nav button[aria-selected="true"]{color:var(--paper);border-bottom-color:var(--brass)}
 
   .page{background:var(--paper);padding:20px 18px 26px;border-radius:0 0 14px 14px;display:none}
@@ -183,6 +183,69 @@
   .ex b{display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
   .warn{background:rgba(142,47,74,.07);border-left:2.5px solid var(--stamp);padding:11px 13px;border-radius:0 5px 5px 0;font-size:12.5px;line-height:1.55;color:#3C4A50}
   .warn b{color:var(--stamp)}
+
+  /* simulador */
+  .simrow{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px dotted var(--rule)}
+  .simrow label{font-size:13.5px;font-weight:500;flex:1}
+  .simrow label em{display:block;font-style:normal;font-size:10.5px;color:var(--muted);margin-top:2px}
+  select{font-family:'Inter',sans-serif;font-size:13.5px;padding:7px 9px;border:1.5px solid var(--rule);border-radius:5px;background:#FFFDF8;color:var(--ink);max-width:60%}
+  input[type=range]{width:100%;accent-color:var(--brass);margin:14px 0 4px}
+  .extraLbl{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;color:var(--muted)}
+  .extraLbl b{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:600;color:var(--ink)}
+  .simres{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+  .simres div{background:var(--paper-2);padding:11px 12px;border-radius:6px}
+  .simres span{display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+  .simres b{display:block;font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:600;margin-top:4px}
+  .simres i{display:block;font-style:normal;font-size:10.5px;color:var(--muted);margin-top:2px}
+  .simres div.win{background:rgba(47,107,79,.11)}
+  .simres div.win b{color:var(--ok)}
+  .amort{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:14px;font-family:'IBM Plex Mono',monospace}
+  .amort th{font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);text-align:right;padding:0 0 6px;border-bottom:1.5px solid var(--ink);font-weight:400}
+  .amort th:first-child{text-align:left}
+  .amort td{padding:6px 0;border-bottom:1px dotted var(--rule);text-align:right;font-variant-numeric:tabular-nums}
+  .amort td:first-child{text-align:left;font-family:'Inter',sans-serif}
+  .amort .int{color:var(--stamp)}
+  .amort .pri{color:var(--ok);font-weight:600}
+  .ltvbar{height:8px;background:var(--paper-2);border-radius:4px;margin-top:9px;overflow:hidden;position:relative}
+  .ltvbar i{display:block;height:100%;background:var(--brass);border-radius:4px;transition:width .4s}
+  .ltvbar i.ok{background:var(--ok)}
+
+  /* objetivos con plan */
+  .goal2{padding:14px 0;border-bottom:1px dotted var(--rule)}
+  .g2top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .g2n{font-size:14.5px;font-weight:600;flex:1}
+  .g2n small{display:block;font-size:10.5px;color:var(--muted);font-weight:400;font-family:'IBM Plex Mono',monospace;margin-top:2px}
+  .g2num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);white-space:nowrap}
+  .g2bar{height:7px;background:var(--paper-2);border-radius:4px;margin-top:9px;overflow:hidden}
+  .g2bar i{display:block;height:100%;background:var(--brass);border-radius:4px;transition:width .4s}
+  .g2bar i.full{background:var(--ok)}
+  .g2plan{display:flex;justify-content:space-between;align-items:center;margin-top:10px;background:var(--paper-2);padding:9px 11px;border-radius:6px;font-size:12px;color:#33454C}
+  .g2plan b{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--ink)}
+  .g2acts{display:flex;gap:6px;margin-top:9px;align-items:center}
+  .g2acts input{width:74px;font-size:13px;padding:6px 8px}
+  .mini{background:var(--ink);color:var(--paper);border:0;font:inherit;font-size:11.5px;padding:7px 10px;border-radius:5px;cursor:pointer}
+  .mini.g{background:none;border:1px solid var(--rule);color:var(--muted)}
+  .add3{display:grid;grid-template-columns:1fr 78px 78px auto;gap:6px;margin-top:12px}
+  .add3 input{min-width:0}
+  .add3 input[type=text]{font-size:13px}
+
+  /* ficha */
+  .fr{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted var(--rule);font-size:13.5px}
+  .fr span{color:#33454C;flex:1}
+  .fr span small{display:block;font-size:10.5px;color:var(--muted);margin-top:2px}
+  .fr b{font-family:'IBM Plex Mono',monospace;font-weight:600;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  .fr.hot b{color:var(--stamp)}
+  .fr.good b{color:var(--ok)}
+  .sitio{padding:11px 0;border-bottom:1px dotted var(--rule);position:relative}
+  .sitio a{display:block;text-decoration:none;color:inherit}
+  .sitio b{display:block;font-size:14px;font-weight:600;color:var(--ink);padding-right:26px}
+  .sitio code{display:block;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--brass);margin-top:3px}
+  .sitio small{display:block;font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.45;white-space:pre-wrap}
+  .sitio .del{position:absolute;top:9px;right:0}
+  .add4{display:grid;gap:6px;margin-top:12px}
+  .add4 input,.add4 textarea{width:100%;font-family:'Inter',sans-serif;font-size:13.5px;padding:8px 10px;border:1.5px solid var(--rule);border-radius:5px;background:#FFFDF8;color:var(--ink)}
+  .add4 textarea{min-height:60px;resize:vertical;line-height:1.5}
+  .add4 input:focus,.add4 textarea:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:transparent}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -200,6 +263,7 @@
     <button role="tab" data-t="reparto" aria-selected="false">Reparto</button>
     <button role="tab" data-t="metas" aria-selected="false">Metas</button>
     <button role="tab" data-t="balance" aria-selected="false">Balance</button>
+    <button role="tab" data-t="ficha" aria-selected="false">Ficha</button>
     <button role="tab" data-t="guia" aria-selected="false">Guía</button>
     <button role="tab" data-t="dicc" aria-selected="false">Términos</button>
   </nav>
@@ -231,7 +295,7 @@
     <div class="head"><h2>Reparto mensual</h2><span>Editable</span></div>
     <div class="ingreso">
       <label for="ingreso">Ingreso neto<em>al mes, lo que te llega</em></label>
-      <input type="number" id="ingreso" min="0" step="10" inputmode="numeric">
+      <input type="number" id="ingreso" min="0" step="any" inputmode="decimal">
     </div>
     <div class="split" id="split" aria-hidden="true"></div>
     <div class="legend" id="legend"></div>
@@ -243,7 +307,7 @@
     <div id="anuales"></div>
     <div class="add">
       <input type="text" id="anNom" placeholder="Navidad" maxlength="28">
-      <input type="number" id="anMon" placeholder="300" min="0" step="10" inputmode="numeric">
+      <input type="number" id="anMon" placeholder="300" min="0" step="any" inputmode="decimal">
       <button class="btn" id="anAdd">+</button>
     </div>
     <div class="tot"><span>Necesitas guardar al mes</span><b id="anTot">$0</b></div>
@@ -253,7 +317,7 @@
     <div id="subs"></div>
     <div class="add">
       <input type="text" id="sbNom" placeholder="Nombre" maxlength="24">
-      <input type="number" id="sbMon" placeholder="15" min="0" step="1" inputmode="numeric">
+      <input type="number" id="sbMon" placeholder="15" min="0" step="any" inputmode="decimal">
       <button class="btn" id="sbAdd">+</button>
     </div>
     <div class="tot"><span>Total al mes</span><b id="sbTot">$0</b></div>
@@ -262,18 +326,23 @@
 
   <!-- METAS -->
   <section class="page" id="p-metas">
-    <div class="head"><h2>Objetivos</h2><span>Progreso</span></div>
+    <div class="head"><h2>Objetivos</h2><span>Con plan</span></div>
+    <p style="font-size:12.5px;line-height:1.55;color:#33454C;margin:12px 0 0">
+      Escribe qué quieres, cuánto cuesta y en cuántos meses. Yo calculo lo que tienes que guardar por semana.
+    </p>
     <div id="goals"></div>
-    <div class="add">
-      <input type="text" id="goNom" placeholder="Viaje / educación" maxlength="26">
-      <input type="number" id="goMon" placeholder="2000" min="0" step="50" inputmode="numeric">
+    <div class="add3">
+      <input type="text" id="goNom" placeholder="Viaje a…" maxlength="26">
+      <input type="number" id="goMon" placeholder="$3000" min="0" step="any" inputmode="decimal">
+      <input type="number" id="goMes" placeholder="meses" min="1" max="240" step="1" inputmode="numeric">
       <button class="btn" id="goAdd">+</button>
     </div>
+    <div class="foot" id="goResumen"></div>
 
     <div class="head"><h2>Depósitos semanales</h2><span>Viernes</span></div>
     <div class="seed">
       <span>Depósito inicial<small>lo que ya tenías guardado</small></span>
-      <input type="number" id="inInicial" min="0" step="50" inputmode="numeric" aria-label="Depósito inicial">
+      <input type="number" id="inInicial" min="0" step="any" inputmode="decimal" aria-label="Depósito inicial">
     </div>
     <ul id="lista"></ul>
     <div class="foot" id="metasTxt"></div>
@@ -282,7 +351,7 @@
     <div id="extras"></div>
     <div class="add">
       <input type="text" id="exNom" placeholder="Tutoría / cliente" maxlength="26">
-      <input type="number" id="exMon" placeholder="150" min="0" step="10" inputmode="numeric">
+      <input type="number" id="exMon" placeholder="150" min="0" step="any" inputmode="decimal">
       <button class="btn" id="exAdd">+</button>
     </div>
     <div class="tot"><span>Extra acumulado</span><b id="exTot">$0</b></div>
@@ -302,7 +371,7 @@
     <div id="activos"></div>
     <div class="add">
       <input type="text" id="acNom" placeholder="Cuenta / bien" maxlength="26">
-      <input type="number" id="acMon" placeholder="500" min="0" step="10" inputmode="numeric">
+      <input type="number" id="acMon" placeholder="500" min="0" step="any" inputmode="decimal">
       <button class="btn" id="acAdd">+</button>
     </div>
     <div class="foot">💵 = líquido (banco o efectivo). 📄 = bienes. Toca el ícono para cambiarlo.</div>
@@ -311,23 +380,104 @@
     <div id="deudas"></div>
     <div class="add">
       <input type="text" id="deNom" placeholder="Tarjeta / préstamo" maxlength="26">
-      <input type="number" id="deMon" placeholder="800" min="0" step="10" inputmode="numeric">
+      <input type="number" id="deMon" placeholder="800" min="0" step="any" inputmode="decimal">
       <button class="btn" id="deAdd">+</button>
     </div>
+
+    <div class="head"><h2>Simulador de deuda</h2><span>Aprende jugando</span></div>
+    <p style="font-size:12.5px;line-height:1.55;color:#33454C;margin:12px 0 4px">
+      Escoge una deuda y mueve la barra. Vas a ver <b>exactamente</b> cuánto te ahorra cada dólar extra — y cuándo quedas libre.
+    </p>
+
+    <div class="simrow">
+      <label for="simSel">Deuda<em>de tu lista de arriba</em></label>
+      <select id="simSel"></select>
+    </div>
+    <div class="simrow">
+      <label for="simTasa">Tasa anual %<em>el APR de tu contrato</em></label>
+      <input type="number" id="simTasa" min="0" max="99" step="any" inputmode="decimal">
+    </div>
+    <div class="simrow">
+      <label for="simPago">Pago mensual<em>el normal, sin extras</em></label>
+      <input type="number" id="simPago" min="0" step="any" inputmode="decimal">
+    </div>
+
+    <div class="extraLbl" style="margin-top:18px"><span>Abono extra al mes</span><b id="simExtraVal">$0</b></div>
+    <input type="range" id="simExtra" min="0" max="500" step="10" value="0">
+
+    <div class="simres" id="simRes"></div>
+    <div class="foot" id="simNota"></div>
+
+    <div class="head"><h2>A dónde va tu pago</h2><span>Próximos 12</span></div>
+    <p style="font-size:12.5px;line-height:1.55;color:#33454C;margin:12px 0 0">
+      Rojo es interés — dinero que se evapora. Verde baja tu deuda de verdad.
+    </p>
+    <div id="amortWrap"></div>
+
+    <div class="head"><h2>Rumbo al refinanciamiento</h2><span>LTV</span></div>
+    <div class="simrow">
+      <label for="simValor">Valor del bien hoy<em>búscalo en KBB si es un carro</em></label>
+      <input type="number" id="simValor" min="0" step="any" inputmode="decimal">
+    </div>
+    <div id="ltvBox"></div>
 
     <div class="head"><h2>Lista de "no gastar"</h2><span>Toca ✋ al resistir</span></div>
     <div id="tentaciones"></div>
     <div class="add">
       <input type="text" id="teNom" placeholder="Compra por impulso" maxlength="26">
-      <input type="number" id="teMon" placeholder="30" min="0" step="5" inputmode="numeric">
+      <input type="number" id="teMon" placeholder="30" min="0" step="any" inputmode="decimal">
       <button class="btn" id="teAdd">+</button>
     </div>
     <div class="tot"><span>Total que no gastaste</span><b id="teTot">$0</b></div>
+
+    <div class="head"><h2>Respaldo</h2><span>Importante</span></div>
+    <p style="font-size:12.5px;line-height:1.55;color:#33454C;margin:12px 0 12px">
+      iPhone puede borrar los datos si no abres la app en varios días. <b>Descarga un respaldo cada mes</b> y guárdalo en tus archivos o mándatelo por correo. Si algo se pierde, lo restauras en un toque.
+    </p>
+    <div style="display:grid;gap:8px">
+      <button class="btn" id="expBtn">⬇︎ Descargar respaldo</button>
+      <button class="btn ghost" id="impBtn" style="padding:9px 14px;font-size:12.5px">⬆︎ Restaurar desde respaldo</button>
+      <input type="file" id="impFile" accept=".json,application/json" style="display:none">
+    </div>
+    <div class="foot" id="bkStatus"></div>
 
     <div class="actions">
       <button class="btn ghost" id="reset">Borrar todo</button>
       <span class="status" id="status">Cargando…</span>
     </div>
+  </section>
+
+
+  <!-- FICHA -->
+  <section class="page" id="p-ficha">
+    <div class="head"><h2>Mi resumen</h2><span id="fFecha"></span></div>
+    <div id="fResumen"></div>
+
+    <div class="head"><h2>Mi vehículo</h2><span>Datos fijos</span></div>
+    <div class="add4" style="margin-top:12px">
+      <input type="text" id="fVeh" placeholder="Marca, modelo y año" maxlength="60">
+      <input type="text" id="fVin" placeholder="VIN" maxlength="24">
+      <input type="text" id="fMil" placeholder="Millaje y fecha en que lo revisaste" maxlength="40">
+    </div>
+    <div class="foot">Revisa el valor en kbb.com cada 3 meses con el VIN y el millaje al día.</div>
+
+    <div class="head"><h2>Dónde reviso cada cosa</h2><span>Mis accesos</span></div>
+    <div id="fSitios"></div>
+    <div class="add4">
+      <input type="text" id="stNom" placeholder="Nombre — ej. Lendbuzz, préstamo del carro" maxlength="48">
+      <input type="text" id="stUrl" placeholder="Sitio web — app.lendbuzz.com" maxlength="90">
+      <textarea id="stNota" placeholder="Qué reviso ahí, teléfono, número de cuenta parcial…" maxlength="400"></textarea>
+      <button class="btn" id="stAdd">+ Agregar</button>
+    </div>
+    <div class="note" style="margin-top:16px">
+      <b>Nunca escribas contraseñas aquí.</b> Solo el sitio y qué revisas. Para las contraseñas usa el llavero de tu teléfono.
+    </div>
+
+    <div class="head"><h2>Mis notas</h2><span>Lo que no quiero olvidar</span></div>
+    <div class="add4" style="margin-top:12px">
+      <textarea id="fNotas" placeholder="Teléfonos, fechas importantes, lo que te dijo el banco, qué preguntar la próxima vez…" style="min-height:130px"></textarea>
+    </div>
+    <div class="foot">Se guarda solo, conforme escribes.</div>
   </section>
 
   <!-- GUÍA -->
@@ -432,7 +582,9 @@ const DEF={
   semanal:0, inicial:0,
   hechos:[], anuales:[],
   subs:[], goals:[], extras:[],
-  activos:[], deudas:[], tentaciones:[]
+  activos:[], deudas:[], tentaciones:[],
+  sim:{id:'',tasa:0,pago:0,extra:0,valor:0},
+  ficha:{veh:'',vin:'',mil:'',notas:''}, sitios:[]
 };
 let S=structuredClone(DEF), hechos=new Set(), puedeGuardar=true, tSave;
 
@@ -455,7 +607,7 @@ function buildBuckets(){
       <span class="dot" style="background:${b.c}"></span>
       <span class="bname">${b.n}<em>meta ${b.meta[0]}–${b.meta[1]}%</em></span>
       <span class="bpct" id="pct-${b.k}">0%</span>
-      <input type="number" id="in-${b.k}" min="0" step="10" inputmode="numeric" aria-label="${b.n}">
+      <input type="number" id="in-${b.k}" min="0" step="any" inputmode="decimal" aria-label="${b.n}">
       <button class="why" data-k="${b.k}" aria-expanded="false" aria-label="Por qué">?</button>
     </div><div class="exp" id="exp-${b.k}">${b.why}</div></div>`).join('');
   BUCKETS.forEach(b=>$('in-'+b.k).addEventListener('input',e=>{
@@ -477,7 +629,7 @@ function listaSimple(cont,arr,extra){
     <div class="item" data-id="${it.id}">
       <span class="nm">${esc(it.n)}${extra&&extra.sub?`<small>${extra.sub(it)}</small>`:''}</span>
       ${extra&&extra.btn?extra.btn(it):''}
-      <input type="number" class="ed" value="${it.m}" min="0" step="5" inputmode="numeric" aria-label="Monto">
+      <input type="number" class="ed" value="${it.m}" min="0" step="any" inputmode="decimal" aria-label="Monto">
       <button class="del" aria-label="Borrar">×</button>
     </div>`).join(''):`<div class="empty">Nada por aquí todavía.</div>`;
 }
@@ -553,15 +705,41 @@ function render(){
   const fT=fondoTotal(), gR=gastoReal(), NIV=niveles();
   const sig=NIV.find(x=>fT<x.v) || NIV[NIV.length-1];
 
-  $('goals').innerHTML=[{id:'_f',n:'Fondo — siguiente nivel',m:sig.v,ah:Math.min(fT,sig.v),fondo:true}]
-    .concat(S.goals.map(g=>({...g,ah:0}))).map(g=>{
-      const pc=g.m?Math.min(g.ah/g.m*100,100):0;
-      return `<div class="goal ${g.fondo?'fondo':''}" ${g.fondo?'':`data-id="${g.id}"`}>
-        <div class="grow"><span class="gname">${esc(g.n)}</span>
-        <span class="gnum">${money(g.ah)} / ${money(g.m)}</span>
-        ${g.fondo?'':'<button class="del" aria-label="Borrar">×</button>'}</div>
-        <div class="gbar"><i style="width:${pc}%"></i></div></div>`;
-    }).join('');
+  // ---- objetivos con plan ----
+  const gFondo = `<div class="goal2">
+      <div class="g2top"><span class="g2n">Fondo de emergencia<small>siguiente nivel · ${sig.e} ${sig.n}</small></span>
+      <span class="g2num">${money(Math.min(fT,sig.v))} / ${money(sig.v)}</span></div>
+      <div class="g2bar"><i class="${fT>=sig.v?'full':''}" style="width:${sig.v?Math.min(fT/sig.v*100,100):0}%"></i></div>
+    </div>`;
+  const gUser = S.goals.map(g=>{
+    const ah = g.ah||0, falta = Math.max(g.m-ah,0);
+    const meses = Math.max(g.meses||12,1);
+    const semanas = Math.round(meses*4.345);
+    const porSem = falta>0 ? falta/semanas : 0;
+    const pc = g.m ? Math.min(ah/g.m*100,100) : 0;
+    const listo = ah>=g.m && g.m>0;
+    const d = new Date(2026,7,1); d.setMonth(d.getMonth()+meses);
+    const cuando = MES_N[d.getMonth()]+' '+d.getFullYear();
+    return `<div class="goal2" data-id="${g.id}">
+      <div class="g2top"><span class="g2n">${esc(g.n)}<small>${listo?'¡LOGRADO!':'meta: '+cuando}</small></span>
+      <span class="g2num">${money(ah)} / ${money(g.m)}</span></div>
+      <div class="g2bar"><i class="${listo?'full':''}" style="width:${pc}%"></i></div>
+      ${listo?'':`<div class="g2plan"><span>Guarda por semana</span><b>${money(porSem)}</b></div>`}
+      <div class="g2acts">
+        <input type="number" class="gAdd" placeholder="+$" min="0" step="any" inputmode="decimal" aria-label="Abonar">
+        <button class="mini" data-act="abonar">Abonar</button>
+        <button class="mini g" data-act="borrarG" style="margin-left:auto">Borrar</button>
+      </div>
+    </div>`;
+  }).join('');
+  $('goals').innerHTML = gFondo + gUser;
+  const totalSem = S.goals.reduce((s,g)=>{
+    const falta=Math.max(g.m-(g.ah||0),0), sem=Math.round(Math.max(g.meses||12,1)*4.345);
+    return s + (falta>0?falta/sem:0);
+  },0);
+  $('goResumen').innerHTML = S.goals.length===0
+    ? 'Ejemplo: un viaje de $3,000 en 18 meses son $38 por semana.'
+    : `Entre todos tus objetivos necesitas <b>${money(totalSem)} por semana</b> — además de los ${money(S.semanal)} del fondo. Total: ${money(totalSem+S.semanal)} semanales.`;
 
   if($('inInicial').value!=S.inicial) $('inInicial').value=S.inicial;
   buildLista(sig);
@@ -600,6 +778,7 @@ function render(){
 
   $('niveles').innerHTML=NIV.map(x=>`<div class="niv ${fT>=x.v?'done':''}">
     <span class="em">${x.e}</span><span class="n">${x.n}</span><span class="v">${money(x.v)}</span></div>`).join('');
+  pintaSim(); pintaFicha();
   const al=NIV.filter(x=>fT>=x.v);
   $('nivelChip').textContent=al.length===0?`🔴 Faltan ${money(1000-fT)} para el primer respiro`
     :`${al[al.length-1].e} ${al[al.length-1].n} · siguen ${money(Math.max(sig.v-fT,0))}`;
@@ -658,9 +837,17 @@ $('lista').addEventListener('click',e=>{
   render(); save();
 });
 $('goals').addEventListener('click',e=>{
-  if(!e.target.closest('.del')) return;
-  const g=e.target.closest('.goal'); if(!g||!g.dataset.id) return;
-  S.goals=S.goals.filter(x=>x.id!==g.dataset.id); render(); save();
+  const box=e.target.closest('.goal2'); if(!box||!box.dataset.id) return;
+  const g=S.goals.find(x=>x.id===box.dataset.id); if(!g) return;
+  if(e.target.closest('[data-act="borrarG"]')){
+    if(!confirm('¿Borrar este objetivo?')) return;
+    S.goals=S.goals.filter(x=>x.id!==g.id); render(); save(); return;
+  }
+  if(e.target.closest('[data-act="abonar"]')){
+    const inp=box.querySelector('.gAdd');
+    const v=Math.max(0,+inp.value||0);
+    if(v>0){ g.ah=(g.ah||0)+v; inp.value=''; render(); save(); }
+  }
 });
 $('reset').addEventListener('click',()=>{
   if(!confirm('¿Borrar todos tus datos de este dispositivo?')) return;
@@ -811,10 +998,206 @@ async function cargarT(){
   chips(); pintaT();
 }
 
+/* ---------- respaldo ---------- */
+function fechaHoy(){
+  const d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+$('expBtn').addEventListener('click',()=>{
+  const datos={version:7, fecha:new Date().toISOString(), libreta:{...S,hechos:[...hechos]}, terminos:[...know]};
+  const blob=new Blob([JSON.stringify(datos,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='libreta-respaldo-'+fechaHoy()+'.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+  $('bkStatus').textContent='Respaldo descargado · '+fechaHoy();
+});
+$('impBtn').addEventListener('click',()=>$('impFile').click());
+$('impFile').addEventListener('change',e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const d=JSON.parse(r.result);
+      if(!d.libreta) throw new Error('formato');
+      if(!confirm('¿Restaurar este respaldo? Reemplaza lo que tienes ahora.')) return;
+      S={...structuredClone(DEF), ...d.libreta};
+      hechos=new Set(d.libreta.hechos||[]);
+      know=new Set(d.terminos||[]);
+      render(); pintaT(); doSave(); guardarT();
+      $('bkStatus').textContent='Restaurado ✓';
+    }catch(err){ $('bkStatus').textContent='Ese archivo no se pudo leer.'; }
+    e.target.value='';
+  };
+  r.readAsText(f);
+});
+
+/* ================= SIMULADOR DE DEUDA ================= */
+function simular(saldo, tasaAnual, pago, extra){
+  const r = tasaAnual/100/12;
+  if(saldo<=0 || pago<=0) return null;
+  const total = pago + extra;
+  if(r>0 && total <= saldo*r) return {imposible:true};
+  let s = saldo, interes = 0, n = 0, filas = [];
+  while(s > 0.01 && n < 600){
+    const i_ = s*r;
+    let pr = total - i_;
+    if(pr > s) pr = s;
+    s -= pr; interes += i_; n++;
+    if(filas.length < 12) filas.push({n, i:i_, p:pr, s:Math.max(s,0)});
+  }
+  return {meses:n, interes, filas};
+}
+function fechaFin(meses){
+  const d = new Date(2026, 7, 15);
+  d.setMonth(d.getMonth() + meses - 1);
+  return MES_N[d.getMonth()] + ' ' + d.getFullYear();
+}
+function pintaSim(){
+  const sel = $('simSel');
+  const opts = S.deudas.map(d=>`<option value="${d.id}" ${S.sim.id===d.id?'selected':''}>${esc(d.n)}</option>`).join('');
+  sel.innerHTML = opts || '<option value="">Agrega una deuda arriba</option>';
+  if(!S.deudas.length){
+    $('simRes').innerHTML='';
+    $('simNota').textContent='Primero agrega una deuda en la sección "Debo".';
+    $('amortWrap').innerHTML=''; $('ltvBox').innerHTML='';
+    return;
+  }
+  const deuda = S.deudas.find(d=>d.id===S.sim.id) || S.deudas[0];
+  S.sim.id = deuda.id;
+  const saldo = deuda.m;
+
+  if($('simTasa').value!=S.sim.tasa) $('simTasa').value=S.sim.tasa;
+  if($('simPago').value!=S.sim.pago) $('simPago').value=S.sim.pago;
+  if($('simValor').value!=S.sim.valor) $('simValor').value=S.sim.valor;
+  $('simExtra').value = S.sim.extra;
+  $('simExtraVal').textContent = money(S.sim.extra);
+
+  const base = simular(saldo, S.sim.tasa, S.sim.pago, 0);
+  const conE = simular(saldo, S.sim.tasa, S.sim.pago, S.sim.extra);
+
+  if(!base || base.imposible){
+    $('simRes').innerHTML='';
+    $('simNota').textContent = base && base.imposible
+      ? 'Con ese pago la deuda nunca se termina — el interés se come todo. Sube el pago mensual.'
+      : 'Escribe la tasa y el pago mensual para ver el cálculo.';
+    $('amortWrap').innerHTML=''; 
+  } else {
+    const ahorro = base.interes - conE.interes;
+    const menos = base.meses - conE.meses;
+    $('simRes').innerHTML = `
+      <div><span>Quedas libre</span><b>${fechaFin(conE.meses)}</b><i>${conE.meses} pagos</i></div>
+      <div><span>Interés que pagarás</span><b>${money(conE.interes)}</b><i>de aquí al final</i></div>
+      <div class="${ahorro>0?'win':''}"><span>Te ahorras</span><b>${money(ahorro)}</b><i>vs. sin abono extra</i></div>
+      <div class="${menos>0?'win':''}"><span>Terminas antes</span><b>${menos} mes${menos===1?'':'es'}</b><i>de ${base.meses} originales</i></div>`;
+    const primerMes = conE.filas[0];
+    const pctInt = primerMes ? Math.round(primerMes.i/(primerMes.i+primerMes.p)*100) : 0;
+    $('simNota').textContent = `De tu próximo pago, ${pctInt}% se va en intereses. Cada dólar extra va 100% a principal.`;
+
+    $('amortWrap').innerHTML = `<table class="amort">
+      <tr><th>Pago</th><th>Interés</th><th>Principal</th><th>Saldo</th></tr>
+      ${conE.filas.map(f=>`<tr>
+        <td>${fechaFin(f.n)}</td>
+        <td class="int">${money(f.i)}</td>
+        <td class="pri">${money(f.p)}</td>
+        <td>${money(f.s)}</td></tr>`).join('')}
+    </table>`;
+  }
+
+  // LTV
+  if(S.sim.valor>0 && saldo>0){
+    const ltv = saldo/S.sim.valor*100;
+    const listo = ltv<=130;
+    const pc = Math.max(0, Math.min(100, (170-ltv)/(170-100)*100));
+    $('ltvBox').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:14px">
+        <span style="font-size:13px">Tu LTV hoy</span>
+        <b style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:${listo?'var(--ok)':'var(--stamp)'}">${ltv.toFixed(0)}%</b>
+      </div>
+      <div class="ltvbar"><i class="${listo?'ok':''}" style="width:${pc}%"></i></div>
+      <div class="foot" style="margin-top:9px">${listo
+        ? '✅ Estás en rango. La mayoría de prestamistas refinancian abajo de 130% — vale la pena volver a llamar.'
+        : `Debes ${money(saldo)} por algo que vale ${money(S.sim.valor)}. Para llegar a 130% falta bajar ${money(saldo - S.sim.valor*1.3)}. Ahí se desbloquea el refinanciamiento.`}</div>`;
+  } else {
+    $('ltvBox').innerHTML = '<div class="foot" style="margin-top:12px">Escribe el valor del bien para ver qué tan cerca estás de poder refinanciar.</div>';
+  }
+}
+$('simSel').addEventListener('change',e=>{ S.sim.id=e.target.value; pintaSim(); save(); });
+$('simTasa').addEventListener('input',e=>{ S.sim.tasa=Math.max(0,+e.target.value||0); pintaSim(); save(); });
+$('simPago').addEventListener('input',e=>{ S.sim.pago=Math.max(0,+e.target.value||0); pintaSim(); save(); });
+$('simValor').addEventListener('input',e=>{ S.sim.valor=Math.max(0,+e.target.value||0); pintaSim(); save(); });
+$('simExtra').addEventListener('input',e=>{ S.sim.extra=+e.target.value||0; pintaSim(); save(); });
+
+/* ================= FICHA ================= */
+function pintaFicha(){
+  const gR = gastoReal(), fT = fondoTotal();
+  const act = S.activos.reduce((s,x)=>s+x.m,0)+fT;
+  const deu = S.deudas.reduce((s,x)=>s+x.m,0);
+  const liq = S.activos.filter(x=>x.liq).reduce((s,x)=>s+x.m,0)+fT;
+  const tasa = S.ingreso?Math.round(S.ahorro/S.ingreso*100):0;
+  const dia = gR/30, dias = dia>0?Math.floor(fT/dia):0;
+  const d = new Date();
+  $('fFecha').textContent = d.getDate()+' '+MES_N[d.getMonth()].slice(0,3)+' '+d.getFullYear();
+
+  const carro = S.deudas.find(x=>x.id===S.sim.id);
+  const ltv = (carro && S.sim.valor>0) ? carro.m/S.sim.valor*100 : 0;
+
+  $('fResumen').innerHTML = `
+    <div class="fr"><span>Ingreso neto al mes<small>base del presupuesto</small></span><b>${money(S.ingreso)}</b></div>
+    <div class="fr"><span>Gasto real<small>fijos + comida</small></span><b>${money(gR)}</b></div>
+    <div class="fr"><span>Ahorro al mes<small>${money(S.semanal)} por semana</small></span><b>${money(S.ahorro)}</b></div>
+    <div class="fr ${tasa>=15?'good':''}"><span>Tasa de ahorro</span><b>${tasa}%</b></div>
+    <div class="fr good"><span>Fondo de emergencia<small>${dias} días sin ingresos</small></span><b>${money(fT)}</b></div>
+    <div class="fr"><span>Disponible líquido<small>banco + fondo</small></span><b>${money(liq)}</b></div>
+    <div class="fr"><span>Total que tengo</span><b>${money(act)}</b></div>
+    <div class="fr hot"><span>Total que debo</span><b>${money(deu)}</b></div>
+    <div class="fr ${act-deu>=0?'good':'hot'}"><span><b style="color:var(--ink)">Patrimonio neto</b><small>tengo − debo</small></span><b>${money(act-deu)}</b></div>
+    ${ltv>0?`<div class="fr ${ltv<=130?'good':'hot'}"><span>LTV del préstamo<small>meta: 130% para refinanciar</small></span><b>${ltv.toFixed(0)}%</b></div>`:''}`;
+
+  if($('fVeh').value!==S.ficha.veh) $('fVeh').value=S.ficha.veh;
+  if($('fVin').value!==S.ficha.vin) $('fVin').value=S.ficha.vin;
+  if($('fMil').value!==S.ficha.mil) $('fMil').value=S.ficha.mil;
+  if($('fNotas').value!==S.ficha.notas) $('fNotas').value=S.ficha.notas;
+
+  $('fSitios').innerHTML = S.sitios.length ? S.sitios.map(s=>{
+    const href = /^https?:\/\//i.test(s.url) ? s.url : 'https://'+s.url;
+    return `<div class="sitio" data-id="${s.id}">
+      <button class="del" aria-label="Borrar">×</button>
+      ${s.url?`<a href="${esc(href)}" target="_blank" rel="noopener"><b>${esc(s.n)}</b><code>${esc(s.url)}</code></a>`
+             :`<b>${esc(s.n)}</b>`}
+      ${s.nota?`<small>${esc(s.nota)}</small>`:''}
+    </div>`;
+  }).join('') : '<div class="empty">Agrega tus bancos, préstamos y tarjetas para tenerlos siempre a mano.</div>';
+}
+['fVeh','fVin','fMil','fNotas'].forEach(id=>{
+  const k = id==='fVeh'?'veh':id==='fVin'?'vin':id==='fMil'?'mil':'notas';
+  $(id).addEventListener('input',e=>{ S.ficha[k]=e.target.value; save(); });
+});
+$('stAdd').addEventListener('click',()=>{
+  const n=$('stNom').value.trim();
+  if(!n) return;
+  S.sitios.push({id:uid(), n, url:$('stUrl').value.trim(), nota:$('stNota').value.trim()});
+  $('stNom').value=''; $('stUrl').value=''; $('stNota').value='';
+  pintaFicha(); save();
+});
+$('fSitios').addEventListener('click',e=>{
+  if(!e.target.closest('.del')) return;
+  const box=e.target.closest('.sitio'); if(!box) return;
+  S.sitios=S.sitios.filter(x=>x.id!==box.dataset.id);
+  pintaFicha(); save();
+});
+
 buildBuckets();
 adder('anNom','anMon','anAdd','anuales');
 adder('sbNom','sbMon','sbAdd','subs',{usa:true});
-adder('goNom','goMon','goAdd','goals');
+$('goAdd').addEventListener('click',()=>{
+  const n=$('goNom').value.trim(), m=Math.max(0,+$('goMon').value||0), ms=Math.max(1,+$('goMes').value||12);
+  if(!n) return;
+  S.goals.push({id:uid(),n,m,ah:0,meses:ms});
+  $('goNom').value=''; $('goMon').value=''; $('goMes').value='';
+  render(); save();
+});
 adder('exNom','exMon','exAdd','extras');
 adder('acNom','acMon','acAdd','activos',{liq:true});
 adder('deNom','deMon','deAdd','deudas');
