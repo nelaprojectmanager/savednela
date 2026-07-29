@@ -26,7 +26,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
-  body{background:var(--ink);font-family:'Inter',system-ui,sans-serif;color:var(--ink);padding:14px 12px 44px;display:flex;justify-content:center;min-height:100vh}
+  body{background:var(--ink);font-family:'Inter',system-ui,sans-serif;color:var(--ink);padding:calc(14px + env(safe-area-inset-top)) 12px 44px;display:flex;justify-content:center;min-height:100vh}
   .book{width:100%;max-width:440px}
 
   .cover{background:var(--ink-2);border-radius:14px 14px 0 0;padding:18px 20px 16px;color:var(--paper);border:1px solid rgba(246,242,232,.14);border-bottom:0}
@@ -34,7 +34,7 @@
   .owner{font-family:'Fraunces',serif;font-size:19px;font-weight:600;margin-top:1px}
   .nivel{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;color:rgba(246,242,232,.8);background:rgba(246,242,232,.09);padding:5px 10px;border-radius:20px}
 
-  nav{display:flex;background:var(--ink-2);position:sticky;top:0;z-index:5;border:1px solid rgba(246,242,232,.14);border-top:0;border-bottom:0;padding:0 4px}
+  nav{display:flex;background:var(--ink-2);position:sticky;top:env(safe-area-inset-top);z-index:5;border:1px solid rgba(246,242,232,.14);border-top:0;border-bottom:0;padding:0 4px}
   nav button{flex:1;background:none;border:0;color:rgba(246,242,232,.5);font:inherit;font-size:8.5px;font-weight:500;padding:11px 0 12px;letter-spacing:-.01em;cursor:pointer;border-bottom:2px solid transparent;-webkit-tap-highlight-color:transparent}
   nav button[aria-selected="true"]{color:var(--paper);border-bottom-color:var(--brass)}
 
@@ -246,6 +246,27 @@
   .add4 input,.add4 textarea{width:100%;font-family:'Inter',sans-serif;font-size:13.5px;padding:8px 10px;border:1.5px solid var(--rule);border-radius:5px;background:#FFFDF8;color:var(--ink)}
   .add4 textarea{min-height:60px;resize:vertical;line-height:1.5}
   .add4 input:focus,.add4 textarea:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:transparent}
+
+  /* chequeo */
+  .chk{border-bottom:1px dotted var(--rule)}
+  .chkh{width:100%;background:none;border:0;display:flex;align-items:center;gap:11px;padding:13px 2px;text-align:left;font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .luz{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+  .luz.v{background:var(--ok)} .luz.a{background:var(--brass)} .luz.r{background:var(--stamp)}
+  .chkn{flex:1;min-width:0}
+  .chkn b{display:block;font-size:14px;font-weight:600}
+  .chkn small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+  .chkv{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;white-space:nowrap}
+  .chk .arw{color:var(--rule);font-size:11px;transition:transform .2s}
+  .chk.open .arw{transform:rotate(90deg)}
+  .chkb{display:none;padding:0 2px 15px 24px}
+  .chk.open .chkb{display:block}
+  .chkb p{font-size:12.5px;line-height:1.6;color:#33454C;margin-bottom:8px}
+  .chkb p b{color:var(--ink)}
+  .chkb .acc{background:var(--paper-2);border-left:2.5px solid var(--brass);padding:10px 12px;border-radius:0 5px 5px 0;font-size:12.5px;line-height:1.55}
+  .siguiente{background:var(--ink-2);color:var(--paper);padding:16px 17px;border-radius:9px;margin-top:18px}
+  .siguiente span{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+  .siguiente b{display:block;font-family:'Fraunces',serif;font-size:16.5px;font-weight:600;margin:6px 0 7px;line-height:1.3}
+  .siguiente p{font-size:12.5px;line-height:1.55;color:rgba(246,242,232,.78)}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -286,8 +307,15 @@
     <div class="head" style="margin-top:26px"><h2>Niveles de libertad</h2><span>Fondo</span></div>
     <div id="niveles"></div>
     <div class="note">
-      <b>El número de arriba es el que importa.</b> No es cuánto ganas ni cuánto tienes — es cuántos días podrías respirar si mañana se cae el ingreso. Hace una semana era 0.
+      <b>El número de arriba es el que importa.</b> No es cuánto ganas ni cuánto tienes — es cuántos días podrías respirar si mañana se cae el ingreso.
     </div>
+
+    <div class="head" style="margin-top:30px"><h2>Chequeo</h2><span>Tus signos vitales</span></div>
+    <p style="font-size:12.5px;line-height:1.55;color:#33454C;margin:12px 0 0">
+      Cinco números dicen si vas bien. Toca cada uno para entender qué significa y qué hacer.
+    </p>
+    <div id="chequeo"></div>
+    <div id="siguientePaso"></div>
   </section>
 
   <!-- REPARTO -->
@@ -612,7 +640,7 @@ function buildBuckets(){
     </div><div class="exp" id="exp-${b.k}">${b.why}</div></div>`).join('');
   BUCKETS.forEach(b=>$('in-'+b.k).addEventListener('input',e=>{
     S[b.k]=Math.max(0,+e.target.value||0);
-    if(b.k==='ahorro') S.semanal=Math.round(S.ahorro*12/52);
+    if(b.k==='ahorro') S.semanal=Math.round(S.ahorro*12/52*100)/100;
     render(); save();
   }));
   $('buckets').addEventListener('click',e=>{
@@ -742,6 +770,7 @@ function render(){
     : `Entre todos tus objetivos necesitas <b>${money(totalSem)} por semana</b> — además de los ${money(S.semanal)} del fondo. Total: ${money(totalSem+S.semanal)} semanales.`;
 
   if($('inInicial').value!=S.inicial) $('inInicial').value=S.inicial;
+  if($('inSemanal').value!=S.semanal) $('inSemanal').value=S.semanal;
   buildLista(sig);
   const faltan=Math.max(sig.v-fT,0);
   const semanas=S.semanal>0?Math.ceil(faltan/S.semanal):0;
@@ -778,7 +807,7 @@ function render(){
 
   $('niveles').innerHTML=NIV.map(x=>`<div class="niv ${fT>=x.v?'done':''}">
     <span class="em">${x.e}</span><span class="n">${x.n}</span><span class="v">${money(x.v)}</span></div>`).join('');
-  pintaSim(); pintaFicha();
+  pintaSim(); pintaFicha(); pintaChequeo();
   const al=NIV.filter(x=>fT>=x.v);
   $('nivelChip').textContent=al.length===0?`🔴 Faltan ${money(1000-fT)} para el primer respiro`
     :`${al[al.length-1].e} ${al[al.length-1].n} · siguen ${money(Math.max(sig.v-fT,0))}`;
@@ -831,6 +860,11 @@ document.querySelector('nav').addEventListener('click',e=>{
 });
 $('ingreso').addEventListener('input',e=>{ S.ingreso=Math.max(0,+e.target.value||0); render(); save(); });
 $('inInicial').addEventListener('input',e=>{ S.inicial=Math.max(0,+e.target.value||0); render(); save(); });
+$('inSemanal').addEventListener('input',e=>{
+  S.semanal=Math.max(0,+e.target.value||0);
+  S.ahorro=Math.round(S.semanal*52/12);
+  render(); save();
+});
 $('lista').addEventListener('click',e=>{
   const b=e.target.closest('.row'); if(!b) return;
   const id=b.dataset.id; hechos.has(id)?hechos.delete(id):hechos.add(id);
@@ -1186,6 +1220,105 @@ $('fSitios').addEventListener('click',e=>{
   const box=e.target.closest('.sitio'); if(!box) return;
   S.sitios=S.sitios.filter(x=>x.id!==box.dataset.id);
   pintaFicha(); save();
+});
+
+/* ================= CHEQUEO ================= */
+function pintaChequeo(){
+  const gR = gastoReal(), fT = fondoTotal(), ing = S.ingreso;
+  const act = S.activos.reduce((s,x)=>s+x.m,0)+fT;
+  const deu = S.deudas.reduce((s,x)=>s+x.m,0);
+  const pat = act - deu;
+  const dias = gR>0 ? Math.floor(fT/(gR/30)) : 0;
+  const pctFijos = ing>0 ? Math.round(S.fijos/ing*100) : 0;
+  const tasa = ing>0 ? Math.round(S.ahorro/ing*100) : 0;
+  const tasaDeuda = S.sim.tasa || 0;
+  const hayDeuda = deu > 0;
+
+  const items = [
+    {
+      luz: dias>=90?'v':dias>=30?'a':'r',
+      n:'Días de respiro',
+      s:'Cuánto aguantas sin ingresos',
+      v: dias+' d',
+      q:`Es tu fondo dividido entre lo que gastas al día. Ahorita gastas <b>${money(gR/30)} diarios</b>, así que tu fondo de ${money(fT)} te da <b>${dias} días</b>.`,
+      meta:'Bien: 30 días · Muy bien: 90 días · Excelente: 180 días',
+      acc: dias<30 ? 'Tu primera meta son 30 días. Es lo que separa "vivir al día" de "puedo respirar".'
+         : dias<90 ? 'Vas bien. Sigue hasta 90 días — ahí una emergencia grande deja de ser catástrofe.'
+         : 'Estás sólida. Ahora el dinero extra rinde más pagando deuda cara o invirtiendo.'
+    },
+    {
+      luz: pctFijos<=55?'v':pctFijos<=65?'a':'r',
+      n:'Peso de tus fijos',
+      s:'Qué tanto de tu sueldo ya está comprometido',
+      v: pctFijos+'%',
+      q:`De cada $100 que ganas, <b>$${pctFijos}</b> ya tienen dueño antes de que empiece el mes: renta, transporte, seguros, suscripciones.`,
+      meta:'Sano: 50–55% · Apretado: 56–65% · Riesgoso: más de 65%',
+      acc: pctFijos>65 ? 'Este es tu problema principal. No se arregla con disciplina — se arregla cambiando un gasto grande (vivienda o transporte) o subiendo el ingreso.'
+         : pctFijos>55 ? 'Un poco alto. Busca el gasto fijo más grande y pregúntate si se puede renegociar, refinanciar o bajar.'
+         : 'Tienes espacio para maniobrar. Eso es libertad, aunque no se sienta.'
+    },
+    {
+      luz: tasa>=15?'v':tasa>=10?'a':'r',
+      n:'Tasa de ahorro',
+      s:'Qué porcentaje guardas',
+      v: tasa+'%',
+      q:`Guardas <b>${money(S.ahorro)}</b> de ${money(ing)}. Este número te compara contigo misma en el tiempo, sin importar cuánto ganes.`,
+      meta:'Empezando: 10% · Bien: 15% · Muy bien: 20% o más',
+      acc:'Truco que sí funciona: súbela un poquito cada tres meses. De $50 a $55 semanales no se siente, y en dos años es otro nivel.'
+    },
+    {
+      luz: !hayDeuda?'v':(tasaDeuda>=15?'r':tasaDeuda>=10?'a':'v'),
+      n:'Deuda cara',
+      s:'La tasa de lo que debes',
+      v: hayDeuda ? (tasaDeuda?tasaDeuda.toFixed(2)+'%':'—') : 'Sin deuda',
+      q: !hayDeuda ? 'No tienes deudas registradas. Esa es la posición más fuerte que existe.'
+        : `Debes <b>${money(deu)}</b>. Pagar una deuda al ${tasaDeuda||'?'}% es idéntico a ganar ${tasaDeuda||'?'}% garantizado, libre de impuestos. Ninguna inversión segura te da eso.`,
+      meta:'Arriba de 15% es urgente · 10–15% es prioritario · Abajo de 6% puede esperar',
+      acc: !hayDeuda ? 'Mantente así. Antes de aceptar cualquier plan a plazos, métele los números al simulador y mira el costo real.'
+         : tasaDeuda>=10 ? 'Cada dólar extra aquí rinde más que en cualquier cuenta de ahorro. Úsalo en el simulador de Balance para ver cuánto te ahorras.'
+         : 'Tasa manejable. Prioriza el fondo de emergencia antes de acelerar estos pagos.'
+    },
+    {
+      luz: pat>0?'v':pat>-5000?'a':'r',
+      n:'Patrimonio neto',
+      s:'Lo que tienes menos lo que debes',
+      v: money(pat),
+      q:`Tienes ${money(act)} y debes ${money(deu)}. <b>Lo que importa no es el número — es que suba cada mes.</b> Empezar en negativo es normal con un carro o casa financiada.`,
+      meta:'La única regla: que la flecha apunte hacia arriba',
+      acc:'Anótalo el mismo día cada mes. En seis meses vas a ver una línea, y esa línea cuenta la historia real.'
+    }
+  ];
+
+  $('chequeo').innerHTML = items.map((x,i)=>`
+    <div class="chk" data-i="${i}">
+      <button class="chkh" aria-expanded="false">
+        <span class="luz ${x.luz}"></span>
+        <span class="chkn"><b>${x.n}</b><small>${x.s}</small></span>
+        <span class="chkv">${x.v}</span>
+        <span class="arw">&#9654;</span>
+      </button>
+      <div class="chkb">
+        <p>${x.q}</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">${x.meta}</p>
+        <div class="acc">${x.acc}</div>
+      </div>
+    </div>`).join('');
+
+  // siguiente paso
+  let t,p;
+  if(ing<=0){ t='Empieza por tu ingreso'; p='Ve a Reparto y escribe lo que te llega al mes. Sin ese número, nada de lo demás se puede calcular.'; }
+  else if(fT<1000){ t='Junta $1,000'; p='Es la meta que rompe el ciclo de vivir al día. Con eso, un imprevisto deja de mandarte a la tarjeta de crédito.'; }
+  else if(hayDeuda && tasaDeuda>=10){ t='Ataca la deuda cara'; p=`Al ${tasaDeuda}%, cada dólar extra ahí te rinde más que cualquier cuenta de ahorro. Usa el simulador en Balance para ver cuánto te ahorras.`; }
+  else if(dias<90){ t='Completa tu fondo'; p=`Vas en ${dias} días. La meta son 90 — ${money(gR*3)}. Ahí una emergencia grande deja de ser catástrofe.`; }
+  else if(tasa<15){ t='Sube tu tasa de ahorro'; p='Tienes fondo y no traes deuda cara. Ahora el objetivo es guardar más: sube el ahorro semanal un poco cada tres meses.'; }
+  else { t='Es hora de invertir'; p='Fondo listo, sin deuda cara, buena tasa de ahorro. El siguiente paso es 401(k) con aportación de la empresa, luego una Roth IRA en fondo indexado. Lee esos términos en la última pestaña.'; }
+  $('siguientePaso').innerHTML = `<div class="siguiente"><span>Tu siguiente paso</span><b>${t}</b><p>${p}</p></div>`;
+}
+$('chequeo').addEventListener('click',e=>{
+  const h=e.target.closest('.chkh'); if(!h) return;
+  const c=h.closest('.chk');
+  const ab=c.classList.toggle('open');
+  h.setAttribute('aria-expanded',ab);
 });
 
 buildBuckets();
