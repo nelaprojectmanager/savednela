@@ -50,6 +50,37 @@
   .hero b{display:block;font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;font-size:42px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
   .hero span{display:block;font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
   .hero i{display:block;font-style:normal;font-size:12px;color:var(--muted);margin:8px 0 14px}
+  .heroXL{padding:26px 0 20px;text-align:center;border-bottom:1px solid var(--rule)}
+  .heroXL .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .heroXL .num{font-family:var(--mono);font-size:76px;font-weight:600;line-height:.95;margin:10px 0 2px;font-variant-numeric:tabular-nums}
+  .heroXL .uni{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--muted);margin-bottom:14px}
+  .heroXL .delta{display:inline-block;font-family:var(--mono);font-size:13px;padding:7px 14px;border-radius:20px;background:var(--paper-2);color:#33454C;line-height:1.45;max-width:100%}
+  .heroXL .delta.up{background:rgba(47,107,79,.13);color:var(--ok)}
+  .heroXL .delta.dn{background:rgba(142,47,74,.1);color:var(--stamp)}
+  .heroXL .pie{font-size:11.5px;color:var(--muted);margin-top:11px;line-height:1.5}
+  .desde{background:var(--paper-2);border-radius:9px;padding:15px 16px;margin-top:16px}
+  .desde .t{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .desde .par{display:flex;justify-content:space-between;align-items:baseline;margin-top:9px;font-size:13px}
+  .desde .par b{font-family:var(--mono);font-weight:600}
+  .desde .res{margin-top:11px;padding-top:11px;border-top:1px solid var(--rule);font-size:14px;font-weight:600;text-align:center}
+  .desde .res.up{color:var(--ok)} .desde .res.dn{color:var(--stamp)}
+  .resistido{background:rgba(47,107,79,.1);border-radius:9px;padding:15px 16px;margin-top:14px}
+  .resistido .t{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .resistido .n{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--ok);margin:5px 0 3px}
+  .resistido .s{font-size:12.5px;line-height:1.5;color:#33454C}
+  .resistido .contraste{margin-top:10px;padding-top:10px;border-top:1px solid rgba(47,107,79,.22);font-size:12px;line-height:1.5;color:#3C4A50}
+  .logros{display:grid;gap:8px;margin-top:14px}
+  .logro{display:flex;gap:12px;align-items:center;padding:12px 13px;border-radius:8px;background:var(--paper-2)}
+  .logro.on{background:rgba(201,162,39,.15)}
+  .logro .ic{font-size:21px;filter:grayscale(1);opacity:.3}
+  .logro.on .ic{filter:none;opacity:1}
+  .logro .tx b{display:block;font-size:13.5px;font-weight:600;color:var(--muted)}
+  .logro.on .tx b{color:var(--ink)}
+  .logro .tx small{display:block;font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.4}
+  .racha{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:16px;font-size:13px;color:#33454C}
+  .racha b{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--ink)}
+  .racha .fuego{font-size:17px}
+  .racha.off{opacity:.5}
   .grid6{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
   .card{background:var(--paper-2);padding:11px 12px;border-radius:6px}
   .card span{display:block;font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -436,10 +467,13 @@
 
   <!-- PANEL -->
   <section class="page on" id="p-panel">
-    <div class="hero">
-      <span>Días que puedes vivir sin ingresos</span>
-      <b id="dias">0</b>
-      <i id="diasNota"></i>
+    <div class="heroXL">
+      <div class="lbl">Hoy puedes vivir</div>
+      <div class="num" id="dias">0</div>
+      <div class="uni">días sin ingresos</div>
+      <div id="diasDelta"></div>
+      <div class="pie" id="diasNota"></div>
+      <div id="racha"></div>
     </div>
     <div class="grid6">
       <div class="card"><span>Disponible hoy</span><b id="kDisp">$0</b><i>Banco + fondo</i></div>
@@ -449,6 +483,11 @@
       <div class="card"><span>Tasa de ahorro</span><b id="kTasa">0%</b><i>De cada $100 que ganas</i></div>
       <div class="card"><span>No gastado</span><b id="kNoGasto">$0</b><i>Compras que te aguantaste</i></div>
     </div>
+    <div id="desdeBox"></div>
+
+    <div class="head" style="margin-top:26px"><h2>Logros</h2><span id="logroCuenta"></span></div>
+    <div class="logros" id="logros"></div>
+
     <div class="head" style="margin-top:26px"><h2>Niveles de libertad</h2><span>Fondo</span></div>
     <div id="niveles"></div>
     <div class="note">
@@ -468,6 +507,8 @@
   <section class="page" id="p-analisis">
     <div class="head"><h2>Informe del mes</h2><span id="anInfTitulo"></span></div>
     <div id="anInforme"></div>
+
+    <div id="anResistido"></div>
 
     <div class="head"><h2>Análisis del mes</h2><span id="anTitulo"></span></div>
     <div id="anVeredicto"></div>
@@ -828,7 +869,7 @@ const DEF={
   hechos:[], anuales:[],
   subs:[], goals:[], extras:[],
   activos:[], deudas:[], tentaciones:[],
-  sim:{id:'',tasa:0,pago:0,extra:0,valor:0},
+  sim:{id:'',tasa:0,pago:0,extra:0,valor:0}, logros:[],
   ficha:{veh:'',vin:'',mil:'',notas:''}, sitios:[], cierres:[]
 };
 let S=structuredClone(DEF), hechos=new Set(), puedeGuardar=true, tSave;
@@ -1018,12 +1059,80 @@ function _render(){
   const dia=gR/30, dias=dia>0?Math.floor(fT/dia):0;
   $('dias').textContent=dias;
   $('diasNota').textContent=`Gastas ${money(dia)} al día. Tu fondo es ${money(fT)}.`;
+
+  /* ── delta: cambio desde el último cierre, sin ocultar el pago de deuda ── */
+  const cs=[...S.cierres].sort((a,b)=>a.ym.localeCompare(b.ym));
+  const ult=cs[cs.length-1];
+  if(ult&&ult.foto&&dia>0){
+    const esenAnt=esencialDe(ult)/30;
+    const diasAnt=esenAnt>0?ult.foto.fondo/esenAnt:0;
+    const dd=dias-diasAnt;
+    const deudaBajo=ult.foto.deudas-S.deudas.reduce((s,x)=>s+x.m,0);
+    let cls='', txt='';
+    if(Math.abs(dd)<0.5){
+      txt = deudaBajo>=1 ? '≈ igual · pero bajaste '+money(deudaBajo)+' de deuda' : '≈ sin cambio desde '+nombreMes(ult.ym);
+      cls = deudaBajo>=1?'up':'';
+    } else if(dd>0){
+      cls='up'; txt='▲ +'+dd.toFixed(0)+' día'+(dd>=1.5?'s':'')+' desde '+nombreMes(ult.ym);
+    } else {
+      cls='dn'; txt='▼ '+dd.toFixed(0)+' días';
+      if(deudaBajo>=1){
+        cls='up';
+        txt='▼ '+dd.toFixed(0)+' días · pero bajaste '+money(deudaBajo)+' de deuda'
+           +(S.sim.tasa?' al '+S.sim.tasa+'%':'');
+      } else txt+=' desde '+nombreMes(ult.ym);
+    }
+    $('diasDelta').innerHTML='<span class="delta '+cls+'">'+txt+'</span>';
+  } else {
+    $('diasDelta').innerHTML='<span class="delta">Cierra un mes para ver cómo se mueve</span>';
+  }
+
+  /* ── racha de viernes consecutivos ── */
+  const marcados=[...hechos].sort();
+  let racha=0;
+  if(marcados.length){
+    // recorre los viernes del calendario hacia atrás desde el último marcado
+    const todos=[]; for(let i=0;i<120;i++){ const dd=viernes(i); todos.push('w'+dd.toISOString().slice(0,10)); }
+    const idxUlt=todos.lastIndexOf(marcados[marcados.length-1]);
+    for(let i=idxUlt;i>=0;i--){ if(hechos.has(todos[i])) racha++; else break; }
+  }
+  $('racha').innerHTML = racha>0
+    ? '<div class="racha"><span class="fuego">🔥</span><span>Racha de <b>'+racha+'</b> viernes seguidos</span></div>'
+    : '<div class="racha off"><span class="fuego">🔥</span><span>Marca tu primer viernes en Metas</span></div>';
   $('kDisp').textContent=money(liquido);
   $('kFondo').textContent=money(fT);
   $('kFondoSub').textContent=`hacia ${money(sig.v)}`;
   $('kPat').textContent=money(pat);
   $('kDeuda').textContent=money(deu);
   $('kTasa').textContent=(S.ingreso?Math.round(S.ahorro/S.ingreso*100):0)+'%';
+
+  /* ── comparación contigo misma ── */
+  const prim=cs[0];
+  if(prim&&prim.foto&&cs.length>=2){
+    const avance=pat-prim.foto.patrimonio;
+    $('desdeBox').innerHTML='<div class="desde"><div class="t">Desde '+nombreMes(prim.ym)+', tu primer cierre</div>'
+      +'<div class="par"><span>Entonces</span><b>'+money(prim.foto.patrimonio)+'</b></div>'
+      +'<div class="par"><span>Hoy</span><b>'+money(pat)+'</b></div>'
+      +'<div class="res '+(avance>=0?'up':'dn')+'">'
+      +(avance>=0?'Has avanzado '+money(avance):'Has retrocedido '+money(Math.abs(avance)))+'</div></div>';
+  } else $('desdeBox').innerHTML='';
+
+  /* ── logros ── */
+  const bajoPres=cs.filter(c=>{
+    const g=gastoDe(c); return c.ingreso>0 && g>0 && g<=c.ingreso-(+c.ahorro||0);
+  }).length;
+  const mesesAhorrando=cs.filter(c=>(+c.ahorro||0)>0).length;
+  const LOGROS=[
+    {ic:'🏆', n:'Primer mes bajo presupuesto', d:'Gastaste menos de lo que entró, guardando lo planeado.', ok:bajoPres>=1},
+    {ic:'🛟', n:'30 días de respiro',          d:'Tu fondo cubre un mes entero de gastos esenciales.',      ok:dias>=30},
+    {ic:'📆', n:'6 meses seguidos ahorrando',  d:'Seis cierres con dinero guardado.',                       ok:mesesAhorrando>=6},
+    {ic:'✂️', n:'Primera deuda liquidada',     d:'Llevaste una deuda hasta cero.',                          ok:(S.logros||[]).includes('deuda')},
+    {ic:'🌱', n:'Patrimonio positivo',         d:'Lo que tienes superó lo que debes.',                      ok:pat>0}
+  ];
+  $('logroCuenta').textContent=LOGROS.filter(l=>l.ok).length+' de '+LOGROS.length;
+  $('logros').innerHTML=LOGROS.map(l=>
+    '<div class="logro '+(l.ok?'on':'')+'"><span class="ic">'+l.ic+'</span>'
+    +'<span class="tx"><b>'+l.n+'</b><small>'+(l.ok?l.d:'Aún no')+'</small></span></div>').join('');
 
   $('niveles').innerHTML=NIV.map(x=>`<div class="niv ${fT>=x.v?'done':''}">
     <span class="em">${x.e}</span><span class="n">${x.n}</span><span class="v">${money(x.v)}</span></div>`).join('');
@@ -1828,7 +1937,7 @@ function analizar(){
 
 function pintaAnalisis(){
   const a=analizar();
-  pintaInforme(a);
+  pintaInforme(a); pintaResistido(a);
   $('cCuenta').textContent=S.cierres.length?S.cierres.length+' mes'+(S.cierres.length===1?'':'es'):'';
 
   /* ── veredicto ── */
@@ -2003,6 +2112,30 @@ function prioridad(a){
     p:'Tienes fondo y no traes deuda cara. Sube el ahorro un poco cada tres meses: de '+money(S.semanal)+' a '+money(S.semanal+5)+' no se siente.'};
 }
 
+function resistidoDelMes(){
+  const ym=ymHoy();
+  let total=0, n=0;
+  S.tentaciones.forEach(t=>{
+    const veces=(t.log||[]).filter(f=>f.startsWith(ym)).length;
+    if(veces){ total+=veces*(+t.m||0); n+=veces; }
+  });
+  return {total,n,ym};
+}
+function pintaResistido(a){
+  const r=resistidoDelMes();
+  if(r.n===0){ $('anResistido').innerHTML=''; return; }
+  // contraste honesto: ¿de verdad gastaste menos?
+  let contraste='';
+  if(!a.falta){
+    const g=a.cats.find(c=>c.k==='gustos');
+    if(g && g.dif>1) contraste='Aun así, gustos quedó '+money(g.dif)+' arriba de tu promedio. Resistir cuenta cuando el total del mes también baja.';
+    else if(g && g.dif<-1) contraste='Y se nota: gustos quedó '+money(Math.abs(g.dif))+' abajo de tu promedio.';
+  } else contraste='Cuando cierres dos meses podré decirte si esto se reflejó en tu gasto real.';
+  $('anResistido').innerHTML='<div class="resistido"><div class="t">Dinero que no salió · '+nombreMes(r.ym)+'</div>'
+    +'<div class="n">'+money(r.total)+'</div>'
+    +'<div class="s">'+r.n+' compra'+(r.n===1?'':'s')+' que te aguantaste. No es ingreso ni ahorro: es dinero que no se fue.</div>'
+    +(contraste?'<div class="contraste">'+contraste+'</div>':'')+'</div>';
+}
 function pintaInforme(a){
   const inf=informe(a);
   if(!inf){ $('anInforme').innerHTML='<div class="empty">Aparecerá con tu segundo cierre.</div>'; return; }
@@ -2117,10 +2250,15 @@ $('deudas').addEventListener('click',e=>{
   if(v<=0){ inp.focus(); return; }
   d.ult=Math.min(v,d.m);
   d.m=Math.round(Math.max(d.m-v,0)*100)/100;
+  if(d.m===0){ S.logros=[...new Set([...(S.logros||[]),'deuda'])]; }
   inp.value='';
   render(); save();
 });
-wireLista('tentaciones','tentaciones',id=>{const it=S.tentaciones.find(x=>x.id===id); if(it) it.c=(it.c||0)+1;});
+wireLista('tentaciones','tentaciones',id=>{
+  const it=S.tentaciones.find(x=>x.id===id); if(!it) return;
+  it.c=(it.c||0)+1;
+  it.log=[...(it.log||[]), new Date().toISOString().slice(0,10)];   // para contarlo por mes
+});
 mostrarCandado();
 </script>
 </body>
