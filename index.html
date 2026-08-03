@@ -1013,8 +1013,10 @@ function _render(){
     <span class="em">${x.e}</span><span class="n">${x.n}</span><span class="v">${money(x.v)}</span></div>`).join('');
   pintaSim(); pintaFicha(); pintaChequeo(); pintaAnalisis();
   const al=NIV.filter(x=>fT>=x.v);
-  $('nivelChip').textContent=al.length===0?`🔴 Faltan ${money(1000-fT)} para el primer respiro`
-    :`${al[al.length-1].e} ${al[al.length-1].n} · siguen ${money(Math.max(sig.v-fT,0))}`;
+  const falta=Math.max(sig.v-fT,0);
+  $('nivelChip').textContent = falta>0
+    ? `${sig.e} ${sig.n} · faltan ${money(falta)}`      // hacia dónde vas
+    : `${sig.e} ${sig.n} · logrado`;
 }
 
 /* viernes a partir del 31 jul 2026 */
