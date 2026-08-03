@@ -1829,7 +1829,10 @@ function pintaAnalisis(){
       ? 'Gastaste prácticamente lo mismo que tu promedio.'
       : 'Gastaste '+money(Math.abs(a.exceso))+' '+dir+' que tu promedio de '
         +a.nPrev+' mes'+(a.nPrev===1?'':'es')+', un '+Math.abs(a.pct).toFixed(1)+'% '+dir+'.';
-    const semTxt = S.semanal>0 ? ' y '+(sube?'retrasó':'adelantó')+' tu meta unas <b>'+a.sem.toFixed(1)+' semanas</b>' : '';
+    const semTxt = S.semanal>0
+      ? (sube ? ' y retrasó tu meta unas <b>'+a.sem.toFixed(1)+' semanas</b>'
+              : '. Podría adelantar tu meta hasta <b>'+a.sem.toFixed(1)+' semanas</b> si envías esa diferencia al fondo')
+      : '';
     const det=casiIgual
       ? money(a.gAct)+' contra un promedio de '+money(a.prom)+'. Mes estable.'
       : (sube
@@ -1843,10 +1846,12 @@ function pintaAnalisis(){
         +'<b>'+a.dias.toFixed(1)+' días</b>'
         +'<i>'+money(Math.abs(a.exceso))+' ÷ '+money(a.diaEsen)+' de gasto esencial al día</i>'
         +'<em>Esencial = fijos + comida, que es lo que sí pagarías sin ingresos.</em></div>'
-        +'<div><span>2 · '+(sube?'Retraso de tu meta':'Adelanto de tu meta')+'</span>'
-        +'<b>'+(S.semanal>0?a.sem.toFixed(1)+' semanas':'—')+'</b>'
+        +'<div><span>2 · '+(sube?'Retraso de tu meta':'Adelanto posible')+'</span>'
+        +'<b>'+(S.semanal>0?(sube?'':'hasta ')+a.sem.toFixed(1)+' semanas':'—')+'</b>'
         +'<i>'+(S.semanal>0?money(Math.abs(a.exceso))+' ÷ '+money(S.semanal)+' que guardas por semana':'define tu ahorro semanal en Metas')+'</i>'
-        +'<em>'+(sube?'Ese dinero no llegó al fondo.':'Ese dinero puede ir al fondo.')+'</em></div>'
+        +'<em>'+(sube
+            ? 'Ese dinero ya salió: no llegó al fondo.'
+            : 'Solo se cumple si transfieres esa diferencia al fondo. Si se queda en la cuenta, no adelanta nada.')+'</em></div>'
         +'</div>')
       +'<div class="equiv">'
       +'<div><span>Gasto del mes</span><b>'+money(a.gAct)+'</b></div>'
@@ -1863,7 +1868,7 @@ function pintaAnalisis(){
       const s=c.dif>0, w=Math.abs(c.dif)/maxAbs*50;
       const nota = Math.abs(c.dif)<1 ? 'Igual que tu promedio.'
         : money(Math.abs(c.dif))+(s?' más':' menos')
-          +(S.semanal>0?' · '+(s?'retrasa':'adelanta')+' la meta '+c.semanas.toFixed(1)+' sem':'');
+          +(S.semanal>0?' · '+(s?'retrasa la meta ':'podría adelantar ')+c.semanas.toFixed(1)+' sem':'');
       return '<div class="catrow"><div class="cattop"><span>'+c.n+'</span>'
         +'<b class="'+(Math.abs(c.dif)<1?'':(s?'sube':'baja'))+'">'
         +(Math.abs(c.dif)<1?'=':((s?'+':'−')+Math.abs(c.pct).toFixed(0)+'%'))+'</b></div>'
@@ -1891,7 +1896,9 @@ function pintaAnalisis(){
   +'  día esencial   = promedio esencial ÷ 30\n'
   +'  días de fondo  = |diferencia| ÷ día esencial\n'
   +'\nIMPACTO 2 · meta (independiente del 1)\n'
-  +'  semanas        = |diferencia| ÷ ahorro semanal'
+  +'  semanas        = |diferencia| ÷ ahorro semanal\n'
+  +'  si gastaste MENOS, el adelanto es potencial:\n'
+  +'  solo ocurre si transfieres esa diferencia al fondo'
   +(a.falta?'':'\n\n───── con tus números ─────\n'
     +'gasto del mes    '+money(a.gAct)+'\n'
     +'promedio '+a.nPrev+'m      '+money(a.prom)+'\n'
@@ -1917,7 +1924,7 @@ function prellenarCierre(){
   v('cGustos',S.gustos); v('cColchon',S.colchon);
   v('cAhorro',Math.round(S.semanal*52/12));
 }
-$('cGuardar').addEventListener('click',()=>{
+$('cGuardar').addEventListener('click',async()=>{
   const ym=$('cMes').value;
   if(!/^\d{4}-\d{2}$/.test(ym)){ $('cMsg').textContent='Escoge el mes que estás cerrando.'; return; }
   const n=id=>Math.max(0,+$(id).value||0);
@@ -1925,14 +1932,28 @@ $('cGuardar').addEventListener('click',()=>{
     cats:{fijos:n('cFijos'),comida:n('cComida'),gustos:n('cGustos'),colchon:n('cColchon')}};
   if(gastoDe(c)<=0&&c.ingreso<=0){ $('cMsg').textContent='Escribe al menos un monto.'; return; }
   const i=S.cierres.findIndex(x=>x.ym===ym);
-  if(i>=0) S.cierres[i]=c; else S.cierres.push(c);
+  if(i>=0){
+    const ant=S.cierres[i];
+    const r=await dialogo({titulo:'Ya existe ese cierre',
+      texto:'Ya guardaste '+nombreMes(ym)+' con '+money(gastoDe(ant))+' de gasto. '
+           +'¿Quieres reemplazarlo con '+money(gastoDe(c))+'? El anterior se pierde.',
+      btn:'Actualizar'});
+    if(!r) { $('cMsg').textContent='No se cambió nada.'; return; }
+    S.cierres[i]=c;
+  } else S.cierres.push(c);
   $('cMsg').textContent=(i>=0?'Actualizado':'Guardado')+' · '+nombreMes(ym);
   ['cIng','cFijos','cComida','cGustos','cColchon','cAhorro','cMes'].forEach(id=>$(id).value='');
   render(); save();
 });
-$('anLista').addEventListener('click',e=>{
+$('anLista').addEventListener('click',async e=>{
   if(!e.target.closest('.del')) return;
   const f=e.target.closest('.cierre'); if(!f) return;
+  const c=S.cierres.find(x=>x.ym===f.dataset.ym); if(!c) return;
+  const r=await dialogo({titulo:'Borrar este cierre',
+    texto:'Se elimina '+nombreMes(c.ym)+' ('+money(gastoDe(c))+' de gasto) de tu historial. '
+         +'Eso cambia los promedios de los meses siguientes.',
+    btn:'Borrar', peligro:true});
+  if(!r) return;
   S.cierres=S.cierres.filter(x=>x.ym!==f.dataset.ym);
   render(); save();
 });
