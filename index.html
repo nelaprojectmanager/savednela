@@ -329,6 +329,19 @@
   .impacto b{display:block;font-family:var(--mono);font-size:22px;font-weight:600;margin:4px 0 3px}
   .impacto i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;color:#3C4A50}
   .impacto em{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:5px;line-height:1.45}
+  .pagos{display:flex;gap:6px;margin-top:8px;align-items:center;flex-wrap:wrap}
+  .pagos input{width:88px;font-size:13px;padding:6px 8px}
+  .pagos button{background:var(--ink);color:var(--paper);border:0;font:inherit;font-size:11.5px;padding:7px 11px;border-radius:5px;cursor:pointer;white-space:nowrap}
+  .pagos button.g{background:none;border:1px solid var(--rule);color:var(--muted)}
+  .pagos small{font-size:10.5px;color:var(--muted);font-family:var(--mono);flex-basis:100%;margin-top:2px}
+  .inf{margin-top:14px}
+  .infl{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px dotted var(--rule);font-size:13px;line-height:1.5;color:#33454C}
+  .infi{font-family:var(--mono);font-size:12px;width:14px;flex-shrink:0;color:var(--muted);text-align:center;padding-top:1px}
+  .infi.up{color:var(--ok)} .infi.dn{color:var(--stamp)}
+  .prio{background:var(--ink-2);color:var(--paper);padding:16px 17px;border-radius:9px;margin-top:16px}
+  .prio span{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+  .prio b{display:block;font-family:var(--serif);font-size:16.5px;font-weight:600;margin:6px 0 7px;line-height:1.3}
+  .prio p{font-size:12.5px;line-height:1.55;color:rgba(246,242,232,.78)}
   .catrow{padding:11px 0;border-bottom:1px dotted var(--rule)}
   .cattop{display:flex;justify-content:space-between;align-items:baseline;gap:9px;font-size:13.5px}
   .cattop b{font-family:var(--mono);font-weight:600;white-space:nowrap}
@@ -453,6 +466,9 @@
 
   <!-- ANÁLISIS -->
   <section class="page" id="p-analisis">
+    <div class="head"><h2>Informe del mes</h2><span id="anInfTitulo"></span></div>
+    <div id="anInforme"></div>
+
     <div class="head"><h2>Análisis del mes</h2><span id="anTitulo"></span></div>
     <div id="anVeredicto"></div>
 
@@ -986,7 +1002,7 @@ function _render(){
   $('exTot').textContent=money(S.extras.reduce((s,x)=>s+x.m,0));
 
   listaSimple('activos',S.activos,{btn:it=>`<button class="use" data-act="liq" data-on="${!!it.liq}">${it.liq?'💵':'📄'}</button>`});
-  listaSimple('deudas',S.deudas);
+  listaSimple('deudas',S.deudas); pintaPagos();
   listaSimple('tentaciones',S.tentaciones,{
     sub:it=>`resistida ${it.c||0} ${(it.c||0)===1?'vez':'veces'} · ${money((it.c||0)*it.m)}`,
     btn:()=>`<button class="use" data-act="win" data-on="true" aria-label="Me aguanté">✋</button>`});
@@ -1812,6 +1828,7 @@ function analizar(){
 
 function pintaAnalisis(){
   const a=analizar();
+  pintaInforme(a);
   $('cCuenta').textContent=S.cierres.length?S.cierres.length+' mes'+(S.cierres.length===1?'':'es'):'';
 
   /* ── veredicto ── */
@@ -1881,7 +1898,8 @@ function pintaAnalisis(){
   const cs=[...S.cierres].sort((a2,b)=>b.ym.localeCompare(a2.ym));
   $('anLista').innerHTML=cs.length?cs.map(c=>
     '<div class="cierre" data-ym="'+esc(c.ym)+'"><span class="cm">'+nombreMes(c.ym)
-    +'<small>entró '+money(+c.ingreso||0)+' · guardó '+money(+c.ahorro||0)+'</small></span>'
+    +'<small>entró '+money(+c.ingreso||0)+' · guardó '+money(+c.ahorro||0)
+    +(c.foto?' · patrimonio '+money(c.foto.patrimonio):'')+'</small></span>'
     +'<b>'+money(gastoDe(c))+'</b><button class="del" aria-label="Borrar">×</button></div>'
   ).join(''):'<div class="empty">Ningún mes cerrado todavía.</div>';
 
@@ -1913,6 +1931,88 @@ function pintaAnalisis(){
       : 'ahorro semanal    sin definir'));
 }
 
+
+/* ══════════ INFORME MENSUAL ══════════ */
+function informe(a){
+  if(a.falta) return null;
+  const act=a.act, prev=a.prev[a.prev.length-1];   // cierre anterior inmediato
+  const L=[];
+
+  // gasto
+  if(Math.abs(a.pct)<3) L.push({i:'≈',t:'Gastaste prácticamente lo mismo que tu promedio ('+money(a.gAct)+').'});
+  else L.push({i:a.exceso>0?'▲':'▼',
+    t:'Gastaste '+money(Math.abs(a.exceso))+(a.exceso>0?' más':' menos')+' que tu promedio de '+a.nPrev+' mes'+(a.nPrev===1?'':'es')+', un '+Math.abs(a.pct).toFixed(1)+'%.'});
+
+  // ahorro
+  const dA=a.difAhorro;
+  if(Math.abs(dA)<1) L.push({i:'≈',t:'Guardaste '+money(a.ahorroAct)+', igual que tu promedio.'});
+  else L.push({i:dA>0?'▲':'▼',
+    t:'Guardaste '+money(a.ahorroAct)+' — '+money(Math.abs(dA))+(dA>0?' más':' menos')+' que tu promedio.'});
+
+  // patrimonio (requiere foto en ambos)
+  if(act.foto && prev && prev.foto){
+    const dP=act.foto.patrimonio-prev.foto.patrimonio;
+    L.push({i:dP>=0?'▲':'▼',
+      t:'Tu patrimonio '+(dP>=0?'subió ':'bajó ')+money(Math.abs(dP))+' — de '+money(prev.foto.patrimonio)+' a '+money(act.foto.patrimonio)+'.'});
+    const dD=prev.foto.deudas-act.foto.deudas;
+    if(Math.abs(dD)>=1) L.push({i:dD>0?'▲':'▼',
+      t:'Tu deuda '+(dD>0?'bajó ':'subió ')+money(Math.abs(dD))+'.'});
+    // días de fondo
+    const esenAct=esencialDe(act)/30, esenPrev=esencialDe(prev)/30;
+    if(esenAct>0&&esenPrev>0){
+      const dias1=prev.foto.fondo/esenPrev, dias2=act.foto.fondo/esenAct;
+      const dd=dias2-dias1;
+      if(Math.abs(dd)>=0.5) L.push({i:dd>=0?'▲':'▼',
+        t:'Tu fondo '+(dd>=0?'creció ':'perdió ')+Math.abs(dd).toFixed(1)+' días de respiro — ahora aguantas '+dias2.toFixed(0)+'.'});
+    }
+  } else {
+    L.push({i:'·',t:'El patrimonio de este mes quedó registrado. Desde el próximo cierre podré compararlo.'});
+  }
+
+  // categoría que más movió
+  const peor=a.cats[0];
+  if(Math.abs(peor.dif)>=1) L.push({i:peor.dif>0?'▲':'▼',
+    t:'La categoría que más cambió fue '+peor.n.toLowerCase()+': '+money(Math.abs(peor.dif))+(peor.dif>0?' más':' menos')+' que tu promedio.'});
+
+  return {lineas:L, prioridad:prioridad(a)};
+}
+
+/* una sola recomendación, la de mayor impacto */
+function prioridad(a){
+  const fT=fondoTotal(), gR=gastoReal();
+  const dias=gR>0?fT/(gR/30):0;
+  const tasaD=S.sim.tasa||0;
+  const deudaCara=S.deudas.reduce((s,x)=>s+x.m,0)>0 && tasaD>=10;
+  const peor=a.cats[0];
+
+  // ¿recortar la peor categoría pesa más que abonar a la deuda?
+  if(deudaCara && peor && peor.dif>0 && peor.k!=='fijos'){
+    const recorte=peor.dif;                       // volver al promedio
+    const ahorroInteres=recorte*(tasaD/100);      // rendimiento anual si va a la deuda
+    if(recorte>=25) return {
+      t:'Vuelve '+peor.n.toLowerCase()+' a su promedio',
+      p:'Gastaste '+money(recorte)+' de más ahí. Ese mismo dinero al principal de tu deuda al '+tasaD+'% te ahorraría unos '+money(ahorroInteres)+' de interés al año — más que cualquier otro movimiento este mes.'};
+  }
+  if(fT<1000) return {t:'Junta $1,000 en el fondo',
+    p:'Te faltan '+money(1000-fT)+'. Es la meta que rompe el ciclo de vivir al día: con eso, un imprevisto deja de mandarte a la tarjeta.'};
+  if(deudaCara) return {t:'Abona al principal de tu deuda',
+    p:'Al '+tasaD+'%, cada dólar extra ahí rinde más que cualquier cuenta de ahorro. Usa el simulador de abajo para ver cuánto te ahorras.'};
+  if(dias<90) return {t:'Completa tu fondo',
+    p:'Vas en '+dias.toFixed(0)+' días. La meta son 90 — '+money(gR*3)+'. Ahí una emergencia grande deja de ser catástrofe.'};
+  return {t:'Sube tu ahorro semanal',
+    p:'Tienes fondo y no traes deuda cara. Sube el ahorro un poco cada tres meses: de '+money(S.semanal)+' a '+money(S.semanal+5)+' no se siente.'};
+}
+
+function pintaInforme(a){
+  const inf=informe(a);
+  if(!inf){ $('anInforme').innerHTML='<div class="empty">Aparecerá con tu segundo cierre.</div>'; return; }
+  $('anInfTitulo').textContent=nombreMes(a.act.ym);
+  $('anInforme').innerHTML='<div class="inf">'
+    +inf.lineas.map(l=>'<div class="infl"><span class="infi '+(l.i==='▲'?'up':l.i==='▼'?'dn':'')+'">'+l.i+'</span><span>'+l.t+'</span></div>').join('')
+    +'</div>'
+    +'<div class="prio"><span>Tu prioridad para el mes que viene</span><b>'+esc(inf.prioridad.t)+'</b><p>'+inf.prioridad.p+'</p></div>';
+}
+
 /* ── formulario de cierre ── */
 function prellenarCierre(){
   if(!$('cMes').value){
@@ -1928,8 +2028,17 @@ $('cGuardar').addEventListener('click',async()=>{
   const ym=$('cMes').value;
   if(!/^\d{4}-\d{2}$/.test(ym)){ $('cMsg').textContent='Escoge el mes que estás cerrando.'; return; }
   const n=id=>Math.max(0,+$(id).value||0);
+  // foto automática del balance en el momento del cierre
+  const foto={
+    activos: S.activos.reduce((s,x)=>s+(+x.m||0),0)+fondoTotal(),
+    deudas:  S.deudas.reduce((s,x)=>s+(+x.m||0),0),
+    fondo:   fondoTotal(),
+    fecha:   new Date().toISOString().slice(0,10)
+  };
+  foto.patrimonio = Math.round((foto.activos-foto.deudas)*100)/100;
   const c={ym, ingreso:n('cIng'), ahorro:n('cAhorro'),
-    cats:{fijos:n('cFijos'),comida:n('cComida'),gustos:n('cGustos'),colchon:n('cColchon')}};
+    cats:{fijos:n('cFijos'),comida:n('cComida'),gustos:n('cGustos'),colchon:n('cColchon')},
+    foto};
   if(gastoDe(c)<=0&&c.ingreso<=0){ $('cMsg').textContent='Escribe al menos un monto.'; return; }
   const i=S.cierres.findIndex(x=>x.ym===ym);
   if(i>=0){
@@ -1977,6 +2086,40 @@ wireLista('subs','subs',id=>{const it=S.subs.find(x=>x.id===id); if(it) it.usa=i
 wireLista('extras','extras');
 wireLista('activos','activos',id=>{const it=S.activos.find(x=>x.id===id); if(it) it.liq=!it.liq;});
 wireLista('deudas','deudas');
+
+/* ── pagos rápidos sobre las deudas ── */
+function pintaPagos(){
+  [...$('deudas').querySelectorAll('.item')].forEach(fila=>{
+    if(fila.querySelector('.pagos')) return;
+    const d=S.deudas.find(x=>x.id===fila.dataset.id); if(!d) return;
+    const cajon=document.createElement('div');
+    cajon.className='pagos';
+    cajon.innerHTML='<input type="number" class="pgMonto" placeholder="$ pagado" min="0" step="any" inputmode="decimal" aria-label="Monto pagado">'
+      +'<button data-act="pagar">− Registrar pago</button>'
+      +(d.ult?'<button class="g" data-act="deshacer">Deshacer</button>':'')
+      +(d.ult?'<small>último: −'+money(d.ult)+'</small>':'');
+    fila.after(cajon);
+  });
+}
+$('deudas').addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]'); if(!b) return;
+  const cajon=b.closest('.pagos'); if(!cajon) return;
+  const fila=cajon.previousElementSibling;
+  const d=S.deudas.find(x=>x.id===fila.dataset.id); if(!d) return;
+
+  if(b.dataset.act==='deshacer'){
+    if(!d.ult) return;
+    d.m=Math.round((d.m+d.ult)*100)/100; d.ult=0;
+    render(); save(); return;
+  }
+  const inp=cajon.querySelector('.pgMonto');
+  const v=Math.max(0,+inp.value||0);
+  if(v<=0){ inp.focus(); return; }
+  d.ult=Math.min(v,d.m);
+  d.m=Math.round(Math.max(d.m-v,0)*100)/100;
+  inp.value='';
+  render(); save();
+});
 wireLista('tentaciones','tentaciones',id=>{const it=S.tentaciones.find(x=>x.id===id); if(it) it.c=(it.c||0)+1;});
 mostrarCandado();
 </script>
