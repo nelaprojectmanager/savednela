@@ -191,6 +191,42 @@
   #p-proximos .pit input{width:92px;font:inherit;font-family:var(--mono);font-size:13px;text-align:right;padding:7px 9px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink)}
   #p-proximos .pit .del{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer;padding:0 4px}
   #p-proximos .empty{color:var(--muted);font-size:12.5px;padding:14px 0;text-align:center}
+  #p-progreso .pgcard{background:var(--paper-2);border:1px solid var(--rule);border-radius:9px;padding:15px 16px;margin-bottom:12px}
+  #p-progreso .pgcard.dark{background:var(--ink);color:var(--paper);border-color:rgba(246,242,232,.14)}
+  #p-progreso .pgt{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  #p-progreso .pghero{text-align:center;margin:4px 0}
+  #p-progreso .pghero .lbl{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  #p-progreso .pgcard.dark .pghero .lbl{color:rgba(246,242,232,.6)}
+  #p-progreso .pghero .num{font-family:'Iowan Old Style',Palatino,Georgia,serif;font-size:32px;font-weight:600;margin-top:2px}
+  #p-progreso .pghero .sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+  #p-progreso .pgcard.dark .pghero .sub{color:rgba(246,242,232,.6)}
+  #p-progreso .pgbar{height:12px;background:rgba(0,0,0,.06);border:1px solid var(--rule);border-radius:7px;overflow:hidden;margin:14px 0 6px}
+  #p-progreso .pgcard.dark .pgbar{background:rgba(246,242,232,.1);border-color:rgba(246,242,232,.2)}
+  #p-progreso .pgbar i{display:block;height:100%;background:var(--ok);transition:width .4s}
+  #p-progreso .pgbl{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);font-family:var(--mono)}
+  #p-progreso .pgcard.dark .pgbl{color:rgba(246,242,232,.6)}
+  #p-progreso .pgmil{background:var(--paper);border-left:2px solid var(--brass);border-radius:0 6px 6px 0;padding:10px 12px;margin:12px 0;font-size:12px;line-height:1.5;color:#33454C}
+  #p-progreso .pgmil b{color:var(--ink)}
+  #p-progreso .pgextra{display:flex;align-items:center;gap:8px;margin:12px 0 10px}
+  #p-progreso .pgextra em{font-style:normal;font-size:13px;opacity:.75}
+  #p-progreso .pgextra input{width:84px;font:inherit;font-family:var(--mono);font-size:17px;text-align:right;padding:6px 9px;border:1px solid rgba(246,242,232,.2);border-radius:6px;background:rgba(246,242,232,.08);color:var(--paper)}
+  #p-progreso .pgchips{display:flex;gap:6px;margin-bottom:10px}
+  #p-progreso .pgchips button{flex:1;background:rgba(246,242,232,.1);color:var(--paper);border:1px solid rgba(246,242,232,.2);border-radius:6px;font:inherit;font-size:12px;padding:7px;cursor:pointer}
+  #p-progreso .pgchips button.on{background:var(--paper);color:var(--ink);font-weight:600}
+  #p-progreso .pgres{display:flex;gap:8px}
+  #p-progreso .pgres div{flex:1;background:rgba(246,242,232,.08);border-radius:7px;padding:9px 11px}
+  #p-progreso .pgres span{font-size:9.5px;opacity:.65;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
+  #p-progreso .pgres b{display:block;font-family:'Iowan Old Style',Palatino,Georgia,serif;font-size:16px;margin-top:3px}
+  #p-progreso .pgres b.win{color:#8FD6A8}
+  #p-progreso .spark{display:flex;align-items:flex-end;gap:4px;height:60px;margin:12px 0 4px}
+  #p-progreso .spark i{flex:1;background:var(--ok);border-radius:3px 3px 0 0;min-height:4px;opacity:.85}
+  #p-progreso .spark i.neg{background:var(--stamp)}
+  #p-progreso .pgnote{font-size:12px;line-height:1.55;color:#33454C;margin-top:8px}
+  #p-progreso .pgcard.dark .pgnote{color:rgba(246,242,232,.85)}
+  #p-progreso .pgsav{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dotted var(--rule);font-size:12.5px}
+  #p-progreso .pgsav:last-child{border-bottom:0}
+  #p-progreso .pgsav span{font-family:var(--mono);color:var(--muted)}
+  #p-progreso .empty{color:var(--muted);font-size:12.5px;padding:12px 0;text-align:center}
   .seed{display:flex;justify-content:space-between;align-items:center;padding:13px 2px;border-bottom:1.5px solid var(--rule);font-size:13.5px}
   .seed b{font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;font-weight:600}
   .seed span small{display:block;font-size:10.5px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;margin-top:2px}
@@ -509,6 +545,7 @@
     <button role="tab" data-t="metas" aria-selected="false">Metas</button>
     <button role="tab" data-t="balance" aria-selected="false">Balance</button>
     <button role="tab" data-t="proximos" aria-selected="false">Próximos</button>
+    <button role="tab" data-t="progreso" aria-selected="false">Progreso</button>
     <button role="tab" data-t="ficha" aria-selected="false">Ficha</button>
     <button role="tab" data-t="guia" aria-selected="false">Guía</button>
     <button role="tab" data-t="dicc" aria-selected="false">Términos</button>
@@ -789,6 +826,13 @@
     <div class="sub">Pagos guardados</div>
     <div id="pxItems"></div>
     <div class="pxnote" style="border-left-color:var(--ok)"><b>Los fijos ya están:</b> carro (día 15) y Citi (día 27). Toca el monto para corregirlo — la Citi cambia cada mes. Borra con la × lo que ya no pagues.</div>
+  </section>
+
+  <!-- PROGRESO -->
+  <section class="page" id="p-progreso">
+    <div class="pgcard dark" id="pgCarro"></div>
+    <div class="pgcard" id="pgPatrimonio"></div>
+    <div class="pgcard" id="pgAhorro"></div>
   </section>
 
   <section class="page" id="p-ficha">
@@ -1083,7 +1127,7 @@ function aplicaPago(d,v){
     else { f.it.m=r2(f.it.m+vv); sd=vv; }
   }
   d.ult={v:vv,cap,int:r2(int),src:d.fuente||'',sd,ajust:vv<r2(v)};
-  if(d.m===0){ S.logros=[...new Set([...(S.logros||[]),'deuda'])]; }
+  if(d.m===0){ S.logros=[...new Set([...(S.logros||[]),'deuda'])]; const _n=d.n; setTimeout(()=>pgCelebra(_n),150); }
   return true;
 }
 function deshacePago(d){
@@ -1301,7 +1345,7 @@ function _render(){
 
   $('niveles').innerHTML=NIV.map(x=>`<div class="niv ${fT>=x.v?'done':''}">
     <span class="em">${x.e}</span><span class="n">${x.n}</span><span class="v">${money(x.v)}</span></div>`).join('');
-  pintaSim(); pintaFicha(); pintaChequeo(); pintaAnalisis(); pintaProximos();
+  pintaSim(); pintaFicha(); pintaChequeo(); pintaAnalisis(); pintaProximos(); pintaProgreso();
   const al=NIV.filter(x=>fT>=x.v);
   const falta=Math.max(sig.v-fT,0);
   $('nivelChip').textContent = falta>0
@@ -1538,6 +1582,7 @@ document.querySelector('nav').addEventListener('click',e=>{
   document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id==='p-'+b.dataset.t));
   if(b.dataset.t==='analisis') prellenarCierre();
   if(b.dataset.t==='proximos') pintaProximos();
+  if(b.dataset.t==='progreso') pintaProgreso();
   window.scrollTo({top:0,behavior:'smooth'});
 });
 $('ingreso').addEventListener('input',e=>{ S.ingreso=Math.max(0,+e.target.value||0); render(); save(); });
@@ -2578,6 +2623,84 @@ $('pxItems').addEventListener('input',e=>{
   if(p){ p.m=Math.max(0,+e.target.value||0); render(); save(); }
 });
 document.addEventListener('click',e=>{ if(e.target&&e.target.id==='pxAsk') pxCopiar(); });
+
+/* ══════════ PROGRESO — plan del carro, patrimonio, ahorro ══════════ */
+const PG_MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+function pgFechaMes(n){ const d=new Date(); d.setMonth(d.getMonth()+Math.round(n)); return PG_MES[d.getMonth()]+' '+d.getFullYear(); }
+function pgNeto(){ const fT=fondoTotal(); return (S.activos.reduce((s,x)=>s+(+x.m||0),0)+fT) - S.deudas.reduce((s,x)=>s+(+x.m||0),0); }
+
+function pintaProgreso(){
+  if(!$('p-progreso')) return;
+
+  /* ── Plan del carro ── */
+  const carro=S.deudas.find(x=>/carro|lendbuzz/i.test(x.n));
+  const cC=$('pgCarro');
+  if(!carro){
+    cC.innerHTML='<div class="pgt">🚗 Plan del carro</div><div class="empty">Agrega tu carro en Balance para ver el plan.</div>';
+  } else {
+    const val=S.sim.valor>0?S.sim.valor:18270, tasa=+carro.tasa||0, pago=+carro.pago||0, extra=Math.max(0,+(S.sim.extra||0));
+    const cob=Math.max(0,Math.min(100,Math.round(val/carro.m*100)));
+    const base=pago>0?simular(carro.m,tasa,pago,0):null, conE=pago>0?simular(carro.m,tasa,pago,extra):null;
+    let resHTML;
+    if(base&&!base.imposible&&conE&&!conE.imposible){
+      const ahorro=Math.round(base.interes-conE.interes), menos=base.meses-conE.meses;
+      resHTML='<div class="pgres"><div><span>Libre en</span><b class="win">'+pgFechaMes(conE.meses)+'</b></div>'
+        +'<div><span>Te ahorras</span><b class="'+(ahorro>0?'win':'')+'">'+money(ahorro)+'</b></div></div>'
+        +'<div class="pgnote">'+(menos>0?('Con $'+extra+' extra al mes: <b>'+menos+' mes'+(menos===1?'':'es')+' antes</b> y '+money(ahorro)+' menos de interés.'):'Sube el extra arriba y mira cuánto adelantas.')+'</div>';
+    } else if(pago<=0){
+      resHTML='<div class="pgnote">Ponle a esta deuda su <b>pago mensual</b> y su <b>tasa</b> en el ⚙ de Balance para calcular el plan.</div>';
+    } else {
+      resHTML='<div class="pgnote">Con ese pago la deuda no baja — el interés se la come. Sube el pago.</div>';
+    }
+    cC.innerHTML='<div class="pgt">🚗 Plan del carro</div>'
+      +'<div class="pghero"><div class="lbl">Debes del carro</div><div class="num">'+money(carro.m)+'</div><div class="sub">al '+tasa+'% · vale '+money(val)+'</div></div>'
+      +'<div class="pgbar"><i style="width:'+cob+'%"></i></div>'
+      +'<div class="pgbl"><span>El carro cubre '+cob+'%</span><span>meta: 100% = a mano</span></div>'
+      +(carro.m>val
+        ? '<div class="pgmil">🎯 <b>Para quedar a mano</b>: faltan <b>'+money(carro.m-val)+'</b>. Ahí se desbloquea refinanciar o vender sin quedar debiendo.</div>'
+        : '<div class="pgmil">🎉 <b>¡Ya estás a mano!</b> El carro vale lo que debes o más.</div>')
+      +'<div class="pgextra"><em>$</em><input id="pgExtra" type="number" inputmode="decimal" value="'+(extra||'')+'" placeholder="0"><em>extra al mes</em></div>'
+      +'<div class="pgchips"><button data-ex="0"'+(extra===0?' class="on"':'')+'>+$0</button><button data-ex="50"'+(extra===50?' class="on"':'')+'>+$50</button><button data-ex="100"'+(extra===100?' class="on"':'')+'>+$100</button></div>'
+      +resHTML;
+  }
+
+  /* ── Patrimonio ── */
+  const neto=pgNeto();
+  const cs=[...(S.cierres||[])].filter(c=>c&&c.foto).sort((a,b)=>a.ym.localeCompare(b.ym));
+  const pts=cs.map(c=>+c.foto.patrimonio).concat([neto]);
+  let chart;
+  if(pts.length>=2){
+    const mn=Math.min(...pts), mx=Math.max(...pts), rg=(mx-mn)||1;
+    chart='<div class="spark">'+pts.map(p=>'<i class="'+(p<0?'neg':'')+'" style="height:'+(8+Math.round((p-mn)/rg*52))+'px"></i>').join('')+'</div>'
+      +'<div class="pgbl"><span>antes</span><span>hoy</span></div>';
+  } else {
+    chart='<div class="pgnote">Cierra un par de meses en <b>Análisis</b> y aquí verás tu línea subir mes a mes.</div>';
+  }
+  $('pgPatrimonio').innerHTML='<div class="pgt">📈 Tu patrimonio</div>'
+    +'<div class="pghero"><div class="lbl">Patrimonio neto hoy</div><div class="num" style="color:'+(neto>=0?'var(--ok)':'var(--stamp)')+'">'+money(neto)+'</div><div class="sub">lo que tienes menos lo que debes</div></div>'+chart;
+
+  /* ── Cuánto me ahorré ── */
+  const canc=(S.subs||[]).filter(x=>x.usa===false), mes=canc.reduce((s,x)=>s+(+x.m||0),0);
+  $('pgAhorro').innerHTML='<div class="pgt">💰 Cuánto me ahorré</div>'
+    +(mes>0
+      ? '<div class="pghero"><div class="lbl">Ya no gastas</div><div class="num" style="color:var(--ok)">'+money(mes)+'</div><div class="sub">al mes · '+money(mes*12)+' al año</div></div>'
+        +'<div style="margin-top:10px">'+canc.map(x=>'<div class="pgsav"><span>'+esc(x.n)+'</span><span>'+money(x.m)+'/mes</span></div>').join('')+'</div>'
+        +'<div class="pgnote">'+money(mes*12)+' al año de vuelta a tu bolsillo. Marca ❌ en Reparto cada suscripción que canceles.</div>'
+      : '<div class="empty">Marca con ❌ las suscripciones que canceles (en Reparto) y aquí se cuenta cuánto te ahorras.</div>');
+}
+
+function pgCelebra(nombre){
+  try{ dialogo({titulo:'🎉 ¡Saldaste una deuda!', texto:'Pagaste por completo "'+nombre+'". Una deuda menos. Así, poco a poco, hasta cero — justo de esto se trata.', btn:'¡Vamos!'}); }catch(e){}
+}
+
+/* ── wiring Progreso ── */
+$('p-progreso').addEventListener('change',e=>{
+  if(e.target.id==='pgExtra'){ S.sim.extra=Math.max(0,+e.target.value||0); render(); save(); }
+});
+$('p-progreso').addEventListener('click',e=>{
+  const b=e.target.closest('.pgchips button'); if(b){ S.sim.extra=+b.dataset.ex||0; render(); save(); }
+});
+
 
 mostrarCandado();
 </script>
