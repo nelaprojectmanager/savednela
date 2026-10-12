@@ -150,9 +150,9 @@
   .goal.fondo .gbar i{background:var(--ok)}
 
   #p-proximos .pxrow2{display:flex;gap:8px;margin-bottom:10px}
-  #p-proximos .mini{flex:1;background:var(--paper-2);border-radius:7px;padding:10px 12px}
-  #p-proximos .mini span{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  #p-proximos .mini b{display:block;font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:19px;margin-top:3px}
+  #p-proximos .mini{flex:1;background:var(--paper-2);border:1px solid var(--rule);border-radius:7px;padding:11px 13px}
+  #p-proximos .mini span{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+  #p-proximos .mini b{display:block;font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:22px;font-weight:600;color:var(--ink);margin-top:3px}
   #p-proximos .coach{background:var(--ink);color:var(--paper);border-radius:9px;padding:14px 16px;margin-bottom:10px}
   #p-proximos .coach .ch{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;font-size:15px;margin-bottom:7px}
   #p-proximos .coach p{font-size:13px;line-height:1.55;opacity:.95}
@@ -2521,8 +2521,8 @@ function pintaProximos(){
   $('pxCoach').innerHTML='<div class="ch">🌱 Tu consejo de hoy</div>'
     +'<p class="'+(coach.tone==='warn'?'w':'')+'">'+coach.main+'</p>'
     +(coach.bullets.length?'<ul>'+coach.bullets.map(b=>'<li class="'+(b.t==='warn'?'warn':'')+'">'+(b.t==='tip'?'· ':'')+b.x+'</li>').join('')+'</ul>':'')
-    +'<button class="ask" id="pxAsk">💬 Pedir consejo a Claude</button>'
-    +'<div class="chnote">Copia un resumen de tus números para pegármelo en el chat. Tus datos no salen solos de tu teléfono.</div>';
+    +'<button class="ask" id="pxAsk">💬 Copiar mis números para pedir consejo</button>'
+    +'<div class="chnote">Copia un resumen y pégalo en Claude o en ChatGPT. Tus datos no salen solos de tu teléfono — tú decides dónde.</div>';
   if($('pxMonto').value!=(S.cheque.monto||'')) $('pxMonto').value=S.cheque.monto||'';
   if($('pxFreq').value!=S.cheque.freq) $('pxFreq').value=S.cheque.freq||'semanal';
   $('pxLista').innerHTML = proy.ev.length ? proy.ev.map(e=>{
@@ -2542,7 +2542,7 @@ function pintaProximos(){
 
 function pxCopiar(){
   const proy=pxProyecta();
-  let t='Hola Claude, estos son mis números de hoy para que me aconsejes:\n';
+  let t='Estos son mis números de hoy. ¿Me aconsejas el siguiente paso y me dices si estoy gastando de más?\n';
   t+='• BofA: '+money(pxBofa())+'  • Marcus: '+money(pxMarcus())+'\n';
   t+='• Cheque: '+money(S.cheque.monto)+' cada '+(S.cheque.freq==='quincenal'?'2 semanas':'viernes')+'\n';
   t+='• Próximos 45 días (saldo BofA proyectado):\n';
@@ -2550,7 +2550,7 @@ function pxCopiar(){
   if(proy.rojo) t+='⚠️ El '+pxFmt(proy.rojo.f)+' BofA se queda corto.\n';
   t+='¿Cuál es mi siguiente paso? ¿Estoy gastando de más en algo?';
   const btn=$('pxAsk');
-  const ok=()=>{ if(btn){ btn.textContent='✓ Copiado — pégalo en tu chat con Claude'; setTimeout(()=>{btn.textContent='💬 Pedir consejo a Claude';},2600); } };
+  const ok=()=>{ if(btn){ btn.textContent='✓ Copiado — pégalo en Claude o ChatGPT'; setTimeout(()=>{btn.textContent='💬 Copiar mis números para pedir consejo';},2600); } };
   try{ navigator.clipboard.writeText(t).then(ok,()=>{ pxCopiaFallback(t); ok(); }); }
   catch(e){ pxCopiaFallback(t); ok(); }
 }
