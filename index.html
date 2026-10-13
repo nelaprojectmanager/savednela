@@ -1042,7 +1042,13 @@ function buildBuckets(){
 
 const esc=s=>String(s).replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));
 function listaSimple(cont,arr,extra){
-  $(cont).innerHTML=arr.length?arr.map(it=>`
+  const host=$(cont);
+  /* No reconstruyas la lista que el usuario está editando: borraría el campo,
+     le quitaría el foco y se tragaría el punto decimal a medio escribir.
+     El estado ya se actualizó; el campo se reformatea solo al salir (blur). */
+  const foco=document.activeElement;
+  if(foco&&foco.classList&&foco.classList.contains('ed')&&host.contains(foco)) return;
+  host.innerHTML=arr.length?arr.map(it=>`
     <div class="item" data-id="${it.id}">
       <span class="nm">${esc(it.n)}${extra&&extra.sub?`<small>${extra.sub(it)}</small>`:''}</span>
       ${extra&&extra.btn?extra.btn(it):''}
@@ -1061,6 +1067,10 @@ function wireLista(cont,key,onBtn){
     if(!e.target.classList.contains('ed')) return;
     const it=S[key].find(x=>x.id===e.target.closest('.item').dataset.id);
     if(it){ it.m=Math.max(0,+e.target.value||0); render(); save(); }
+  });
+  /* al salir del campo, reformatea limpio (p.ej. "507." → "507.00") */
+  $(cont).addEventListener('change',e=>{
+    if(e.target.classList.contains('ed')) render();
   });
 }
 function adder(nomId,monId,btnId,key,base){
